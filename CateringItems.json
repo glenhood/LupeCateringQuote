@@ -1,0 +1,193 @@
+{	"Items": [
+    {
+        "Title": "Mixed Beef & Chicken Fajita",
+        "Price": "18.9500000000000",
+        "Category": "Fajita Buffet"
+    },
+    {
+        "Title": "Chicken Fajitas",
+        "Price": "14.9500000000000",
+        "Category": "Fajita Buffet"
+    },
+    {
+        "Title": "Beef Fajitas",
+        "Price": "25.9500000000000",
+        "Category": "Fajita Buffet"
+    },
+    {
+        "Title": "Trios Beef, Chicken & Shrimp",
+        "Price": "20.9500000000000",
+        "Category": "Fajita Buffet"
+    },
+    {
+        "Title": "Fajitas Kids Per Person",
+        "Price": "7.95000000000000",
+        "Category": "Fajita Buffet"
+    },
+    {
+        "Title": "Add Sour Cream",
+        "Price": "1.00000000000000",
+        "Category": "Fajita Buffet"
+    },
+    {
+        "Title": "Pint Queso",
+        "Price": "13.9500000000000",
+        "Category": "Sides & Tortillas"
+    },
+    {
+        "Title": "Pint Guacamole",
+        "Price": "9.95000000000000",
+        "Category": "Sides & Tortillas"
+    },
+    {
+        "Title": "Pint Pico de Gallo",
+        "Price": "5.95000000000000",
+        "Category": "Sides & Tortillas"
+    },
+    {
+        "Title": "Pint Sour Cream",
+        "Price": "7.95000000000000",
+        "Category": "Sides & Tortillas"
+    },
+    {
+        "Title": "Pint Shredded Cheddar",
+        "Price": "9.95000000000000",
+        "Category": "Sides & Tortillas"
+    },
+    {
+        "Title": "Pint Monterey Jack Cheese",
+        "Price": "9.95000000000000",
+        "Category": "Sides & Tortillas"
+    },
+    {
+        "Title": "Pint Fire Roasted Salsa",
+        "Price": "6.95000000000000",
+        "Category": "Sides & Tortillas"
+    },
+    {
+        "Title": "Pint of Charro Beans",
+        "Price": "5.95000000000000",
+        "Category": "Sides & Tortillas"
+    },
+    {
+        "Title": "Pint Refried Beans",
+        "Price": "6.95000000000000",
+        "Category": "Sides & Tortillas"
+    },
+    {
+        "Title": "Pint Rice",
+        "Price": "5.95000000000000",
+        "Category": "Sides & Tortillas"
+    },
+    {
+        "Title": "Dozen Flour Tortillas",
+        "Price": "4.95000000000000",
+        "Category": "Sides & Tortillas"
+    },
+    {
+        "Title": "Dozen Corn Tortillas",
+        "Price": "4.95000000000000",
+        "Category": "Sides & Tortillas"
+    },
+    {
+        "Title": "Dozen Tamales",
+        "Price": "17.9500000000000",
+        "Category": "Enchiladas, Tamales, Flautas"
+    },
+    {
+        "Title": "Dozen Chicken Flautas",
+        "Price": "24.4000000000000",
+        "Category": "Enchiladas, Tamales, Flautas"
+    },
+    {
+        "Title": "Dozen Cheese Enchiladas",
+        "Price": "21.9500000000000",
+        "Category": "Enchiladas, Tamales, Flautas"
+    },
+    {
+        "Title": "Dozen Spicy Red Cheese Enchiladas",
+        "Price": "21.9500000000000",
+        "Category": "Enchiladas, Tamales, Flautas"
+    },
+    {
+        "Title": "Dozen Spicy Red Chicken  Enchiladas",
+        "Price": "27.9500000000000",
+        "Category": "Enchiladas, Tamales, Flautas"
+    },
+    {
+        "Title": "Dozen Green Cheese Enchiladas",
+        "Price": "21.9500000000000",
+        "Category": "Enchiladas, Tamales, Flautas"
+    },
+    {
+        "Title": "Dozen Green Chicken Enchiladas",
+        "Price": "27.9500000000000",
+        "Category": "Enchiladas, Tamales, Flautas"
+    },
+    {
+        "Title": "House Margarita Mix",
+        "Price": "59.9500000000000",
+        "Category": "Margaritas & Drinks"
+    },
+    {
+        "Title": "Strawberry Margaritas Mix",
+        "Price": "69.9500000000000",
+        "Category": "Margaritas & Drinks"
+    },
+    {
+        "Title": "Iced Tea Unsweet",
+        "Price": "10.9500000000000",
+        "Category": "Margaritas & Drinks"
+    },
+    {
+        "Title": "Iced Tea",
+        "Price": "10.9500000000000",
+        "Category": "Margaritas & Drinks"
+    },
+    {
+        "Title": "Lemonade",
+        "Price": "14.9500000000000",
+        "Category": "Margaritas & Drinks"
+    },
+    {
+        "Title": "Soft drinks",
+        "Price": "8.00000000000000",
+        "Category": "Margaritas & Drinks"
+    },
+    {
+        "Title": "Water",
+        "Price": "2.25000000000000",
+        "Category": "Margaritas & Drinks"
+    },
+    {
+        "Title": "Bartender",
+        "Price": "50.0000000000000",
+        "Category": "Service Add Ons"
+    },
+    {
+        "Title": "Servers",
+        "Price": "35.0000000000000",
+        "Category": "Service Add Ons"
+    },
+    {
+        "Title": "Tables",
+        "Price": "0",
+        "Category": "Rentals"
+    },
+    {
+        "Title": "Chairs",
+        "Price": "0",
+        "Category": "Rentals"
+    },
+    {
+        "Title": "Linen",
+        "Price": "0",
+        "Category": "Rentals"
+    },
+    {
+        "Title": "Tents",
+        "Price": "0",
+        "Category": "Rentals"
+    }
+]
+}

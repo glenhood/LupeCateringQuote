@@ -1,29 +1,25 @@
-var script = document.createElement('script');script.src = "//cdn.jsdelivr.net/npm/sharepointplus/browser/sharepointplus.js";document.getElementsByTagName('head')[0].appendChild(script);
 
-// var authData = {username:'Ghood', password:'UTTech1!', domain:'rdminc'}
-const credentials = {
-    username:'Ghood',
-    password:'UTTech1!',
-    domain:'rdminc'
-  };
-  // you can also define a proxy
-  const proxyweb = "http://" + credentials.domain + "%5C" + credentials.username + ":" + credentials.password + "@proxy:80";
-  
-//   const $SP = require('sharepointplus');
-const sp = $SP().proxy(proxyweb).auth(credentials);
+$(function(){
 
-sp.list("CateringProposalItems");
-
-  
-// fields = ['Title','Price','Category']
-// $SP().auth(authData)
-//     .list("CateringProposalItems", "https://sp.lupetortilla.com")
-//     .get({fields:fields.join(',')})
-//     .then(function(data){
-//         for (i of data) {
-//             for (k of fields) {
-//                 console.log(k + ': ' + i.getAttribute(k))
-//             }
-//             }
-//         }
-//     )
+    $.ajax({ 
+      type : 'GET', 
+      url : 'CateringItems.json', 
+      async : false, 
+      beforeSend : function(){/*loading*/},
+      dataType : 'json', 
+      success : function(result){
+       var buffer="";
+        $.each(result, function(index, val){ 
+    
+          for(var i=0; i < val.length; i++){ 
+            var item = val[i]; 
+            console.log(item.Title);
+            console.log(item.Price);
+            console.log(item.Category);
+            buffer+=" <li><a href='#"+item.Title+"'>"+item.Title+"</a></li> <li><a href='#"+item.Price+"'>"+item.Price+"</a></li> <li><a href='#"+item.Category+"'>"+item.Category+"</a></li>"; 
+          } 
+          $('ul').html(buffer);
+        });
+      }
+     });
+    });

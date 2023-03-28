@@ -1,4 +1,4 @@
-table {
+script {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
@@ -16,4 +16,9 @@ table {
     }
     .alternate tr:nth-child(2n):hover, .alternate tr:hover {
     background-color: grey;
+    }
+
+    #hero-body {
+        margin:0;
+        padding:0;
     }
