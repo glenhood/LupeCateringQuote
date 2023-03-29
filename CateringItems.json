@@ -1,4 +1,5 @@
-{	"Items": [
+{	
+    "Items": [
     {
         "Title": "Mixed Beef & Chicken Fajita",
         "Price": "18.9500000000000",
@@ -27,7 +28,7 @@
     {
         "Title": "Add Sour Cream",
         "Price": "1.00000000000000",
-        "Category": "Fajita Buffet"
+        "Category": "Add On Fajita Buffet"
     },
     {
         "Title": "Pint Queso",
