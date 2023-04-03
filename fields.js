@@ -1,4 +1,4 @@
-document.getElementById("fieldsform").addEventListener('submit', function(event) {
+document.getElementById("fieldsform").addEventListener('Submit', function(event) {
     // Prevent the form from submitting normally
     event.preventDefault();
 
@@ -12,5 +12,7 @@ document.getElementById("fieldsform").addEventListener('submit', function(event)
     }
 
     // Redirect to the next page with the query string
-    window.location.href = 'Lupe.html' + queryString;
+    window.location.href = "Lupe.html";
 });
+
+console.log(queryString)

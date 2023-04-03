@@ -2,38 +2,76 @@
     "Items": [
     {
         "Title": "Mixed Beef & Chicken Fajita",
-        "Price": "18.9500000000000",
+        "Price": 18.95,
         "Category": "Fajita Buffet",
         "Serves": 1
     },
     {
         "Title": "Chicken Fajitas",
-        "Price": "14.9500000000000",
+        "Price": 14.95,
         "Category": "Fajita Buffet",
         "Serves": 1
         
     },
     {
         "Title": "Beef Fajitas",
-        "Price": "25.9500000000000",
+        "Price": 25.95,
         "Category": "Fajita Buffet",
         "Serves": 1
     },
     {
         "Title": "Trios Beef, Chicken & Shrimp",
-        "Price": "20.9500000000000",
+        "Price": 20.95,
         "Category": "Fajita Buffet",
         "Serves": 1
     },
     {
         "Title": "Fajitas Kids Per Person",
-        "Price": "7.95000000000000",
-        "Category": "Kids Fajita Buffet"
+        "Price": 7.95,
+        "Category": "Add On Fajita Buffet",
+        "Serves": 1
     },
     {
         "Title": "Add Sour Cream",
-        "Price": "1.00000000000000",
-        "Category": "Add On Fajita Buffet"
+        "Price": 1.00,
+        "Category": "Add On Fajita Buffet",
+        "Serves": 1
+    },
+    {
+        "Title": "6 Pepper Shrimp",
+        "Price": 18.00,
+        "Category": "Add On Fajita Buffet",
+        "Serves": 2.5
+    },
+    {
+        "Title": "7oz Lobster Tail",
+        "Price": 25.00,
+        "Category": "Add On Fajita Buffet",
+        "Serves": 2.5
+    },
+    {
+        "Title": "Jalapeno Sausage",
+        "Price": 5.00,
+        "Category": "Add On Fajita Buffet",
+        "Serves": 2.5
+    },
+    {
+        "Title": "4 Grilled Shrimp",
+        "Price": 9.00,
+        "Category": "Add On Fajita Buffet",
+        "Serves": 2.5
+    },
+    {
+        "Title": "5 Ribs",
+        "Price": 15.00,
+        "Category": "Add On Fajita Buffet",
+        "Serves": 2.5
+    },
+    {
+        "Title": "Salad (1/2 Pan)",
+        "Price": 20.00,
+        "Category": "Add On Fajita Buffet",
+        "Serves": 7
     },
     {
         "Title": "Pint Queso",
