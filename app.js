@@ -1,4 +1,6 @@
 
+
+
 $(function(){
     $.ajax({ 
       type : "GET", 
@@ -58,16 +60,28 @@ $(function(){
                           ul2.appendChild(li2);
                           
                         }
-                        if (val[i].Category === "Add On Fajita Buffet") {
-                          const Serves = parseFloat(val[i].Serves);
-                          const Price = parseFloat(val[i].Price);
-                          const Count = parseFloat(document.getElementById('total').value);
-                          const Sum1 = (Count / Serves) * Price;
-                          const ul2 = document.getElementById("fajita-addOns-sum");
-                          const li2 = document.createElement("li");
-                          li2.appendChild(document.createTextNode("$" + (Math.round(Sum1 * 100) / 100).toFixed(2)));
-                          ul2.appendChild(li2);
-                        }
+                        const fajitaAddOnsCheckbox = document.getElementById("fajita-addOns");
+                        fajitaAddOnsCheckbox.addEventListener("click", function() {
+                          if (this.checked) {
+                            for (let i = 0; i < val.length; i++) {
+                              if (val[i].Category === "Add On Fajita Buffet") {
+                                const Serves = parseFloat(val[i].Serves);
+                                const Price = parseFloat(val[i].Price);
+                                const Count = parseFloat(document.getElementById('total').value);
+                                const Sum1 = (Count / Serves) * Price;
+                                const ul2 = document.getElementById("fajita-addOns-sum");
+                                const li2 = document.createElement("li");
+                                li2.appendChild(document.createTextNode("$" + (Math.round(Sum1 * 100) / 100).toFixed(2)));
+                                ul2.appendChild(li2);
+                              }
+                            }
+                          } else {
+                            const ul2 = document.getElementById("fajita-addOns-sum");
+                            while (ul2.firstChild) {
+                              ul2.removeChild(ul2.firstChild);
+                            }
+                          }
+                        });
                         
             
             
@@ -357,8 +371,8 @@ $(function(){
     document.getElementById('theme').value = params['theme'];
     document.getElementById('lservice').value = params['lservice'];
 
-    const grandTotal = document.getElementById("grandTotal");
-    grandTotal.appendChild(document.createTextNode(Sum1 + Sum2 + Sum3 + Sum4 + Price1 + result1));
+    // const grandTotal = document.getElementById("grandTotal");
+    // grandTotal.appendChild(document.createTextNode(Sum1 + Sum2 + Sum3 + Sum4 + Price1 + result1));
     
 
     

@@ -8,135 +8,179 @@
     <script src="app.js" defer></script>
     <style src="style.css"></style>
     <meta charset="utf-8" />
-        <title>
-        </title>
+    <style>
+        body {
+          background-image: url("images/02.jpeg");
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+      </style>
 </head>
 <body>
-    <div style="width:900px"class="row">
-        <div class="col">
-        <input style="width:200px" type="text" class="form-control" id="name"></imput>Name
-        </div>
-        <div class="col">
-          <input style="width:200px" type="text" class="form-control" placeholder="Event Date" aria-label="Event date" id='edate'>Event Date
-        </div>
-        <div class="col">
-            <input style="width:200px" type="text" class="form-control" placeholder="Telephone" aria-label="Telephone" id='phone'>Telephone
-        </div>
-        <div class="col">
-            <input style="width:200px" type="text" class="form-control" placeholder="Email" aria-label="Email" id='email'>Email
-        </div>
-    </div>
-
-    <div style="width:900px"class="row">
-        <div class="col">
-            <input style="width:200px" type="text" class="form-control" placeholder="Serving Time" aria-label="time" id='time'>Serving Time
-        </div>
-        <div class="col">
-            <input style="width:200px" type="text" class="form-control" placeholder="Address" aria-label="Adress" id='address'>Address
-        </div>
-        <div class="col">
-            <input style="width:100px" type="text" class="form-control" placeholder="Number of Guests" aria-label="count" id='total'>Number of Guests
-        </div>
-        <div class="col">
-            <input style="width:300px" type="text" class="form-control" placeholder="Location" aria-label="location"id='theme'>Theme
-        </div>
-        <div class="col">
-            <input style="width:200px" type="text" class="form-control" placeholder="Location" aria-label="count" id='location'>Location
-        </div>
-        <div class="col">
-            <input style="width:60px" type="text" class="form-control" placeholder="Location" aria-label="location"id='lservice'>Beer & Margarita Service
-        </div>
-    </div>
-    <table style="width:900px" class="table">
-        <thead>
-          <tr>
-            <th scope="col" style="width:400px">
-                <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding:1;width:275px">Fajita Options</button>
-                <button class="dropdown-menu" id="fajita-titles"></button>
-                </div>
-            </th>
-                <th scope="col">Serves</th>
-                <th scope="col">Cost</th>
-                <th scope="col">Count</th>
-                <th scope="col">Total</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td><input type='text' id='output' style="width:275px"></input></td>
-            <td><input type='text' id='serves' style="width:100px"></input></td>
-            <td><input type='text' id='price' style="width:100px"></input></td>
-            <td><input type='int' id='second_total_field' style="width:100px"></input></td>
-            <td><input type='text' id='sum' style="width:100px"></input></td>          
-        </tr>
-          <tr>
-            <tbody id="rows-container">
-                
-            <td>
-                
-                <label type='text' style="list-style-type:none;" id='fajita-addOns' style="width:400px"><h4><u>Fajita Add On</u></h4></td>
-               
-                <td><label type='text' style="list-style-type:none;" id='fajita-addOns-serves' style="width:400px"><h4><br></h4></td>
-                <td><label type='text' style="list-style-type:none;" id='fajita-addOns-price' style="width:400px"><h4><br></h4></td>
-                <td><label type='text' style="list-style-type:none;" id='fajita-addOns-count' style="width:400px"><h4><br></h4></td>
-                <td><label type='text' style="list-style-type:none;" id='fajita-addOns-sum' style="width:100px"><h4><br></h4></td>          
-
-                </label></td>
-           
-          </tr>
-          <tr>
-            <td>
-                
-                <label type='text' style="list-style-type:none;" id='Sides&Tortillas' style="width:400px"><h4><u>Sides & Tortillas</u></h4></td>
-               
-                <td><label type='text' style="list-style-type:none;" id='sides-addOns-serves' style="width:400px"><h4><br></h4></td>
-                <td><label type='text' style="list-style-type:none;" id='sides-addOns-price' style="width:400px"><h4><br></h4></td>
-                <td><label type='text' style="list-style-type:none;" id='sides-addOns-count' style="width:400px"><h4><br></h4></td>
-                <td><label type='text' style="list-style-type:none;" id='sides-addOns-sum' style="width:100px"><h4><br></h4></td>          
-
-                </label></td>
-          </tr>
-          <tr>
-            <td><label type='text' style="list-style-type:none;" id='Enchiladas, Tamales, Flautas' style="width:400px"><h4><u>Enchiladas, Tamales, Flautas</u></h4></td>
-               
-                <td><label type='text' style="list-style-type:none;" id='ench-addOns-serves' style="width:400px"><h4><br></h4></td>
-                <td><label type='text' style="list-style-type:none;" id='ench-addOns-price' style="width:400px"><h4><br></h4></td>
-                <td><label type='text' style="list-style-type:none;" id='ench-addOns-count' style="width:400px"><h4><br></h4></td>
-                <td><label type='text' style="list-style-type:none;" id='ench-addOns-sum' style="width:100px"><h4><br></h4></td>          
-
-                </label></td></tr>
-           <tr>
-            <td><label type='text' style="list-style-type:none;" id='Margaritas & Drinks' style="width:400px"><h4><u>Margaritas & Drinks</u></h4></td>
-               
-                <td><label type='text' style="list-style-type:none;" id='marg-addOns-serves' style="width:400px"><h4><br></h4></td>
-                <td><label type='text' style="list-style-type:none;" id='marg-addOns-price' style="width:400px"><h4><br></h4></td>
-                <td><label type='text' style="list-style-type:none;" id='marg-addOns-count' style="width:400px"><h4><br></h4></td>
-                <td><label type='text' style="list-style-type:none;" id='marg-addOns-sum' style="width:100px"><h4><br></h4></td>          
-
-                </label></td></tr>
-          <tr>
-            <td><label type='text' style="list-style-type:none;" id='Service Add Ons' style="width:400px"><h4><u>Service Add Ons</u></h4></td>
-               
-                <td><label type='text' style="list-style-type:none;" id='serv-addOns-serves' style="width:400px"><h4><br></h4></td>
-                <td><label type='text' style="list-style-type:none;" id='serv-addOns-price' style="width:400px"><h4><br></h4></td>
-                <td><label type='text' style="list-style-type:none;" id='serv-addOns-count' style="width:400px"><h4><br></h4></td>
-                <td><label type='text' style="list-style-type:none;" id='serv-addOns-price2' style="width:100px"><h4><br></h4></td>          
-
-                </label></td></tr>
-          <tr>
-            <td><label type='text' style="list-style-type:none;" id='Rentals' style="width:400px"><h4><u>Rentals</u></h4></td>
-            </tr>
-            <tr>
-                <td><label type='text' style="list-style-type:none;" style="width:400px"><h4><u>Grand Total</u></h4></td>
-                   
-                    <!-- <td><label type='text' style="list-style-type:none;" id='serv-addOns-serves' style="width:400px"><h4><br></h4></td>
-                    <td><label type='text' style="list-style-type:none;" id='serv-addOns-price' style="width:400px"><h4><br></h4></td>
-                    <td><label type='text' style="list-style-type:none;" id='serv-addOns-count' style="width:400px"><h4><br></h4></td> -->
-                    <td><label type='text'  id='grandTotal' style="width:100px"><h4><br></h4></td>          
     
-                    </label></td></tr>
-        </tbody>
-        </tbody>
-      </table>
+   
+    <div class="container">
+        <header style="background-color:white; opacity:0.80" "><center><img  style="border-radius: 50%" class="img-center"  height= "75px"width="auto" src="images/LupeLogo.avif"></img></center></header>
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center" style="color:white">Catering Services</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3 class="text-center" style="color:white">Contact Information</h3>
+            </div>
+        </div>
+        <div class="row" STYLE="opacity:0.80">
+            <div class="col-md-4">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="name" placeholder="Name">
+                    <label for="name">Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="phone" placeholder="Phone">
+                    <label for="phone">Phone</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="email" placeholder="Email">
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="address" placeholder="Address">
+                    <label for="phone">Address</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="email" placeholder="Email">
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="address" placeholder="Address">
+                    <label for="phone">Address</label>
+                </div>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col">
+                <h3 class="text-center" style="color:white">Event Information</h3>
+            </div>
+        </div>
+        <div class="row" STYLE="opacity:0.80">
+            <div class="col-md-4">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="edate" placeholder="Date">
+                    <label for="name">Date</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="time" placeholder="Time">
+                    <label for="phone">Time</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="total" placeholder="Party Size">
+                    <label for="email">Party Size</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="location" placeholder="Location">
+                    <label for="phone">Perferred Location</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="theme" placeholder="Event Type">
+                    <label for="email">Event Type</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="lservice" placeholder="Beer & Margerita Service?">
+                    <label for="phone">Beer & Margerita Service?</label>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <table style="width:1300px" class="table" style="color:white">
+            <thead>
+              <tr>
+                <th scope="col" style="width:400px">
+                  <div class="dropdown">
+                    <button  class="btn btn-danger dropdown-toggle-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding:1;width:275px">Fajita Options</button>
+                    <button class="dropdown-menu" id="fajita-titles"></button>
+                  </div>
+                </th>
+                <th scope="col" style="color:white">Serves</th>
+                <th scope="col" style="color:white">Cost</th>
+                <th scope="col" style="color:white">Count</th>
+                <th scope="col" style="color:white">Total</th>
+              </tr>
+            </thead>
+            <b><tbody style="color:rgb(0, 0, 0);background-color:white;opacity:.80">
+              <tr>
+                <td><input type='text' id='output' style="width:275px; color:black"></td>
+                <td><input type='text' id='serves' style="width:100px"></td>
+                <td><input type='text' id='price' style="width:100px"></td>
+                <td><input type='int' id='second_total_field' style="width:100px"></td>
+                <td><input type='text' id='sum' style="width:100px"></td>          
+              </tr>
+              <tr>
+                <td>
+                  <label type='text' style="list-style-type:none;" id='fajita-addOns'><h4><u>Fajita Add On</u></h4></label>
+                </td>
+                <td>
+                  <label type='text' style="list-style-type:none;" id='fajita-addOns-serves'></label>
+                </td>
+                <td>
+                  <label type='text' style="list-style-type:none;" id='fajita-addOns-price'></label>
+                </td>
+                <td>
+                  <label type='text' style="list-style-type:none;" id='fajita-addOns-count'></label>
+                </td>
+                <td>
+                  <label type='text' style="list-style-type:none;" id='fajita-addOns-sum' style="width:100px"></label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label type='text' style="list-style-type:none;" id='Sides&Tortillas'><h4><u>Sides & Tortillas</u></h4></label>
+                </td>
+                <td>
+                  <label type='text' style="list-style-type:none;" id='sides-addOns-serves'></label>
+                </td>
+                <td>
+                  <label type='text' style="list-style-type:none;" id='sides-addOns-price'></label>
+                </td>
+                <td>
+                  <label type='text' style="list-style-type:none;" id='sides-addOns-count'></label>
+                </td>
+                <td>
+                  <label type='text' style="list-style-type:none;" id='sides-addOns-sum' style="width:100px"></label>
+                </td>
+              </tr>
+              <tr>
+                <tr>
+                    <td>
+                      <label type='text' style="list-style-type:none;" id='Sides&Tortillas'><h4><u>Sides & Tortillas</u></h4></label>
+                    </td>
+                    <td>
+                      <label type='text' style="list-style-type:none;" id='sides-addOns-serves'></label>
+                    </td>
+                    <td>
+                      <label type='text' style="list-style-type:none;" id='sides-addOns-price'></label>
+                    </td>
+                    <td>
+                      <label type='text' style="list-style-type:none;" id='sides-addOns-count'></label>
+                    </td>
+                    <td>
+                      <label type='text' style="list-style-type:none;" id='sides-addOns-sum' style="width:100px"></label>
+                    </td>
+                  </tr>
+                  <tr>
+                </b>
+                
 </body>
 </html>
