@@ -27,12 +27,12 @@
         </div>
     </div>
 
-    <div style="width:1400px"class="row">
+    <div style="width:900px"class="row">
         <div class="col">
             <input style="width:200px" type="text" class="form-control" placeholder="Serving Time" aria-label="time" id='time'>Serving Time
         </div>
         <div class="col">
-            <input style="width:300px" type="text" class="form-control" placeholder="Address" aria-label="Adress" id='address'>Address
+            <input style="width:200px" type="text" class="form-control" placeholder="Address" aria-label="Adress" id='address'>Address
         </div>
         <div class="col">
             <input style="width:100px" type="text" class="form-control" placeholder="Number of Guests" aria-label="count" id='total'>Number of Guests
@@ -41,13 +41,13 @@
             <input style="width:300px" type="text" class="form-control" placeholder="Location" aria-label="location"id='theme'>Theme
         </div>
         <div class="col">
-            <input style="width:200px" type="text" class="form-control" placeholder="Number of Guests" aria-label="count" id='location'>Location
+            <input style="width:200px" type="text" class="form-control" placeholder="Location" aria-label="count" id='location'>Location
         </div>
         <div class="col">
-            <input style="width:100px" type="text" class="form-control" placeholder="Location" aria-label="location"id='lservice'>Beer & Margarita Service
+            <input style="width:60px" type="text" class="form-control" placeholder="Location" aria-label="location"id='lservice'>Beer & Margarita Service
         </div>
     </div>
-    <table class="table">
+    <table style="width:900px" class="table">
         <thead>
           <tr>
             <th scope="col" style="width:400px">
@@ -59,7 +59,7 @@
                 <th scope="col">Serves</th>
                 <th scope="col">Cost</th>
                 <th scope="col">Count</th>
-                <th scope="col">Amount</th>
+                <th scope="col">Total</th>
         </thead>
         <tbody>
           <tr>
@@ -71,27 +71,70 @@
         </tr>
           <tr>
             <tbody id="rows-container">
-            <td><h5>Fajita Add Ons</h5>
-                <label type='text' style="list-style-type:none;" id='fajita-addOns' style="width:400px">
-                    <td><input type='text' id='serves2' style="width:100px"></input></td>
-                    <td><input type='text' id='price2' style="width:100px"></input></td>
-                    <td><input type='int' id='third_total_field' style="width:100px"></input></td>
-                    <td><input type='text' id='sum2' style="width:100px"></input></td> 
+                
+            <td>
+                
+                <label type='text' style="list-style-type:none;" id='fajita-addOns' style="width:400px"><h4><u>Fajita Add On</u></h4></td>
+               
+                <td><label type='text' style="list-style-type:none;" id='fajita-addOns-serves' style="width:400px"><h4><br></h4></td>
+                <td><label type='text' style="list-style-type:none;" id='fajita-addOns-price' style="width:400px"><h4><br></h4></td>
+                <td><label type='text' style="list-style-type:none;" id='fajita-addOns-count' style="width:400px"><h4><br></h4></td>
+                <td><label type='text' style="list-style-type:none;" id='fajita-addOns-sum' style="width:100px"><h4><br></h4></td>          
+
                 </label></td>
            
           </tr>
           <tr>
-            <td><h5>Sides & Tortillas</h5><label type='text' style="list-style-type:none;" id='Sides & Tortillas' style="width:400px"></label></td>
+            <td>
+                
+                <label type='text' style="list-style-type:none;" id='Sides&Tortillas' style="width:400px"><h4><u>Sides & Tortillas</u></h4></td>
+               
+                <td><label type='text' style="list-style-type:none;" id='sides-addOns-serves' style="width:400px"><h4><br></h4></td>
+                <td><label type='text' style="list-style-type:none;" id='sides-addOns-price' style="width:400px"><h4><br></h4></td>
+                <td><label type='text' style="list-style-type:none;" id='sides-addOns-count' style="width:400px"><h4><br></h4></td>
+                <td><label type='text' style="list-style-type:none;" id='sides-addOns-sum' style="width:100px"><h4><br></h4></td>          
+
+                </label></td>
           </tr>
           <tr>
-            <td><h5>Enchiladas, Tamales, Flautas</h5><label type='text' style="list-style-type:none;" id='Enchiladas, Tamales, Flautas' style="width:400px"></label></td>
-          </tr>
+            <td><label type='text' style="list-style-type:none;" id='Enchiladas, Tamales, Flautas' style="width:400px"><h4><u>Enchiladas, Tamales, Flautas</u></h4></td>
+               
+                <td><label type='text' style="list-style-type:none;" id='ench-addOns-serves' style="width:400px"><h4><br></h4></td>
+                <td><label type='text' style="list-style-type:none;" id='ench-addOns-price' style="width:400px"><h4><br></h4></td>
+                <td><label type='text' style="list-style-type:none;" id='ench-addOns-count' style="width:400px"><h4><br></h4></td>
+                <td><label type='text' style="list-style-type:none;" id='ench-addOns-sum' style="width:100px"><h4><br></h4></td>          
+
+                </label></td></tr>
+           <tr>
+            <td><label type='text' style="list-style-type:none;" id='Margaritas & Drinks' style="width:400px"><h4><u>Margaritas & Drinks</u></h4></td>
+               
+                <td><label type='text' style="list-style-type:none;" id='marg-addOns-serves' style="width:400px"><h4><br></h4></td>
+                <td><label type='text' style="list-style-type:none;" id='marg-addOns-price' style="width:400px"><h4><br></h4></td>
+                <td><label type='text' style="list-style-type:none;" id='marg-addOns-count' style="width:400px"><h4><br></h4></td>
+                <td><label type='text' style="list-style-type:none;" id='marg-addOns-sum' style="width:100px"><h4><br></h4></td>          
+
+                </label></td></tr>
           <tr>
-            <td><h5>Service Add Ons</h5><label type='text' id='Service Add Ons' style="list-style-type:none;" style="width:400px"></label></td>
-          </tr>
+            <td><label type='text' style="list-style-type:none;" id='Service Add Ons' style="width:400px"><h4><u>Service Add Ons</u></h4></td>
+               
+                <td><label type='text' style="list-style-type:none;" id='serv-addOns-serves' style="width:400px"><h4><br></h4></td>
+                <td><label type='text' style="list-style-type:none;" id='serv-addOns-price' style="width:400px"><h4><br></h4></td>
+                <td><label type='text' style="list-style-type:none;" id='serv-addOns-count' style="width:400px"><h4><br></h4></td>
+                <td><label type='text' style="list-style-type:none;" id='serv-addOns-price2' style="width:100px"><h4><br></h4></td>          
+
+                </label></td></tr>
           <tr>
-            <td><h5>Rentals</h5><label type='text' id='Rentals' style="list-style-type:none;" style="width:400px"></label></td>
-          </tr>
+            <td><label type='text' style="list-style-type:none;" id='Rentals' style="width:400px"><h4><u>Rentals</u></h4></td>
+            </tr>
+            <tr>
+                <td><label type='text' style="list-style-type:none;" style="width:400px"><h4><u>Grand Total</u></h4></td>
+                   
+                    <!-- <td><label type='text' style="list-style-type:none;" id='serv-addOns-serves' style="width:400px"><h4><br></h4></td>
+                    <td><label type='text' style="list-style-type:none;" id='serv-addOns-price' style="width:400px"><h4><br></h4></td>
+                    <td><label type='text' style="list-style-type:none;" id='serv-addOns-count' style="width:400px"><h4><br></h4></td> -->
+                    <td><label type='text'  id='grandTotal' style="width:100px"><h4><br></h4></td>          
+    
+                    </label></td></tr>
         </tbody>
         </tbody>
       </table>

@@ -28,7 +28,7 @@
     {
         "Title": "Fajitas Kids Per Person",
         "Price": 7.95,
-        "Category": "Add On Fajita Buffet",
+        "Category": "Kids Fajitas",
         "Serves": 1
     },
     {
@@ -76,132 +76,158 @@
     {
         "Title": "Pint Queso",
         "Price": "13.9500000000000",
-        "Category": "Sides & Tortillas"
+        "Category": "Sides & Tortillas",
+        "Serves": 9
     },
     {
         "Title": "Pint Guacamole",
         "Price": "9.95000000000000",
-        "Category": "Sides & Tortillas"
+        "Category": "Sides & Tortillas",
+        "Serves": 9
     },
     {
         "Title": "Pint Pico de Gallo",
         "Price": "5.95000000000000",
-        "Category": "Sides & Tortillas"
+        "Category": "Sides & Tortillas",
+        "Serves": 9
     },
     {
         "Title": "Pint Sour Cream",
         "Price": "7.95000000000000",
-        "Category": "Sides & Tortillas"
+        "Category": "Sides & Tortillas",
+        "Serves": 9
     },
     {
         "Title": "Pint Shredded Cheddar",
         "Price": "9.95000000000000",
-        "Category": "Sides & Tortillas"
+        "Category": "Sides & Tortillas",
+        "Serves": 9
     },
     {
         "Title": "Pint Monterey Jack Cheese",
         "Price": "9.95000000000000",
-        "Category": "Sides & Tortillas"
+        "Category": "Sides & Tortillas",
+        "Serves": 9
     },
     {
         "Title": "Pint Fire Roasted Salsa",
         "Price": "6.95000000000000",
-        "Category": "Sides & Tortillas"
+        "Category": "Sides & Tortillas",
+        "Serves": 9
     },
     {
         "Title": "Pint of Charro Beans",
         "Price": "5.95000000000000",
-        "Category": "Sides & Tortillas"
+        "Category": "Sides & Tortillas",
+        "Serves": 9
     },
     {
         "Title": "Pint Refried Beans",
         "Price": "6.95000000000000",
-        "Category": "Sides & Tortillas"
+        "Category": "Sides & Tortillas",
+        "Serves": 9
     },
     {
         "Title": "Pint Rice",
         "Price": "5.95000000000000",
-        "Category": "Sides & Tortillas"
+        "Category": "Sides & Tortillas",
+        "Serves": 9
     },
     {
         "Title": "Dozen Flour Tortillas",
         "Price": "4.95000000000000",
-        "Category": "Sides & Tortillas"
+        "Category": "Sides & Tortillas",
+        "Serves": 9
     },
     {
         "Title": "Dozen Corn Tortillas",
         "Price": "4.95000000000000",
-        "Category": "Sides & Tortillas"
+        "Category": "Sides & Tortillas",
+        "Serves": 9
     },
     {
         "Title": "Dozen Tamales",
         "Price": "17.9500000000000",
-        "Category": "Enchiladas, Tamales, Flautas"
+        "Category": "Enchiladas, Tamales, Flautas",
+        "Serves": 9
     },
     {
         "Title": "Dozen Chicken Flautas",
         "Price": "24.4000000000000",
-        "Category": "Enchiladas, Tamales, Flautas"
+        "Category": "Enchiladas, Tamales, Flautas",
+        "Serves": 9
     },
     {
         "Title": "Dozen Cheese Enchiladas",
         "Price": "21.9500000000000",
-        "Category": "Enchiladas, Tamales, Flautas"
+        "Category": "Enchiladas, Tamales, Flautas",
+        "Serves": 9
     },
     {
         "Title": "Dozen Spicy Red Cheese Enchiladas",
         "Price": "21.9500000000000",
-        "Category": "Enchiladas, Tamales, Flautas"
+        "Category": "Enchiladas, Tamales, Flautas",
+        "Serves": 9
     },
     {
         "Title": "Dozen Spicy Red Chicken  Enchiladas",
         "Price": "27.9500000000000",
-        "Category": "Enchiladas, Tamales, Flautas"
+        "Category": "Enchiladas, Tamales, Flautas",
+        "Serves": 9
     },
     {
         "Title": "Dozen Green Cheese Enchiladas",
         "Price": "21.9500000000000",
-        "Category": "Enchiladas, Tamales, Flautas"
+        "Category": "Enchiladas, Tamales, Flautas",
+        "Serves": 9
     },
     {
         "Title": "Dozen Green Chicken Enchiladas",
         "Price": "27.9500000000000",
-        "Category": "Enchiladas, Tamales, Flautas"
+        "Category": "Enchiladas, Tamales, Flautas",
+        "Serves": 9
     },
     {
         "Title": "House Margarita Mix",
         "Price": "59.9500000000000",
-        "Category": "Margaritas & Drinks"
+        "Category": "Margaritas & Drinks",
+        "Serves": 9
     },
     {
         "Title": "Strawberry Margaritas Mix",
         "Price": "69.9500000000000",
-        "Category": "Margaritas & Drinks"
+        "Category": "Margaritas & Drinks",
+        "Serves": 9
     },
     {
         "Title": "Iced Tea Unsweet",
         "Price": "10.9500000000000",
-        "Category": "Margaritas & Drinks"
+        "Category": "Margaritas & Drinks",
+        "Serves": 9
     },
     {
         "Title": "Iced Tea",
         "Price": "10.9500000000000",
-        "Category": "Margaritas & Drinks"
+        "Category": "Margaritas & Drinks",
+        "Serves": 9
     },
     {
         "Title": "Lemonade",
         "Price": "14.9500000000000",
-        "Category": "Margaritas & Drinks"
+        "Category": "Margaritas & Drinks",
+        "Serves": 9
     },
     {
         "Title": "Soft drinks",
         "Price": "8.00000000000000",
-        "Category": "Margaritas & Drinks"
+        "Category": "Margaritas & Drinks",
+        "Serves": 9
     },
     {
         "Title": "Water",
         "Price": "2.25000000000000",
-        "Category": "Margaritas & Drinks"
+        "Category": "Margaritas & Drinks",
+        "Serves": 9
     },
     {
         "Title": "Bartender",

@@ -21,6 +21,7 @@ $(function(){
               ul.appendChild(li);
             }
             if (val[i].Category === "Add On Fajita Buffet") {
+              
               const title2 = val[i].Title;
               const ul2 = document.getElementById("fajita-addOns");
               const li2 = document.createElement("li");
@@ -31,11 +32,49 @@ $(function(){
               li2.appendChild(input);
               li2.appendChild(document.createTextNode(" " + title2));
               ul2.appendChild(li2);
+              
             }
+                        if (val[i].Category === "Add On Fajita Buffet") {
+                          const Serves = val[i].Serves;
+                          const ul2 = document.getElementById("fajita-addOns-serves");
+                          const li2 = document.createElement("li");
+                          li2.appendChild(document.createTextNode(" " + Serves));
+                          ul2.appendChild(li2);
+                          
+                        }
+                        if (val[i].Category === "Add On Fajita Buffet") {
+                          const Price = val[i].Price;
+                          const ul2 = document.getElementById("fajita-addOns-price");
+                          const li2 = document.createElement("li");
+                          li2.appendChild(document.createTextNode(" " + Price));
+                          ul2.appendChild(li2);
+                          
+                        }
+                        if (val[i].Category === "Add On Fajita Buffet") {
+                          const Count = document.getElementById('total').value;
+                          const ul2 = document.getElementById("fajita-addOns-count");
+                          const li2 = document.createElement("li");
+                          li2.appendChild(document.createTextNode(" " + Count));
+                          ul2.appendChild(li2);
+                          
+                        }
+                        if (val[i].Category === "Add On Fajita Buffet") {
+                          const Serves = parseFloat(val[i].Serves);
+                          const Price = parseFloat(val[i].Price);
+                          const Count = parseFloat(document.getElementById('total').value);
+                          const Sum1 = (Count / Serves) * Price;
+                          const ul2 = document.getElementById("fajita-addOns-sum");
+                          const li2 = document.createElement("li");
+                          li2.appendChild(document.createTextNode("$" + (Math.round(Sum1 * 100) / 100).toFixed(2)));
+                          ul2.appendChild(li2);
+                        }
+                        
+            
+            
             
             if (val[i].Category === "Sides & Tortillas") {
               const title2 = val[i].Title;
-              const ul2 = document.getElementById("Sides & Tortillas");
+              const ul2 = document.getElementById("Sides&Tortillas");
               const li2 = document.createElement("li");
               const input = document.createElement("input");
               input.type = "checkbox";
@@ -45,6 +84,43 @@ $(function(){
               li2.appendChild(document.createTextNode(" " + title2));
               ul2.appendChild(li2);
             }
+                        if (val[i].Category === "Sides & Tortillas") {
+                          const Serves = val[i].Serves;
+                          const ul2 = document.getElementById("sides-addOns-serves");
+                          const li2 = document.createElement("li");
+                          li2.appendChild(document.createTextNode(" " + Serves));
+                          ul2.appendChild(li2);
+                          
+                        }
+                        if (val[i].Category === "Sides & Tortillas") {
+                          const Price = val[i].Price;
+                          const ul2 = document.getElementById("sides-addOns-price");
+                          const li2 = document.createElement("li");
+                          li2.appendChild(document.createTextNode(" " + (Math.round(Price * 100) / 100).toFixed(2)));
+                          ul2.appendChild(li2);
+                          
+                        }
+                        if (val[i].Category === "Sides & Tortillas") {
+                          const Count = document.getElementById('total').value;
+                          const ul2 = document.getElementById("sides-addOns-count");
+                          const li2 = document.createElement("li");
+                          li2.appendChild(document.createTextNode(" " + Count));
+                          ul2.appendChild(li2);
+                          
+                        }
+                        if (val[i].Category === "Sides & Tortillas") {
+                          const Serves = parseFloat(val[i].Serves);
+                          const Price = parseFloat(val[i].Price);
+                          const Count = parseFloat(document.getElementById('total').value);
+                          const Sum2 = (Count / Serves) * Price;
+                          const ul2 = document.getElementById("sides-addOns-sum");
+                          const li2 = document.createElement("li");
+                          li2.appendChild(document.createTextNode("$" + (Math.round(Sum2 * 100) / 100).toFixed(2)));
+                          ul2.appendChild(li2);
+                        }
+                        
+
+
             if (val[i].Category === "Enchiladas, Tamales, Flautas") {
               const title2 = val[i].Title;
               const ul2 = document.getElementById("Enchiladas, Tamales, Flautas");
@@ -57,6 +133,88 @@ $(function(){
               li2.appendChild(document.createTextNode(" " + title2));
               ul2.appendChild(li2);
             }
+                        if (val[i].Category === "Enchiladas, Tamales, Flautas") {
+                          const Serves = val[i].Serves;
+                          const ul2 = document.getElementById("ench-addOns-serves");
+                          const li2 = document.createElement("li");
+                          li2.appendChild(document.createTextNode(" " + Serves));
+                          ul2.appendChild(li2);
+                          
+                        }
+                        if (val[i].Category === "Enchiladas, Tamales, Flautas") {
+                          const Price = val[i].Price;
+                          const ul2 = document.getElementById("ench-addOns-price");
+                          const li2 = document.createElement("li");
+                          li2.appendChild(document.createTextNode(" " + (Math.round(Price * 100) / 100).toFixed(2)));
+                          ul2.appendChild(li2);
+                          
+                        }
+                        if (val[i].Category === "Enchiladas, Tamales, Flautas") {
+                          const Count = document.getElementById('total').value;
+                          const ul2 = document.getElementById("ench-addOns-count");
+                          const li2 = document.createElement("li");
+                          li2.appendChild(document.createTextNode(" " + Count));
+                          ul2.appendChild(li2);
+                          
+                        }
+                        if (val[i].Category === "Enchiladas, Tamales, Flautas") {
+                          const Serves = parseFloat(val[i].Serves);
+                          const Price = parseFloat(val[i].Price);
+                          const Count = parseFloat(document.getElementById('total').value);
+                          const Sum3 = (Count / Serves) * Price;
+                          const ul2 = document.getElementById("ench-addOns-sum");
+                          const li2 = document.createElement("li");
+                          li2.appendChild(document.createTextNode("$" + (Math.round(Sum3 * 100) / 100).toFixed(2)));
+                          ul2.appendChild(li2);
+                        }
+            
+            if (val[i].Category === "Margaritas & Drinks") {
+              const title2 = val[i].Title;
+              const ul2 = document.getElementById("Margaritas & Drinks");
+              const li2 = document.createElement("li");
+              const input = document.createElement("input");
+              input.type = "checkbox";
+              input.name = "fajita-addOns[]";
+              input.value = title2;
+              li2.appendChild(input);
+              li2.appendChild(document.createTextNode(" " + title2));
+              ul2.appendChild(li2);
+            }
+                        if (val[i].Category === "Margaritas & Drinks") {
+                          const Serves = val[i].Serves;
+                          const ul2 = document.getElementById("marg-addOns-serves");
+                          const li2 = document.createElement("li");
+                          li2.appendChild(document.createTextNode(" " + Serves));
+                          ul2.appendChild(li2);
+                          
+                        }
+                        if (val[i].Category === "Margaritas & Drinks") {
+                          const Price = val[i].Price;
+                          const ul2 = document.getElementById("marg-addOns-price");
+                          const li2 = document.createElement("li");
+                          li2.appendChild(document.createTextNode(" " + (Math.round(Price * 100) / 100).toFixed(2)));
+                          ul2.appendChild(li2);
+                          
+                        }
+                        if (val[i].Category === "Margaritas & Drinks") {
+                          const Count = document.getElementById('total').value;
+                          const ul2 = document.getElementById("marg-addOns-count");
+                          const li2 = document.createElement("li");
+                          li2.appendChild(document.createTextNode(" " + Count));
+                          ul2.appendChild(li2);
+                          
+                        }
+                        if (val[i].Category === "Margaritas & Drinks") {
+                          const Serves = parseFloat(val[i].Serves);
+                          const Price = parseFloat(val[i].Price);
+                          const Count = parseFloat(document.getElementById('total').value);
+                          const Sum4 = (Count / Serves) * Price;
+                          const ul2 = document.getElementById("marg-addOns-sum");
+                          const li2 = document.createElement("li");
+                          li2.appendChild(document.createTextNode("$" + (Math.round(Sum4 * 100) / 100).toFixed(2)));
+                          ul2.appendChild(li2);
+                        }
+
             if (val[i].Category === "Service Add Ons") {
               const title2 = val[i].Title;
               const ul2 = document.getElementById("Service Add Ons");
@@ -69,6 +227,31 @@ $(function(){
               li2.appendChild(document.createTextNode(" " + title2));
               ul2.appendChild(li2);
             }
+                        
+                        if (val[i].Category === "Service Add Ons") {
+                          const Price = val[i].Price;
+                          const ul2 = document.getElementById("serv-addOns-price");
+                          const li2 = document.createElement("li");
+                          li2.appendChild(document.createTextNode(" " + (Math.round(Price * 100) / 100).toFixed(2)));
+                          ul2.appendChild(li2);
+                          
+                        }
+                        if (val[i].Category === "Service Add Ons") {
+                          const Count = document.getElementById('total').value;
+                          const ul2 = document.getElementById("serv-addOns-count");
+                          const li2 = document.createElement("li");
+                          li2.appendChild(document.createTextNode(" " + Count));
+                          ul2.appendChild(li2);
+                          
+                        }
+                        if (val[i].Category === "Service Add Ons") {
+                          const Price1 = val[i].Price;
+                          const ul2 = document.getElementById("serv-addOns-price2");
+                          const li2 = document.createElement("li");
+                          li2.appendChild(document.createTextNode("$" + (Math.round(Price1 * 100) / 100).toFixed(2)));
+                          ul2.appendChild(li2);
+                          
+                        }
             if (val[i].Category === "Rentals") {
               const title2 = val[i].Title;
               const ul2 = document.getElementById("Rentals");
@@ -97,32 +280,8 @@ $(function(){
 
       var total = parseFloat(document.getElementById('total').value);
       var price = parseFloat($('#price').val());
-      var result = total * price;
-      document.getElementById('sum').value = result;
-    });
-
-    $('#fajita-addOns').on('change', 'input[type="checkbox"]', function() {
-      var value = $(this).val();
-      var isChecked = $(this).is(':checked');
-    
-      if (isChecked) {
-        // $('#output2').val(value);
-        var price = parseFloat(getPrice(value));
-        $('#price2').val(price);
-        var serves = getServes(value);
-        $('#serves2').val(serves);
-    
-        var total = parseFloat(document.getElementById('total').value);
-        var price = parseFloat($('#price2').val());
-        var serves = parseFloat($('#serves2').val());
-        var result = (total / serves) * price;
-        document.getElementById('sum2').value = result;
-      } else {
-        $('#output2').val('');
-        $('#price2').val('');
-        $('#serves2').val('');
-        document.getElementById('sum2').value = '';
-      }
+      var result1 = total * price;
+      document.getElementById('sum').value = ("$" + (Math.round(result1 * 100) / 100).toFixed(2));
     });
 
     
@@ -197,6 +356,10 @@ $(function(){
     document.getElementById('location').value = params['location'];
     document.getElementById('theme').value = params['theme'];
     document.getElementById('lservice').value = params['lservice'];
+
+    const grandTotal = document.getElementById("grandTotal");
+    grandTotal.appendChild(document.createTextNode(Sum1 + Sum2 + Sum3 + Sum4 + Price1 + result1));
+    
 
     
 
