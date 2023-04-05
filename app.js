@@ -374,12 +374,13 @@ $(function(){
     document.getElementById('email').value = params['email'];
     document.getElementById('time').value = params['time'];
     document.getElementById('address').value = params['address'];
+    document.getElementById('zcode').value = params['zcode'];
+    document.getElementById('city').value = params['city'];
     document.getElementById('total').value = params['total'];
-    document.getElementById('second_total_field').value = params['total'];
-    document.getElementById('third_total_field').value = params['total'];
-    document.getElementById('location').value = params['location'];
     document.getElementById('theme').value = params['theme'];
+    document.getElementById('location').value = params['location'];
     document.getElementById('lservice').value = params['lservice'];
+    document.getElementById('second_total_field').value = params['total'];
 
     // const grandTotal = document.getElementById("grandTotal");
     // grandTotal.appendChild(document.createTextNode(Sum1 + Sum2 + Sum3 + Sum4 + Price1 + result1));
