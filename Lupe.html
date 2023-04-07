@@ -104,7 +104,7 @@
 
 
 
-        <table style="width:1300px" class="table" style="color:white">
+        <table style="width:1300px" class="table" style="color:white;display: block;width: 100%">
             <thead>
               <tr>
                 <th scope="col" style="width:400px">
@@ -117,19 +117,21 @@
                 <th scope="col" style="color:white">Cost</th>
                 <th scope="col" style="color:white">Count</th>
                 <th scope="col" style="color:white">Total</th>
+                <th scope="col" style="color:white">Grand Total</th>
               </tr>
             </thead>
-            <b><tbody style="color:rgb(0, 0, 0);background-color:white;opacity:.80";display:inline-block>
+            <b><tbody style="color:rgb(0, 0, 0);background-color:white;opacity:.80">
               <tr>
                 <td><input type='text' id='output' style="width:275px; color:black" readonly></td>
                 <td><input type='text' id='serves' style="width:100px" readonly></td>
                 <td><input type='text' id='price' style="width:100px" readonly></td>
                 <td><input type='int' id='second_total_field' style="width:100px" readonly></td>
-                <td><input type='text' id='sum' style="width:100px" readonly></td>          
+                <td><input type='text' id='g-sum' style="width:100px" readonly></td>
+                <td><input type='text' id='sum2' style="width:100px" readonly></td>          
               </tr>
               <tr>
                 <td>
-                  <label type='text' style="list-style-type:none;" id='fajita-addOns'><h4><u>Fajita Add On</u></h4></label>
+                  <label type='text' style="list-style-type:none;" id='fajita-addOns' disabled="disabled"><h4><u>Fajita Add On</u></h4></label>
                 </td>
                 <td>
                 <br><label type='text' style="list-style-type:none;padding-top: 13px" id='fajita-addOns-serves'></label>
@@ -143,6 +145,9 @@
                 <td>
                   <br><label type='text' style="list-style-type:none;padding-top: 13px" id='fajita-addOns-sum' style="width:100px"></label>
                 </td>
+                <td>
+                    <br><label type='text' style="list-style-type:none;padding-top: 13px" id='g-fajita-addOns-total' style="width:100px"></label>
+                  </td>
               </tr>
               <tr>
                 <td>
@@ -160,6 +165,9 @@
                 <td>
                   <br><label type='text' style="list-style-type:none;padding-top: 13px" id='sides-addOns-sum' style="width:100px"></label>
                 </td>
+                <td>
+                    <br><label type='text' style="list-style-type:none;padding-top: 13px" id='g-sides-addOns-total' style="width:100px"></label>
+                  </td>
               </tr>
               <tr>
                 <tr>
@@ -178,6 +186,9 @@
                     <td>
                       <br><label type='text' style="list-style-type:none;padding-top: 13px" id='ench-addOns-sum' style="width:100px"></label>
                     </td>
+                    <td>
+                        <br><label type='text' style="list-style-type:none;padding-top: 13px" id='g-ench-addOns-total' style="width:100px"></label>
+                      </td>
                   </tr>
                   <tr>
                 <tr>
@@ -197,6 +208,9 @@
                     <td>
                       <br><label type='text' style="list-style-type:none;padding-top: 13px" id='marg-addOns-sum' style="width:100px"></label>
                     </td>
+                    <td>
+                        <br><label type='text' style="list-style-type:none;padding-top: 13px" id='g-marg-addOns-total' style="width:100px"></label>
+                      </td>
                   </tr>
                   <tr>
                 <tr>
@@ -215,6 +229,9 @@
                     <td>
                       <br><label type='text' style="list-style-type:none;padding-top: 13px" id='serv-addOns-price2' style="width:100px"></label>
                     </td>
+                    <td>
+                        <br><label type='text' style="list-style-type:none;padding-top: 13px" id='g-serv-addOns-total' style="width:100px"></label>
+                      </td>
                   </tr>
                   <tr>
                 <tr>
@@ -234,7 +251,7 @@
                       <br><label type='text' style="list-style-type:none;padding-top: 13px"  style="width:100px"></label>
                     </td>
                   </tr>
-                  <tr>
+                  <tr><td><label type='text' id='grand-total' style="width:100px" readonly></td></tr>
                 </b>
                 
                 
