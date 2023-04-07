@@ -10,6 +10,10 @@ let spr = sprequest.create({
 const app = express();
 const port = process.env.SERVER_PORT || 8000;
 
+app.engine('html', require('ejs').renderFile);
+app.use(express.static('public'))
+app.set('views', __dirname+'/public')
+
 // Add Access Control Allow Origin headers
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "https://sp.lupetortilla.com");
@@ -19,8 +23,17 @@ app.use((req, res, next) => {
   );
   next();
 });
-app.get("/", (req,res) => {
-	fields = ['Title','Price','Category']
+
+app.get('/',(req,res) =>{
+	res.render('fieldsPage.html')
+});
+
+app.get('/Lupe.html',(req,res) =>{
+	res.render('Lupe.html')
+});
+
+app.get("/CateringItemList.json", (req,res) => {
+	fields = ['Title','Price','Category','Serves']
 	resultList = []
 	spr.get('https://sp.lupetortilla.com/_api/web/lists/GetbyTitle(\'CateringProposalItems\')/items')
 		.then(response => {
@@ -31,7 +44,9 @@ app.get("/", (req,res) => {
 				}
 				resultList.push(item);
 				}
-			res.send(resultList)
+			returnObject = {}
+			returnObject.Items = resultList
+			res.json(returnObject)
 			
 		})
 		.catch(err =>{

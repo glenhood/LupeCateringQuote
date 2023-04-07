@@ -1,7 +1,7 @@
 $(function(){
     $.ajax({ 
       type : "GET", 
-      url : "CateringItems.json", 
+      url : "CateringItemList.json", 
       async : false, 
       beforeSend : function(){/*loading*/},
       dataType : "json", 
