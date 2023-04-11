@@ -8,7 +8,7 @@ let spr = sprequest.create({
 
 
 const app = express();
-const port = process.env.SERVER_PORT || 8000;
+const port = process.env.SERVER_PORT || 8600;
 
 app.engine('html', require('ejs').renderFile);
 app.use(express.static('public'))
@@ -47,6 +47,8 @@ app.get("/CateringItemList.json", (req,res) => {
 			returnObject = {}
 			returnObject.Items = resultList
 			res.json(returnObject)
+			console.log(returnObject);
+			
 			
 		})
 		.catch(err =>{
@@ -63,3 +65,5 @@ app.get("/api", (req, res) => {
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
+

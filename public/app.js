@@ -18,7 +18,7 @@ $(function(){
               li.appendChild(document.createTextNode(title));
               ul.appendChild(li);
             }
-            if (val[i].Category === "Add On Fajita Buffet") {
+            if (val[i].Category === "Add On Options") {
               
               const title2 = val[i].Title;
               const ul2 = document.getElementById("fajita-addOns");
@@ -32,7 +32,7 @@ $(function(){
               ul2.appendChild(li2);
               
             }
-                        if (val[i].Category === "Add On Fajita Buffet") {
+                        if (val[i].Category === "Add On Options") {
                           const Serves = val[i].Serves;
                           const ul2 = document.getElementById("fajita-addOns-serves");
                           const li2 = document.createElement("li");
@@ -40,7 +40,7 @@ $(function(){
                           ul2.appendChild(li2);
                           
                         }
-                        if (val[i].Category === "Add On Fajita Buffet") {
+                        if (val[i].Category === "Add On Options") {
                           const Price = val[i].Price;
                           const ul2 = document.getElementById("fajita-addOns-price");
                           const li2 = document.createElement("li");
@@ -48,7 +48,7 @@ $(function(){
                           ul2.appendChild(li2);
                           
                         }
-                        if (val[i].Category === "Add On Fajita Buffet") {
+                        if (val[i].Category === "Add On Options") {
                           const Count = document.getElementById('total').value;
                           const ul2 = document.getElementById("fajita-addOns-count");
                           const li2 = document.createElement("li");
@@ -56,7 +56,7 @@ $(function(){
                           ul2.appendChild(li2);
                           
                         }
-                        if (val[i].Category === "Add On Fajita Buffet") {
+                        if (val[i].Category === "Add On Options") {
                           const Serves = parseFloat(val[i].Serves);
                           const Price = parseFloat(val[i].Price);
                           const Count = parseFloat(document.getElementById('total').value);
@@ -332,28 +332,29 @@ $(function(){
                           li2.appendChild(document.createTextNode("$" + (Math.round(Price1 * 100) / 100).toFixed(2)));
                           ul2.appendChild(li2);
                           
-                          let checkboxes1 = document.querySelectorAll('input[name="Service Add Ons[]"]');
-                          let sumElements1 = document.querySelectorAll('#serv-addOns-price2 li');
-                          let totalElement4 = document.getElementById('g-serv-addOns-total');
+                          let checkboxes = document.querySelectorAll('input[name="Service Add Ons[]"]');
+                          let sumElements = document.querySelectorAll('#serv-addOns-price2 li');
+                          let totalElement = document.getElementById('g-serv-addOns-total');
 
-                          let total1 = 0;
+                          let total = 0;
 
-                          checkboxes1.forEach((checkbox, index) => {
+                          checkboxes.forEach((checkbox, index) => {
                             checkbox.addEventListener('change', function() {
                               if (this.checked) {
-                                const sumText1 = sumElements1[index].textContent;
-                                const sumValue1 = parseFloat(sumText1.replace(/[^0-9.-]+/g,""));
-                                total1 += sumValue1;
+                                const sumText = sumElements[index].textContent;
+                                const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g,""));
+                                total += sumValue;
                               } else {
-                                const sumText1 = sumElements1[index].textContent;
-                                const sumValue1 = parseFloat(sumText1.replace(/[^0-9.-]+/g,""));
-                                total1 -= sumValue1;
+                                const sumText = sumElements[index].textContent;
+                                const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g,""));
+                                total -= sumValue;
                               }
-                              totalElement4.textContent = "$" + total1.toFixed(2);
+                              totalElement.textContent = "$" + total.toFixed(2);
                               
                               
                             });
-                          });
+                          }); 
+                          
                           
                         }
             if (val[i].Category === "Rentals") {
@@ -373,27 +374,13 @@ $(function(){
         });
       }
     });
-    $('#fajita-titles').on('click', 'li', function() {
-      var value = $(this).text();
-      $('#output').val(value);
-      var price = parseFloat(getPrice(value));
-      $('#price').val(price);
-      var serves = getServes(value);
-      $('#serves').val(serves);
-
-      var total = parseFloat(document.getElementById('total').value);
-      var price = parseFloat($('#price').val());
-      var result1 = total * price;
-      document.getElementById('g-sum').value = ("$" + (Math.round(result1 * 100) / 100).toFixed(2));
-      document.getElementById('sum2').value = ("$" + (Math.round(result1 * 100) / 100).toFixed(2));
-      
-    });
+    
     
     function getPrice(title) {
       var price = "";
       $.ajax({ 
         type : "GET", 
-        url : "CateringItems.json", 
+        url : "CateringItemList.json", 
         async : false, 
         dataType : "json", 
         success : function(result){
@@ -414,7 +401,7 @@ $(function(){
         var serves = "";
         $.ajax({ 
           type : "GET", 
-          url : "CateringItems.json", 
+          url : "CateringItemList.json", 
           async : false, 
           dataType : "json", 
           success : function(result){
@@ -430,22 +417,139 @@ $(function(){
           }
         });
         return serves;
+      
       }
-      const totalInputs = document.querySelectorAll('[id^="g"]');
+      $('#fajita-titles').on('click', 'li', function() {
+        var value = $(this).text();
+        $('#output').val(value);
+        var price = parseFloat(getPrice(value));
+        $('#price').val(price);
+        var serves = getServes(value);
+        $('#serves').val(serves);
+  
+        var fajitaTotal = parseFloat(document.getElementById('total').value);
+        var price = parseFloat($('#price').val());
+        var result1 = fajitaTotal * price;
+        document.getElementById('g-sum').value = ("$" + (Math.round(result1 * 100) / 100).toFixed(2));
+        document.getElementById('sum2').value = ("$" + (Math.round(result1 * 100) / 100).toFixed(2));
+        
+      
+      let checkboxes = document.querySelectorAll('input[name="fajita-addOns[]"]');
+      let sumElements = document.querySelectorAll('#fajita-addOns-sum li');
+      let totalElement = document.getElementById('g-fajita-addOns-total');
+      let total = 0;
+      
+      let checkboxes1 = document.querySelectorAll('input[name="Sides&Tortillas[]"]');
+      let sumElements1 = document.querySelectorAll('#sides-addOns-sum li');
+      let totalElement1 = document.getElementById('g-sides-addOns-total');
+      let total1 = 0;
 
-      // Sum up the values of all the input fields
-      let subtotal = 0;
-      totalInputs.forEach(input => {
-        subtotal += parseFloat(input.value);
+      let checkboxes2 = document.querySelectorAll('input[name="Enchiladas, Tamales, Flautas[]"]');
+      let sumElements2 = document.querySelectorAll('#ench-addOns-sum li');
+      let totalElement2 = document.getElementById('g-ench-addOns-total');
+      let total2 = 0;
+
+      let checkboxes3 = document.querySelectorAll('input[name="Margaritas & Drinks[]"]');
+      let sumElements3 = document.querySelectorAll('#marg-addOns-sum li');
+      let totalElement3 = document.getElementById('g-marg-addOns-total');
+      let total3 = 0;
+
+      let checkboxes4 = document.querySelectorAll('input[name="Service Add Ons[]"]');
+      let sumElements4 = document.querySelectorAll('#serv-addOns-price2 li');
+      let totalElement4 = document.getElementById('g-serv-addOns-total');
+      let total4 = 0;
+
+      
+      let grandTotal = "" + document.getElementById('sum2').value;
+      
+      // Update total for fajita add-ons
+      checkboxes.forEach((checkbox, index) => {
+        checkbox.addEventListener('change', function() {
+          if (this.checked) {
+            const sumText = sumElements[index].textContent;
+            const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g,""));
+            total += sumValue;
+          } else {
+            const sumText = sumElements[index].textContent;
+            const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g,""));
+            total -= sumValue;
+          }
+          totalElement.textContent = "$" + total.toFixed(2);
+          grandTotal = total + total1 + total2 + total3 + total4 + result1;
+          document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
+        });
       });
       
-      // Format the result with 2 decimal places
-      subtotal = subtotal.toFixed(2);
-      
-      // Output the result
-      console.log(subtotal);
+      // Update total for sides add-ons
+      checkboxes1.forEach((checkbox, index) => {
+        checkbox.addEventListener('change', function() {
+          if (this.checked) {
+            const sumText1 = sumElements1[index].textContent;
+            const sumValue1 = parseFloat(sumText1.replace(/[^0-9.-]+/g,""));
+            total1 += sumValue1;
+          } else {
+            const sumText1 = sumElements1[index].textContent;
+            const sumValue1 = parseFloat(sumText1.replace(/[^0-9.-]+/g,""));
+            total1 -= sumValue1;
+          }
+          totalElement1.textContent = "$" + total1.toFixed(2);
+          grandTotal = total + total1 + total2 + total3 + total4 + result1;
+          document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
+        });
+      });
+    
+      checkboxes2.forEach((checkbox, index) => {
+        checkbox.addEventListener('change', function() {
+          if (this.checked) {
+            const sumText2 = sumElements2[index].textContent;
+            const sumValue2 = parseFloat(sumText2.replace(/[^0-9.-]+/g,""));
+            total2 += sumValue2;
+          } else {
+            const sumText2 = sumElements2[index].textContent;
+            const sumValue2 = parseFloat(sumText2.replace(/[^0-9.-]+/g,""));
+            total2 -= sumValue2;
+          }
+          totalElement2.textContent = "$" + total2.toFixed(2);
+          grandTotal = total + total1 + total2 + total3 + total4 + result1;
+          document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
+        });
+      });
 
-      
+      checkboxes3.forEach((checkbox, index) => {
+        checkbox.addEventListener('change', function() {
+          if (this.checked) {
+            const sumText3 = sumElements3[index].textContent;
+            const sumValue3 = parseFloat(sumText3.replace(/[^0-9.-]+/g,""));
+            total3 += sumValue3;
+          } else {
+            const sumText3= sumElements3[index].textContent;
+            const sumValue3 = parseFloat(sumText3.replace(/[^0-9.-]+/g,""));
+            total3 -= sumValue3;
+          }
+          totalElement3.textContent = "$" + total3.toFixed(2);
+          grandTotal = total + total1 + total2 + total3 + total4 + result1;
+          document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
+        });
+      });
+
+      checkboxes4.forEach((checkbox, index) => {
+        checkbox.addEventListener('change', function() {
+          if (this.checked) {
+            const sumText4 = sumElements4[index].textContent;
+            const sumValue4 = parseFloat(sumText4.replace(/[^0-9.-]+/g,""));
+            total4 += sumValue4;
+          } else {
+            const sumText4= sumElements4[index].textContent;
+            const sumValue4 = parseFloat(sumText4.replace(/[^0-9.-]+/g,""));
+            total4 -= sumValue4;
+          }
+          totalElement4.textContent = "$" + total4.toFixed(2);
+          grandTotal = total + total1 + total2 + total3 + total4 + result1;
+          document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
+        });
+      });
+    });
+       
     
     }); 
     var queryString = window.location.search.substring(1);
