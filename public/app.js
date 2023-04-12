@@ -44,7 +44,7 @@ $(function(){
                           const Price = val[i].Price;
                           const ul2 = document.getElementById("fajita-addOns-price");
                           const li2 = document.createElement("li");
-                          li2.appendChild(document.createTextNode(" " + Price));
+                          li2.appendChild(document.createTextNode("$" + (Math.round(Price * 100) / 100).toFixed(2)));
                           ul2.appendChild(li2);
                           
                         }
@@ -115,7 +115,7 @@ $(function(){
                           const Price = val[i].Price;
                           const ul2 = document.getElementById("sides-addOns-price");
                           const li2 = document.createElement("li");
-                          li2.appendChild(document.createTextNode(" " + (Math.round(Price * 100) / 100).toFixed(2)));
+                          li2.appendChild(document.createTextNode("$" + (Math.round(Price * 100) / 100).toFixed(2)));
                           ul2.appendChild(li2);
                           
                         }
@@ -183,7 +183,7 @@ $(function(){
                           const Price = val[i].Price;
                           const ul2 = document.getElementById("ench-addOns-price");
                           const li2 = document.createElement("li");
-                          li2.appendChild(document.createTextNode(" " + (Math.round(Price * 100) / 100).toFixed(2)));
+                          li2.appendChild(document.createTextNode("$" + (Math.round(Price * 100) / 100).toFixed(2)));
                           ul2.appendChild(li2);
                           
                         }
@@ -252,7 +252,7 @@ $(function(){
                           const Price = val[i].Price;
                           const ul2 = document.getElementById("marg-addOns-price");
                           const li2 = document.createElement("li");
-                          li2.appendChild(document.createTextNode(" " + (Math.round(Price * 100) / 100).toFixed(2)));
+                          li2.appendChild(document.createTextNode("$" + (Math.round(Price * 100) / 100).toFixed(2)));
                           ul2.appendChild(li2);
                           
                         }
@@ -313,7 +313,7 @@ $(function(){
                           const Price = val[i].Price;
                           const ul2 = document.getElementById("serv-addOns-price");
                           const li2 = document.createElement("li");
-                          li2.appendChild(document.createTextNode(" " + (Math.round(Price * 100) / 100).toFixed(2)));
+                          li2.appendChild(document.createTextNode("$" + (Math.round(Price * 100) / 100).toFixed(2)));
                           ul2.appendChild(li2);
                           
                         }
@@ -461,7 +461,12 @@ $(function(){
 
       
       let grandTotal = "" + document.getElementById('sum2').value;
+
       
+
+    
+
+
       // Update total for fajita add-ons
       checkboxes.forEach((checkbox, index) => {
         checkbox.addEventListener('change', function() {
@@ -476,7 +481,13 @@ $(function(){
           }
           totalElement.textContent = "$" + total.toFixed(2);
           grandTotal = total + total1 + total2 + total3 + total4 + result1;
+          tax = (total + total1 + total2 + total3 + total4 + result1) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + result1) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + result1 + tax + gratuity
           document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
+          document.getElementById('tax').value = "$" + tax.toFixed(2);
+          document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
+          document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
         });
       });
       
@@ -494,7 +505,13 @@ $(function(){
           }
           totalElement1.textContent = "$" + total1.toFixed(2);
           grandTotal = total + total1 + total2 + total3 + total4 + result1;
+          tax = (total + total1 + total2 + total3 + total4 + result1) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + result1) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + result1 + tax + gratuity
           document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
+          document.getElementById('tax').value = "$" + tax.toFixed(2);
+          document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
+          document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
         });
       });
     
@@ -511,7 +528,13 @@ $(function(){
           }
           totalElement2.textContent = "$" + total2.toFixed(2);
           grandTotal = total + total1 + total2 + total3 + total4 + result1;
+          tax = (total + total1 + total2 + total3 + total4 + result1) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + result1) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + result1 + tax + gratuity
           document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
+          document.getElementById('tax').value = "$" + tax.toFixed(2);
+          document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
+          document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
         });
       });
 
@@ -528,7 +551,13 @@ $(function(){
           }
           totalElement3.textContent = "$" + total3.toFixed(2);
           grandTotal = total + total1 + total2 + total3 + total4 + result1;
+          tax = (total + total1 + total2 + total3 + total4 + result1) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + result1) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + result1 + tax + gratuity
           document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
+          document.getElementById('tax').value = "$" + tax.toFixed(2);
+          document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
+          document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
         });
       });
 
@@ -545,11 +574,19 @@ $(function(){
           }
           totalElement4.textContent = "$" + total4.toFixed(2);
           grandTotal = total + total1 + total2 + total3 + total4 + result1;
+          tax = (total + total1 + total2 + total3 + total4 + result1) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + result1) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + result1 + tax + gratuity
           document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
+          document.getElementById('tax').value = "$" + tax.toFixed(2);
+          document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
+          document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
+          
         });
       });
+      
     });
-       
+    
     
     }); 
     var queryString = window.location.search.substring(1);
@@ -573,8 +610,7 @@ $(function(){
     document.getElementById('lservice').value = params['lservice'];
     document.getElementById('second_total_field').value = params['total'];
 
-    // Select all checkboxes
-    // Add event listener to each checkbox
+   
     
 
 
