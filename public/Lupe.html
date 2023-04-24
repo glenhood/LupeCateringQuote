@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="jspdf.js"></script>    
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  >
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"  ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="module" src="app.js" defer></script>
-    <style src="style.css"></style>
     <meta charset="utf-8" />
-    <style>
-        body {
-          background-image: url("images/02.jpeg");
-          background-repeat: no-repeat;
-          background-size: cover;
-        }
-      </style>
+      
+    
 </head>
+<div id="content">
 <body>
     
    
     <div class="container">
-        <header style="background-color:white; opacity:0.80" "><center><img  style="border-radius: 50%" class="img-center"  height= "75px"width="auto" src="images/LupeLogo.avif"></img></center></header>
+        <header ><center><img class="img-center"  height= "200px"width="auto" src="images/LupeLogo.png"></img></center></header>
         <div class="row">
             <div class="col">
-                <h2 class="text-center" style="color:white">Catering Estimator</h2>
+                <h1 class="text-center">Catering Estimator</h1>
             </div>
+            <div class="mb-6" >
+              <center><legend style="color:rgb(210, 29, 29)">"This estimate is for informational porposes only. This does not comfirm pricing or the date of your event."</legend></center>
+              
+          </div>
         </div>
         <div class="row">
             <div class="col">
-                <h3 class="text-center" style="color:white">Contact Information</h3>
+                <h2 class="text-center">Contact Information</h2>
             </div>
         </div>
-        <div class="row" STYLE="opacity:0.80">
+        <div class="row" STYLE="opacity:0.60">
             <div class="col-md-4">
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="name" placeholder="Name" readonly>
@@ -67,10 +69,10 @@
         </div>
         <div class="row" >
             <div class="col">
-                <h3 class="text-center" style="color:white">Event Information</h3>
+                <h2 class="text-center" style="font-weight: 500">Event Information</h2>
             </div>
         </div>
-        <div class="row" STYLE="opacity:0.80">
+        <div class="row" STYLE="opacity:0.60">
             <div class="col-md-4">
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="edate" placeholder="Date" readonly>
@@ -101,15 +103,21 @@
                     <label for="phone">Beer & Margerita Service?</label>
                 </div>
             </div>
+            
         </div>
+        <div class="mb-6" >
+          <legend style="color:white;border-radius: 5px;"><b>Fajita buffet includes the following: Mixed Chicken and Beef Fajita meat, (All Beef or Chicken options will effect pricing) Mexican rice, Charro Beans, Guacamole, Pico de Gallo, Shredded cheddar cheese, Flour and/or Corn tortillas, Chips, Salsa and Queso, *Other sides and extra items are available for an additional charge. Drink options are not included in the fajita buffet pricing. </b></legend>
+          <legend style="color:white;border-radius: 5px;">Fajita buffet service includes: Buffet tables, Table clothes, Chafing dishes, Heavy plastic plates, Rolled "silver" like plastic flatware. 90 minutes of serving time.  </legend>
+
+      </div>
 
 
 
 
-        <table style="width:1300px" class="table" style="color:white;display: block;width: 100%">
+        <table style="width:1300px;border-radius: 5px;" class="table;form-control" style="color:white;display: block;width: 100%">
             <thead>
               <tr>
-                <th scope="col" style="width:300px">
+                <th scope="col" style="width:300px;border-radius: 5px;" >
                   <!-- <div class="dropdown">
                     <button  class="btn btn-danger dropdown-toggle-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding:1;width:275px">To Begin, Choose a Fajita Option</button>
                     <button class="dropdown-menu" id="fajita-titles"></button>
@@ -119,258 +127,282 @@
                 <th scope="col" style="color:white; width: 100px">Unit Price</th>
                 <th scope="col" style="color:white; width: 100px">Party Size</th>
                 <th scope="col" style="color:white; width: 100px">Total</th>
-                <th scope="col" style="color:white; width: 100px">Sub Total</th>
+                <th scope="col" style="color:white; width: 200px;padding-left: 40px">Sub Total</th>
               </tr>
             </thead>
-            <b><tbody style="color:rgb(0, 0, 0);background-color:white;opacity:.80">
-              <tr>
+            <b><tbody style="color:rgb(0, 0, 0);background-color:white;opacity:.50;border-radius: 25px;padding:25px;">
+              <tr style="border-radius: 5px;">
                 <td>
-                  <label type='text' style="list-style-type:none;" id='fajita-titles' disabled="disabled"><h4><u>Fajita Buffet Options</u></h4></label>
+                  <label type='text' style="list-style-type:none;padding-top: 20px;padding-left: 40px" id='fajita-titles' disabled="disabled"><h3><u>Fajita Buffet Options</u></h3></label>
                 </td>
                 <td>
-                <br><label type='text' style="list-style-type:none;padding-top: 13px" id='fajita-serves'></label>
+                <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 40px" id='fajita-serves'></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 13px" id='fajita-price'></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 15px" id='fajita-price'></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 13px" id='fajita-count'></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 28px" id='fajita-count'></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 13px" id='fajita-sum' style="width:100px"></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-right: 30px" id='fajita-sum' style="width:100px"></label>
                 </td>
                 <td>
-                    <br><label type='text' style="list-style-type:none;padding-top: 13px" id='g-fajita-total' style="width:100px"></label>
+                    <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 40px" id='g-fajita-total' style="width:100px"></label>
                   </td>
               </tr>
               <tr>
                 <td>
-                  <label type='text' style="list-style-type:none;" id='fajita-addOns' ><h4><u>Fajita Buffet Add On's</u></h4></label>
+                  <label type='text' style="list-style-type:none;padding-top: 20px;padding-left: 40px" id='fajita-addOns' ><h3><u>Fajita Buffet Add On's</u></h3></label>
                 </td>
                 <td>
-                <br><label type='text' style="list-style-type:none;padding-top: 13px" id='fajita-addOns-serves'></label>
+                <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 40px" id='fajita-addOns-serves'></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 13px" id='fajita-addOns-price'></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 15px;" id='fajita-addOns-price'></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 13px" id='fajita-addOns-count'></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 28px" id='fajita-addOns-count'></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 13px" id='fajita-addOns-sum' style="width:100px"></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-right: 30px" id='fajita-addOns-sum' style="width:100px"></label>
                 </td>
                 <td>
-                    <br><label type='text' style="list-style-type:none;padding-top: 13px" id='g-fajita-addOns-total' style="width:100px"></label>
+                    <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 40px" id='g-fajita-addOns-total' style="width:100px"></label>
                   </td>
               </tr>
               <tr>
                 <td>
-                  <label type='text' style="list-style-type:none;" id='Sides&Tortillas'><h4><u>Sides & Tortillas</u></h4></label>
+                  <label type='text' style="list-style-type:none;padding-top: 20px;padding-left: 40px" id='Sides&Tortillas'><h3><u>Sides & Tortillas</u></h3></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 13px" id='sides-addOns-serves'></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 40px" id='sides-addOns-serves'></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 13px" id='sides-addOns-price'></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 15px;" id='sides-addOns-price'></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 13px" id='sides-addOns-count'></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 28px" id='sides-addOns-count'></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 13px" id='sides-addOns-sum' style="width:100px"></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-right: 30px" id='sides-addOns-sum' style="width:100px"></label>
                 </td>
                 <td>
-                    <br><label type='text' style="list-style-type:none;padding-top: 13px" id='g-sides-addOns-total' style="width:100px"></label>
+                    <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 40px" id='g-sides-addOns-total' style="width:100px"></label>
                   </td>
               </tr>
               <tr>
                 <tr>
                     <td>
-                      <label type='text' style="list-style-type:none" id='Enchiladas, Tamales, Flautas'><h4><u>Enchiladas, Tamales, Flautas</u></h4></label>
+                      <label type='text' style="list-style-type:none;padding-top: 20px;padding-left: 40px" id='Enchiladas, Tamales, Flautas'><h3><u>Enchiladas, Tamales, Flautas</u></h3></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" id='ench-addOns-serves'></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 40px" id='ench-addOns-serves'></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" id='ench-addOns-price'></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 15px;" id='ench-addOns-price'></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" id='ench-addOns-count'></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 28px" id='ench-addOns-count'></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" id='ench-addOns-sum' style="width:100px"></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-right: 30px" id='ench-addOns-sum' style="width:100px"></label>
                     </td>
                     <td>
-                        <br><label type='text' style="list-style-type:none;padding-top: 13px" id='g-ench-addOns-total' style="width:100px"></label>
+                        <br><label style="list-style-type:none;padding-top: 23px;padding-left: 40px" id='g-ench-addOns-total' style="width:100px"></label>
                       </td>
                   </tr>
                   <tr>
                 <tr>
                 <tr>
                     <td>
-                      <label type='text' style="list-style-type:none;" id='Margaritas & Drinks'><h4><u>Margaritas & Drinks</u></h4></label>
+                      <label type='text' style="list-style-type:none;padding-top: 20px;padding-left: 40px" id='Margaritas & Drinks'><h3><u>Margaritas & Drinks</u></h3></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" id='marg-addOns-serves'></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 40px" id='marg-addOns-serves'></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" id='marg-addOns-price'></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 15px;" id='marg-addOns-price'></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" id='marg-addOns-count'></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 28px" id='marg-addOns-count'></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" id='marg-addOns-sum' style="width:100px"></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-right: 30px" id='marg-addOns-sum' style="width:100px"></label>
                     </td>
                     <td>
-                        <br><label type='text' style="list-style-type:none;padding-top: 13px" id='g-marg-addOns-total' style="width:100px"></label>
+                        <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 40px" id='g-marg-addOns-total' style="width:100px"></label>
                       </td>
                   </tr>
                   <tr>
                 <tr>
                     <td>
-                      <label type='text' style="list-style-type:none;padding-top: 13px" id='Service Add Ons'><h4><u>Service Add Ons</u></h4></label>
+                      <label type='text' style="list-style-type:none;padding-top: 20px;padding-left: 40px" id='Service Add Ons'><h3><u>Service Add Ons</u></h3></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 40px" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" id='serv-addOns-price'></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 15px;" id='serv-addOns-price'></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" id='serv-addOns-count'></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 28px" id='serv-addOns-count'></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" id='serv-addOns-price2' style="width:100px"></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-right: 30px" id='serv-addOns-price2' style="width:100px"></label>
                     </td>
                     <td>
-                        <br><label type='text' style="list-style-type:none;padding-top: 13px" id='g-serv-addOns-total' style="width:100px"></label>
+                        <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 40px" id='g-serv-addOns-total' style="width:100px"></label>
                       </td>
                   </tr>
                   <tr>
                 <tr>
                     <td>
-                      <label type='text' style="list-style-type:none;padding-top: 13px" id='Rentals'><h4><u>Rentals</u></h4></label>
+                      <label type='text' style="list-style-type:none;padding-top: 20px;padding-left: 40px" id='Rentals'><h3><u>Rentals</u></h3></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 40px" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 15px;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 28px" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px"  style="width:100px"></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-right: 30px"  style="width:100px"></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px"  id='g-serv-addOns-total' style="width:100px"></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 40px"  id='g-serv-addOns-total' style="width:100px"></label>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px"  style="width:100px"><h4><u>Total</u></h4></label>
+                      <br><label type='text' style="list-style-type:none;"  style="width:100px"><h3><u>Total</u></h3></label>
                     </td>
                     <td>
-                      <br><input type='text' style="list-style-type:none;padding-top: 13px"  id='grandTotal' style="width:75px"></input>
+                      <br><input type='text' style="list-style-type:none;"  id='grandTotal' style="width:75px"></input>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px"  style="width:100px"><h4><u>Tax</u></h4></label>
+                      <br><label type='text' style="list-style-type:none;"  style="width:50px"><h3><u>Tax</u></h3></label>
                     </td>
                     <td>
-                      <br><input type='text' style="list-style-type:none;padding-top: 13px"  id='tax' style="width:75px"></input>
+                      <br><input type='text' style="list-style-type:none;"  id='tax' style="width:75px"></input>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px"  style="width:100px"><h4><u>Gratuity</u></h4></label>
+                      <br><label type='text' style="list-style-type:none;"  style="width:100px"><h3><u>Gratuity</u></h3></label>
                     </td>
                     <td>
-                      <br><input type='text' style="list-style-type:none;padding-top: 13px"  id='gratuity' style="width:75px"></input>
+                      <br><input type='text' style="list-style-type:none;"  id='gratuity' style="width:75px"></input>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px"  style="width:100px"><h4><u>Grand Total</u></h4></label>
+                      <br><label type='text' style="list-style-type:none;"  style="width:100px"><h3><u>Grand Total</u></h3></label>
                     </td>
                     <td>
-                      <br><input type='text' style="list-style-type:none;padding-top: 13px"  id='ggrandTotal' style="width:75px"></input>
+                      <br><input type='text' style="list-style-type:none;"  id='ggrandTotal' style="width:75px"></input>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px" ></label>
+                      <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 13px"  style="width:100px">By clicking submit, your proposal will be sent to one of our catering professionals, and a pdf will be downloaded for your records.</label>
+                      <br><label type='text' style="list-style-type:none;"  style="width:100px"></h3></label>
                     </td>
-                    <td class="d-grid gap-2 col-6 mx-auto">
-                      <br><button type="button" class="btn btn-primary btn-lrg btn-success" id="submit">Submit</button>
+                    <td>
+                      <br><button type="button" style="width:66%;" class="btn btn-xl  btn-success" id="submit" value="Create PDF"               
+                      onclick="generatePDF()">Submit</button>
                     </td>
                   </tr>
                 </b>
+                <script type="text/javascript">
+                  function generatePDF() {
+                    const { jsPDF } = window.jspdf;
+                    const doc = new jsPDF();
                 
+                    const element = document.querySelector("#content");
                 
+                    doc.html(element, {
+                      callback: function (doc) {
+                        doc.save("document.pdf");
+                      },
+                      margin: [10, 10, 10, 10],
+                      x: 0,
+                      y: 0,
+                      html2canvas: { scale: 0.5 },
+                      autoPaging: true,
+                    });
+                  }
+                </script>
+              
+                
+
+                
+
                 
 </body>
 </html>
+</div>

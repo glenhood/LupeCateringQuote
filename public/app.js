@@ -62,11 +62,26 @@ $(function(){
                           let checkboxes = document.querySelectorAll('input[name="fajita-titles[]"]');
                           let sumElements = document.querySelectorAll('#fajita-sum li');
                           let totalElement = document.getElementById('g-fajita-total');
-
+                          
                           let total = 0;
-
+                          
+                          // Add event listener to each checkbox
                           checkboxes.forEach((checkbox, index) => {
                             checkbox.addEventListener('change', function() {
+                              // Disable all other checkboxes if this one is checked
+                              if (this.checked) {
+                                checkboxes.forEach((cb, i) => {
+                                  if (i !== index) {
+                                    cb.disabled = true;
+                                  }
+                                });
+                              } else {
+                                // Enable all checkboxes if this one is unchecked
+                                checkboxes.forEach((cb) => {
+                                  cb.disabled = false;
+                                });
+                              }
+                          
                               if (this.checked) {
                                 const sumText = sumElements[index].textContent;
                                 const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g,""));
@@ -77,12 +92,15 @@ $(function(){
                                 total -= sumValue;
                               }
                               totalElement.textContent = "$" + total.toFixed(2);
-                              
-                              
                             });
                           });
+                          
+
+                              
+                          
 
                         }
+                        
             if (val[i].Category === "Add On Options") {
               
               const title2 = val[i].Title;
@@ -438,6 +456,7 @@ $(function(){
           }
         });
       }
+      
     });
     
     
@@ -703,23 +722,10 @@ $(function(){
     document.getElementById('theme').value = params['theme'];
     document.getElementById('location').value = params['location'];
     document.getElementById('lservice').value = params['lservice'];
-    document.getElementById('second_total_field').value = params['total'];
+    
 
-    var doc = new jsPDF('p', 'pt', 'letter');
-                  var specialElementHandlers = {
-                    '#editor': function (element, renderer) {
-                      return true;
-                    }          
-                  };     
-                  $('button').click(function () {
-                    doc.fromHTML($('#myTabContent').html(), 25, 25, {
-                      'width': 790,
-                      'elementHandlers': specialElementHandlers
-                    });
-                    doc.save('LupeCateringProposal.pdf');
-                    window.location.reload();
-                  });
-
+    
+    
    
     
       
