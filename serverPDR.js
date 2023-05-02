@@ -25,11 +25,11 @@ app.use((req, res, next) => {
 });
 
 app.get('/',(req,res) =>{
-	res.render('fieldsPage.html')
+	res.render('fieldsPagePDR.html')
 });
 
 app.get('/Lupe.html',(req,res) =>{
-	res.render('Lupe.html')
+	res.render('LupePDR.html')
 });
 
 app.get("/CateringItemList.json", (req,res) => {
