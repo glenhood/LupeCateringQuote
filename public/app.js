@@ -242,19 +242,19 @@ $(function(){
                             });
                           });
                         }
-            if (val[i].Category === "Enchiladas, Tamales, Flautas") {
+            if (val[i].Category === "ETF") {
               const title2 = val[i].Title;
-              const ul2 = document.getElementById("Enchiladas, Tamales, Flautas");
+              const ul2 = document.getElementById("ETF");
               const li2 = document.createElement("li");
               const input = document.createElement("input");
               input.type = "checkbox";
-              input.name = "Enchiladas, Tamales, Flautas[]";
+              input.name = "ETF[]";
               input.value = title2;
               li2.appendChild(input);
               li2.appendChild(document.createTextNode(" " + title2));
               ul2.appendChild(li2);
             }
-                        if (val[i].Category === "Enchiladas, Tamales, Flautas") {
+                        if (val[i].Category === "ETF") {
                           const Serves = val[i].Serves;
                           const ul2 = document.getElementById("ench-addOns-serves");
                           const li2 = document.createElement("li");
@@ -262,7 +262,7 @@ $(function(){
                           ul2.appendChild(li2);
                           
                         }
-                        if (val[i].Category === "Enchiladas, Tamales, Flautas") {
+                        if (val[i].Category === "ETF") {
                           const Price = val[i].Price;
                           const ul2 = document.getElementById("ench-addOns-price");
                           const li2 = document.createElement("li");
@@ -270,7 +270,7 @@ $(function(){
                           ul2.appendChild(li2);
                           
                         }
-                        if (val[i].Category === "Enchiladas, Tamales, Flautas") {
+                        if (val[i].Category === "ETF") {
                           const Count = document.getElementById('total').value;
                           const ul2 = document.getElementById("ench-addOns-count");
                           const li2 = document.createElement("li");
@@ -278,7 +278,7 @@ $(function(){
                           ul2.appendChild(li2);
                           
                         }
-                        if (val[i].Category === "Enchiladas, Tamales, Flautas") {
+                        if (val[i].Category === "ETF") {
                           const Serves = parseFloat(val[i].Serves);
                           const Price = parseFloat(val[i].Price);
                           const Count = parseFloat(document.getElementById('total').value);
@@ -288,7 +288,7 @@ $(function(){
                           li2.appendChild(document.createTextNode("$" + (Math.round(Sum4 * 100) / 100).toFixed(2)));
                           ul2.appendChild(li2);
 
-                          let checkboxes1 = document.querySelectorAll('input[name="Enchiladas, Tamales, Flautas[]"]');
+                          let checkboxes1 = document.querySelectorAll('input[name="ETF[]"]');
                           let sumElements1 = document.querySelectorAll('#ench-addOns-sum li');
                           let totalElement2 = document.getElementById('g-ench-addOns-total');
 
@@ -393,10 +393,10 @@ $(function(){
               ul2.appendChild(li2);
             }   
                         if (val[i].Category === "Service Add Ons") {
-                          const Price = val[i].Price;
+                          const Description = val[i].Description;
                           const ul2 = document.getElementById("serv-addOns-price");
                           const li2 = document.createElement("li");
-                          li2.appendChild(document.createTextNode("$" + (Math.round(Price * 100) / 100).toFixed(2)));
+                          li2.appendChild(document.createTextNode(" " + Description));
                           ul2.appendChild(li2);
                           
                         }
@@ -440,6 +440,75 @@ $(function(){
                           
                           
                         }
+                        if (val[i].Category === "Dessert") {
+                          const title2 = val[i].Title;
+                          const ul2 = document.getElementById("Dessert");
+                          const li2 = document.createElement("li");
+                          const input = document.createElement("input");
+                          input.type = "checkbox";
+                          input.name = "Dessert[]";
+                          input.value = title2;
+                          li2.appendChild(input);
+                          li2.appendChild(document.createTextNode(" " + title2));
+                          ul2.appendChild(li2);
+                        }
+                                    if (val[i].Category === "Dessert") {
+                                      const Serves = val[i].Serves;
+                                      const ul2 = document.getElementById("dessert-serves");
+                                      const li2 = document.createElement("li");
+                                      li2.appendChild(document.createTextNode(" " + Serves));
+                                      ul2.appendChild(li2);
+                                      
+                                    }
+                                    if (val[i].Category === "Dessert") {
+                                      const Price = val[i].Price;
+                                      const ul2 = document.getElementById("dessert-price");
+                                      const li2 = document.createElement("li");
+                                      li2.appendChild(document.createTextNode("$" + (Math.round(Price * 100) / 100).toFixed(2)));
+                                      ul2.appendChild(li2);
+                                      
+                                    }
+                                    if (val[i].Category === "Dessert") {
+                                      const Count = document.getElementById('total').value;
+                                      const ul2 = document.getElementById("dessert-count");
+                                      const li2 = document.createElement("li");
+                                      li2.appendChild(document.createTextNode(" " + Count));
+                                      ul2.appendChild(li2);
+                                      
+                                    }
+                                    if (val[i].Category === "Dessert") {
+                                      const Serves = parseFloat(val[i].Serves);
+                                      const Price = parseFloat(val[i].Price);
+                                      const Count = parseFloat(document.getElementById('total').value);
+                                      const Sum6 = (Count / Serves) * Price;
+                                      const ul2 = document.getElementById("dessert-sum");
+                                      const li2 = document.createElement("li");
+                                      li2.appendChild(document.createTextNode("$" + (Math.round(Sum6 * 100) / 100).toFixed(2)));
+                                      ul2.appendChild(li2);
+            
+                                      let checkboxes1 = document.querySelectorAll('input[name="Dessert[]"]');
+                                      let sumElements1 = document.querySelectorAll('#dessert-sum li');
+                                      let totalElement3 = document.getElementById('g-dessert-total');
+            
+                                      let total1 = 0;
+            
+                                      checkboxes1.forEach((checkbox, index) => {
+                                        checkbox.addEventListener('change', function() {
+                                          if (this.checked) {
+                                            const sumText1 = sumElements1[index].textContent;
+                                            const sumValue1 = parseFloat(sumText1.replace(/[^0-9.-]+/g,""));
+                                            total1 += sumValue1;
+                                          } else {
+                                            const sumText1 = sumElements1[index].textContent;
+                                            const sumValue1 = parseFloat(sumText1.replace(/[^0-9.-]+/g,""));
+                                            total1 -= sumValue1;
+                                          }
+                                          totalElement3.textContent = "$" + total1.toFixed(2);
+                                          
+                                          
+                                        });
+                                      });
+                                    }
             if (val[i].Category === "Rentals") {
               const title2 = val[i].Title;
               const ul2 = document.getElementById("Rentals");
@@ -452,7 +521,14 @@ $(function(){
               li2.appendChild(document.createTextNode(" " + title2));
               ul2.appendChild(li2);
             }
-            
+            if (val[i].Category === "Rentals") {
+              const Description = val[i].Description;
+              const ul2 = document.getElementById("rental-description");
+              const li2 = document.createElement("li");
+              li2.appendChild(document.createTextNode(" " + Description));
+              ul2.appendChild(li2);
+              
+            }
           }
         });
       }
@@ -460,62 +536,6 @@ $(function(){
     });
     
     
-    // function getPrice(title) {
-    //   var price = "";
-    //   $.ajax({ 
-    //     type : "GET", 
-    //     url : "CateringItemList.json", 
-    //     async : false, 
-    //     dataType : "json", 
-    //     success : function(result){
-    //       $.each(result, function(index, val){ 
-    //         for(var i=0; i < val.length; i++){
-    //           var item = val[i];
-    //           if (item.Title === title) {
-    //             price = parseFloat(item.Price);
-    //             break;
-    //           }
-    //         }
-    //       });
-    //     }
-    //   });
-    //   return price;
-    // }
-    // function getServes(title) {
-    //     var serves = "";
-    //     $.ajax({ 
-    //       type : "GET", 
-    //       url : "CateringItemList.json", 
-    //       async : false, 
-    //       dataType : "json", 
-    //       success : function(result){
-    //         $.each(result, function(index, val){ 
-    //           for(var i=0; i < val.length; i++){
-    //             var item = val[i];
-    //             if (item.Title === title) {
-    //               serves = item.Serves;
-    //               break;
-    //             }
-    //           }
-    //         });
-    //       }
-    //     });
-    //     return serves;
-      
-    //   }
-      // $('#fajita-titles').on('click', 'li', function() {
-      //   var value = $(this).text();
-      //   $('#output').val(value);
-      //   var price = parseFloat(getPrice(value));
-      //   $('#price').val(price);
-      //   var serves = getServes(value);
-      //   $('#serves').val(serves);
-  
-        // var fajitaTotal = parseFloat(document.getElementById('total').value);
-        // var price = parseFloat($('#price').val());
-        // var result1 = fajitaTotal * price;
-        // document.getElementById('g-sum').value = ("$" + (Math.round(result1 * 100) / 100).toFixed(2));
-        // document.getElementById('sum2').value = ("$" + (Math.round(result1 * 100) / 100).toFixed(2));
       let checkboxes = document.querySelectorAll('input[name="fajita-titles[]"]');
       let sumElements = document.querySelectorAll('#fajita-sum li');
       let totalElement = document.getElementById('g-fajita-total');
@@ -531,7 +551,7 @@ $(function(){
       let totalElement2 = document.getElementById('g-sides-addOns-total');
       let total2 = 0;
 
-      let checkboxes3 = document.querySelectorAll('input[name="Enchiladas, Tamales, Flautas[]"]');
+      let checkboxes3 = document.querySelectorAll('input[name="ETF[]"]');
       let sumElements3 = document.querySelectorAll('#ench-addOns-sum li');
       let totalElement3 = document.getElementById('g-ench-addOns-total');
       let total3 = 0;
@@ -545,6 +565,11 @@ $(function(){
       let sumElements5 = document.querySelectorAll('#serv-addOns-price2 li');
       let totalElement5 = document.getElementById('g-serv-addOns-total');
       let total5 = 0;
+
+      let checkboxes6 = document.querySelectorAll('input[name="Dessert[]"]');
+      let sumElements6 = document.querySelectorAll('#dessert-sum li');
+      let totalElement6 = document.getElementById('g-dessert-total');
+      let total6 = 0;
 
       
       let grandTotal = 0;
@@ -570,10 +595,10 @@ $(function(){
             total -= sumValue;
           }
           totalElement.textContent = "$" + total.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5;
-          tax = (total + total1 + total2 + total3 + total4 + total5) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + tax + gratuity
+          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
+          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
           document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
@@ -594,10 +619,10 @@ $(function(){
             total1 -= sumValue1;
           }
           totalElement1.textContent = "$" + total1.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5;
-          tax = (total + total1 + total2 + total3 + total4 + total5) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + tax + gratuity
+          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
+          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
           document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
@@ -617,10 +642,10 @@ $(function(){
             total2 -= sumValue2;
           }
           totalElement2.textContent = "$" + total2.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5;
-          tax = (total + total1 + total2 + total3 + total4 + total5) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + tax + gratuity
+          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
+          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
           document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
@@ -640,10 +665,10 @@ $(function(){
             total3 -= sumValue3;
           }
           totalElement3.textContent = "$" + total3.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5;
-          tax = (total + total1 + total2 + total3 + total4 + total5) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + tax + gratuity
+          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
+          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
           document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
@@ -663,10 +688,10 @@ $(function(){
             total4 -= sumValue4;
           }
           totalElement4.textContent = "$" + total4.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5;
-          tax = (total + total1 + total2 + total3 + total4 + total5) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + tax + gratuity
+          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
+          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
           document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
@@ -687,10 +712,34 @@ $(function(){
             total5 -= sumValue5;
           }
           totalElement5.textContent = "$" + total5.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5;
-          tax = (total + total1 + total2 + total3 + total4 + total5) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + tax + gratuity
+          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
+          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
+          document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
+          document.getElementById('tax').value = "$" + tax.toFixed(2);
+          document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
+          document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
+          
+        });
+      });
+
+      checkboxes6.forEach((checkbox, index) => {
+        checkbox.addEventListener('change', function() {
+          if (this.checked) {
+            const sumText6 = sumElements6[index].textContent;
+            const sumValue6 = parseFloat(sumText6.replace(/[^0-9.-]+/g,""));
+            total6 += sumValue6;
+          } else {
+            const sumText6= sumElements6[index].textContent;
+            const sumValue6 = parseFloat(sumText6.replace(/[^0-9.-]+/g,""));
+            total6 -= sumValue6;
+          }
+          totalElement6.textContent = "$" + total6.toFixed(2);
+          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
+          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
           document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);

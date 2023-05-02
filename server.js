@@ -33,7 +33,7 @@ app.get('/Lupe.html',(req,res) =>{
 });
 
 app.get("/CateringItemList.json", (req,res) => {
-	fields = ['Title','Price','Category','Serves']
+	fields = ['Title','Price','Category','Serves','Description']
 	resultList = []
 	spr.get('https://sp.lupetortilla.com/_api/web/lists/GetbyTitle(\'CateringProposalItems\')/items')
 		.then(response => {
