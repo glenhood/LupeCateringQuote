@@ -35,7 +35,7 @@ app.get('/Lupe.html',(req,res) =>{
 app.get("/CateringItemList.json", (req,res) => {
 	fields = ['Title','Price','Category','Serves','Description']
 	resultList = []
-	spr.get('https://sp.lupetortilla.com/_api/web/lists/GetbyTitle(\'CateringProposalItems\')/items')
+	spr.get('https://sp.lupetortilla.com/_api/web/lists/GetbyTitle(\'CateringProposalItems\')/items?$filter=ProposalType eq \'Catering\'')
 		.then(response => {
 			for (i of response.body.d.results) {
 				var item = {};
