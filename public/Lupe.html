@@ -497,29 +497,14 @@
                       <br><label type='text' style="list-style-type:none;"  style="width:100px"></h3></label>
                     </td>
                     <td>
-                      <br><button type="button" style="width:96%;" class="btn btn-xl  btn-success" id="submit" value="Create PDF"               
-                      onclick="generatePDF()">Submit</button>
+                      <br><button type="button" style="width:96%;" class="btn btn-xl  btn-success" id="submit" onclick = "thankyou()" >Submit</button>
                     </td>
                   </tr>
 
                 </b>
                 <script type="text/javascript"  >
-                  function generatePDF() {
-                    const { jsPDF } = window.jspdf;
-                    const doc = new jsPDF();
-                
-                    const element = document.querySelector("table");
-                
-                    doc.html(element, {
-                      callback: function (doc) {
-                        doc.save("LupeCateringEstimator.pdf");
-                      },
-                      margin: [20, 20, 20, 20],
-                      x: 1,
-                      y: 1,
-                      html2canvas: { scale: 0.12 },
-                      autoPaging: true,
-                    });
+                  function thankyou() {
+                    window.location.href = "FirstPage.html";
                   }
                 </script>
               
