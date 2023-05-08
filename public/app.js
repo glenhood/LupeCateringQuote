@@ -1,30 +1,28 @@
-$(function(){
-    $.ajax({ 
-      type : "GET", 
-      url : "CateringItemList.json", 
-      async : false, 
-      beforeSend : function(){/*loading*/},
-      dataType : "json", 
-      success : function(result){
-        $.each(result, function(index, val){ 
-          var items = ""
-          for(var i=0; i < val.length; i++){
-          
-          
-            if (val[i].Category === "Fajita Buffet") {
-              
-              const title2 = val[i].Title;
-              const ul2 = document.getElementById("fajita-titles");
-              const li2 = document.createElement("li");
-              const input = document.createElement("input");
-              input.type = "checkbox";
-              input.name = "fajita-titles[]";
-              input.value = title2;
-              li2.appendChild(input);
-              li2.appendChild(document.createTextNode(" " + title2));
-              ul2.appendChild(li2);
-              
-            }
+$(function() {
+  $.ajax({
+    type: "GET",
+    url: "CateringItemList.json",
+    async: false,
+    beforeSend: function() { /*loading*/ },
+    dataType: "json",
+    success: function(result) {
+      $.each(result, function(index, val) {
+        var items = "";
+        for (var i = 0; i < val.length; i++) {
+          if (val[i].Category === "Fajita Buffet") {
+            const title2 = val[i].Title;
+            const ul2 = document.getElementById("fajita-titles");
+            const li2 = document.createElement("li");
+            const input = document.createElement("input");
+            input.type = "checkbox";
+            input.name = "fajita-titles[]";
+            input.value = title2;
+            li2.appendChild(input);
+            li2.appendChild(document.createTextNode(" " + title2));
+            ul2.appendChild(li2);
+          }
+            
+            
                         if (val[i].Category === "Fajita Buffet") {
                           const Serves = val[i].Serves;
                           const ul2 = document.getElementById("fajita-serves");
@@ -81,7 +79,32 @@ $(function(){
                                   cb.disabled = false;
                                 });
                               }
-                          
+                              if (this.checked) {
+                                // Get the data for the selected checkbox
+                                const title2 = val[i].Title
+                                const serves = val[i].Serves;
+                                const price = val[i].Price;
+                                const count = parseFloat(document.getElementById('total').value);
+                                const sum = (count / serves) * price;
+                
+                                // Create an object to store the data
+                                const fajitaData = {
+                                  title: title2,
+                                  serves: serves,
+                                  price: price,
+                                  count: count,
+                                  sum: sum.toFixed(2)
+                                };
+                
+                                // Retrieve the existing data from local storage or create an empty array
+                                let fajitaItems = JSON.parse(localStorage.getItem('fajita-data')) || [];
+                
+                                // Add the new data to the array
+                                fajitaItems.push(fajitaData);
+                
+                                // Save the updated array to local storage
+                                localStorage.setItem('fajita-data', JSON.stringify(fajitaItems));
+                              }
                               if (this.checked) {
                                 const sumText = sumElements[index].textContent;
                                 const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g,""));
@@ -92,6 +115,7 @@ $(function(){
                                 total -= sumValue;
                               }
                               totalElement.textContent = "$" + total.toFixed(2);
+                              
                             });
                           });
                           
@@ -771,6 +795,19 @@ $(function(){
     document.getElementById('theme').value = params['theme'];
     document.getElementById('location').value = params['location'];
     document.getElementById('lservice').value = params['lservice'];
+
+    localStorage.setItem('name', document.getElementById('name').value);
+    localStorage.setItem('edate', document.getElementById('edate').value);
+    localStorage.setItem('phone', document.getElementById('phone').value);
+    localStorage.setItem('email', document.getElementById('email').value);
+    localStorage.setItem('time', document.getElementById('time').value);
+    localStorage.setItem('address', document.getElementById('address').value);
+    localStorage.setItem('zcode', document.getElementById('zcode').value);
+    localStorage.setItem('city', document.getElementById('city').value);
+    localStorage.setItem('total', document.getElementById('total').value);
+    localStorage.setItem('theme', document.getElementById('theme').value);
+    localStorage.setItem('location', document.getElementById('location').value);
+    localStorage.setItem('lservice', document.getElementById('lservice').value);
     
 
     
