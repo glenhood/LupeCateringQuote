@@ -11,6 +11,14 @@ var theme = localStorage.getItem('theme');
 var location = localStorage.getItem('location');
 var lservice = localStorage.getItem('lservice');
 var fajitaData = localStorage.getItem('fajita-data');
+var addOnData = localStorage.getItem('addOns-data');
+var sidesTortillasData = localStorage.getItem('sidesAndTortillas-data');
+var EFTData = localStorage.getItem('ETF-data');
+var margData = localStorage.getItem('marg-data');
+var servData = localStorage.getItem('serv-data');
+var dessertData = localStorage.getItem('dessert-data');
+var rentalData = localStorage.getItem('rental-data');
+var servsData = localStorage.getItem('serv-data');
 
 
 
@@ -27,5 +35,25 @@ document.getElementById('theme').value = theme;
 document.getElementById('location').value = location;
 document.getElementById('lservice').value = lservice;
 document.getElementById('fajita-data').value = fajitaData;
+document.getElementById('addOn-data').value = addOnData;
+document.getElementById('sidesTortillas-data').value = sidesTortillasData;
+document.getElementById('EFT-data').value = EFTData;
+document.getElementById('marg-data').value = margData;
+document.getElementById('dessert-data').value = dessertData;
+document.getElementById('rental-data').value = rentalData;
+document.getElementById('servs-data').value = servsData;
 
-console.log(fajitaData)
+if (fajitaData) {
+    var fajitaItems = JSON.parse(fajitaData);
+  
+    var ul = document.getElementById("fajita-list");
+  
+    fajitaItems.forEach(function(item) {
+      var li = document.createElement("li");
+      li.textContent = item.title + ", Serves: " + item.serves + ", Price: $" + item.price.toFixed(2);
+      ul.appendChild(li);
+    });
+  }
+
+
+console.log(servsData)
