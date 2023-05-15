@@ -28,7 +28,7 @@ app.get('/',(req,res) =>{
 	res.render('fieldsPagePDR.html')
 });
 
-app.get('/Lupe.html',(req,res) =>{
+app.get('/LupePDR.html',(req,res) =>{
 	res.render('LupePDR.html')
 });
 

@@ -765,6 +765,10 @@ $(function() {
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
           document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
+          localStorage.setItem('grandTotal', "$" + grandTotal.toFixed(2));
+          localStorage.setItem('tax', "$" + tax.toFixed(2));
+          localStorage.setItem('gratuity', "$" + gratuity.toFixed(2));
+          localStorage.setItem('ggrandTotal', "$" + ggrandTotal.toFixed(2));
         });
       });
       
@@ -789,6 +793,10 @@ $(function() {
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
           document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
+          localStorage.setItem('grandTotal', "$" + grandTotal.toFixed(2));
+          localStorage.setItem('tax', "$" + tax.toFixed(2));
+          localStorage.setItem('gratuity', "$" + gratuity.toFixed(2));
+          localStorage.setItem('ggrandTotal', "$" + ggrandTotal.toFixed(2));
         });
       });
     
@@ -812,6 +820,10 @@ $(function() {
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
           document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
+          localStorage.setItem('grandTotal', "$" + grandTotal.toFixed(2));
+          localStorage.setItem('tax', "$" + tax.toFixed(2));
+          localStorage.setItem('gratuity', "$" + gratuity.toFixed(2));
+          localStorage.setItem('ggrandTotal', "$" + ggrandTotal.toFixed(2));
         });
       });
 
@@ -835,6 +847,10 @@ $(function() {
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
           document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
+          localStorage.setItem('grandTotal', "$" + grandTotal.toFixed(2));
+          localStorage.setItem('tax', "$" + tax.toFixed(2));
+          localStorage.setItem('gratuity', "$" + gratuity.toFixed(2));
+          localStorage.setItem('ggrandTotal', "$" + ggrandTotal.toFixed(2));
         });
       });
 
@@ -858,6 +874,10 @@ $(function() {
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
           document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
+          localStorage.setItem('grandTotal', "$" + grandTotal.toFixed(2));
+          localStorage.setItem('tax', "$" + tax.toFixed(2));
+          localStorage.setItem('gratuity', "$" + gratuity.toFixed(2));
+          localStorage.setItem('ggrandTotal', "$" + ggrandTotal.toFixed(2));
           
         });
       });
@@ -882,6 +902,10 @@ $(function() {
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
           document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
+          localStorage.setItem('grandTotal', "$" + grandTotal.toFixed(2));
+          localStorage.setItem('tax', "$" + tax.toFixed(2));
+          localStorage.setItem('gratuity', "$" + gratuity.toFixed(2));
+          localStorage.setItem('ggrandTotal', "$" + ggrandTotal.toFixed(2));
           
         });
       });
@@ -906,11 +930,18 @@ $(function() {
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
           document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
+          localStorage.setItem('grandTotal', "$" + grandTotal.toFixed(2));
+          localStorage.setItem('tax', "$" + tax.toFixed(2));
+          localStorage.setItem('gratuity', "$" + gratuity.toFixed(2));
+          localStorage.setItem('ggrandTotal', "$" + ggrandTotal.toFixed(2));
           
+
         });
       });
       
     });
+    
+
     
     
     // }); 
@@ -946,6 +977,9 @@ $(function() {
     localStorage.setItem('theme', document.getElementById('theme').value);
     localStorage.setItem('location', document.getElementById('location').value);
     localStorage.setItem('lservice', document.getElementById('lservice').value);
+
+    
+
     
 
     

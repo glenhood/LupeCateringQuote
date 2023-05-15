@@ -3,9 +3,7 @@
 <head>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="jspdf.js"></script>    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> 
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  >
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"  ></script>
@@ -53,7 +51,7 @@
                 </div>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="address" placeholder="Address" readonly>
-                    <label for="phone">Address</label>
+                    <label for="phone">Street Address</label>
                 </div>
             </div>
             <div class="col-md-4">
@@ -414,30 +412,10 @@
                       <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;"  style="width:100px"><h3><u>Total</u></h3></label>
+                      <br><label type='text' style="list-style-type:none;"  style="width:100px"><h3><u>Estimated Total</u></h3></label>
                     </td>
                     <td>
-                      <br><input type='text' style="list-style-type:none;"  id='grandTotal' style="width:75px"></input>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label type='text' style="list-style-type:none;" ></label>
-                    </td>
-                    <td>
-                      <br><label type='text' style="list-style-type:none;" ></label>
-                    </td>
-                    <td>
-                      <br><label type='text' style="list-style-type:none;" ></label>
-                    </td>
-                    <td>
-                      <br><label type='text' style="list-style-type:none;" ></label>
-                    </td>
-                    <td>
-                      <br><label type='text' style="list-style-type:none;"  style="width:50px"><h3><u>Tax</u></h3></label>
-                    </td>
-                    <td>
-                      <br><input type='text' style="list-style-type:none;"  id='tax' style="width:75px"></input>
+                      <br><input type='text' style="list-style-type:none;"  id='grandTotal' style="width:75px" readonly></input>
                     </td>
                   </tr>
                   <tr>
@@ -454,10 +432,10 @@
                       <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;"  style="width:100px"><h3><u>Gratuity</u></h3></label>
+                      <br><label type='text' style="list-style-type:none;"  style="width:50px"><h3><u>Estimated Tax</u></h3></label>
                     </td>
                     <td>
-                      <br><input type='text' style="list-style-type:none;"  id='gratuity' style="width:75px"></input>
+                      <br><input type='text' style="list-style-type:none;"  id='tax' style="width:75px" readonly></input>
                     </td>
                   </tr>
                   <tr>
@@ -474,10 +452,30 @@
                       <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;"  style="width:100px"><h3><u>Grand Total</u></h3></label>
+                      <br><label type='text' style="list-style-type:none;"  style="width:100px"><h3><u>Estimated Gratuity</u></h3></label>
                     </td>
                     <td>
-                      <br><input type='text' style="list-style-type:none;"  id='ggrandTotal' style="width:75px"></input>
+                      <br><input type='text' style="list-style-type:none;"  id='gratuity' style="width:75px" readonly></input>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label type='text' style="list-style-type:none;" ></label>
+                    </td>
+                    <td>
+                      <br><label type='text' style="list-style-type:none;" ></label>
+                    </td>
+                    <td>
+                      <br><label type='text' style="list-style-type:none;" ></label>
+                    </td>
+                    <td>
+                      <br><label type='text' style="list-style-type:none;" ></label>
+                    </td>
+                    <td>
+                      <br><label type='text' style="list-style-type:none;"  style="width:100px"><h3><u>Estimated Grand Total</u></h3></label>
+                    </td>
+                    <td>
+                      <br><input type='text' style="list-style-type:none;"  id='ggrandTotal' style="width:75px" readonly></input>
                     </td>
                   </tr>
                   <tr>
