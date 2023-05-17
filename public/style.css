@@ -37,4 +37,19 @@ tbody {
   font-size: 25px;
   
 }
-
+content {
+  position:fixed;
+  bottom:50px;
+  left: 50%; /* center on x direction */
+  transform:translateX(-50%);
+  width:60vw;
+  height:50px;
+}
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background-color: white;  
+  color: rgb(1, 1, 1); 
+  z-index: 1000;
+  opacity: 50%;
+}
