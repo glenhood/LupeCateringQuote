@@ -127,68 +127,158 @@ $(function() {
                           
 
                         }
+                        if (val[i].Category === "Add On Options") {
+              
+                          const title2 = val[i].Title;
+                          const ul2 = document.getElementById("fajita-addOns");
+                          const li2 = document.createElement("li");
+                          const input = document.createElement("input");
+                          input.type = "checkbox";
+                          input.name = "fajita-addOns[]";
+                          input.value = title2;
+                          li2.appendChild(input);
+                          li2.appendChild(document.createTextNode(" " + title2));
+                          ul2.appendChild(li2);
+                          
+                        }
+                                    if (val[i].Category === "Add On Options") {
+                                      const Serves = val[i].Serves;
+                                      const ul2 = document.getElementById("fajita-addOns-serves");
+                                      const li2 = document.createElement("li");
+                                      li2.appendChild(document.createTextNode(" " + Serves));
+                                      ul2.appendChild(li2);
+                                      
+                                    }
+                                    if (val[i].Category === "Add On Options") {
+                                      const Price = val[i].Price;
+                                      const ul2 = document.getElementById("fajita-addOns-price");
+                                      const li2 = document.createElement("li");
+                                      li2.appendChild(document.createTextNode("$" + (Math.round(Price * 100) / 100).toFixed(2)));
+                                      ul2.appendChild(li2);
+                                      
+                                    }
+                                    if (val[i].Category === "Add On Options") {
+                                      const Count = document.getElementById('total').value;
+                                      const ul2 = document.getElementById("fajita-addOns-count");
+                                      const li2 = document.createElement("li");
+                                      li2.appendChild(document.createTextNode(" " + Count));
+                                      ul2.appendChild(li2);
+                                      
+                                    }
+                                    if (val[i].Category === "Add On Options") {
+                                      const Serves = parseFloat(val[i].Serves);
+                                      const Price = parseFloat(val[i].Price);
+                                      const Count = parseFloat(document.getElementById('total').value);
+                                      const Sum2 = (Count / Serves) * Price;
+                                      const ul2 = document.getElementById("fajita-addOns-sum");
+                                      const li2 = document.createElement("li");
+                                      li2.appendChild(document.createTextNode("$" + (Math.round(Sum2 * 100) / 100).toFixed(2)));
+                                      ul2.appendChild(li2);
+                                      
+                                      let checkboxes1 = document.querySelectorAll('input[name="fajita-addOns[]"]');
+                                      let sumElements = document.querySelectorAll('#fajita-addOns-sum li');
+                                      let totalElement = document.getElementById('g-fajita-addOns-total');
+                                      let priceElements = document.querySelectorAll('#fajita-addOns-price li');
+                                      let servesElements = document.querySelectorAll('#fajita-addOns-serves li');
+            
+                                      let total = 0;
+                                      let addOnsItems = [];
+            
+                                      // Add event listener to each checkbox
+                                      checkboxes1.forEach((checkbox, index) => {
+                                        checkbox.addEventListener('change', function() {
+                                          const addOnsData = {
+                                            title: checkbox.value,
+                                            serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+                                            price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+                                            count: parseFloat(document.getElementById('total').value),
+                                            sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
+                                          };
+            
+                                          addOnsItems.push(addOnsData);
+            
+                                          localStorage.setItem('addOns-data', JSON.stringify(addOnsItems));
+            
+                                          total = addOnsItems.reduce((acc, item) => acc + item.sum, 0);
+                                          totalElement.textContent = "$" + total.toFixed(2);
+            
+                                          if (this.checked) {
+                                            const sumText = sumElements[index].textContent;
+                                            const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g, ""));
+                                            total += sumValue;
+                                          } else {
+                                            const sumText = sumElements[index].textContent;
+                                            const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g, ""));
+                                            total -= sumValue;
+                                          }
+                                          totalElement.textContent = "$" + total.toFixed(2);
+                                        });
+                                      });
+            
+            
+                                    }
                         
-            if (val[i].Category === "Add On Options") {
+            if (val[i].Category === "Fajita Add Ons PDR") {
               
               const title2 = val[i].Title;
-              const ul2 = document.getElementById("fajita-addOns");
+              const ul2 = document.getElementById("fajita-addOns-PDR");
               const li2 = document.createElement("li");
               const input = document.createElement("input");
               input.type = "checkbox";
-              input.name = "fajita-addOns[]";
+              input.name = "fajita-addOns-PDR[]";
               input.value = title2;
               li2.appendChild(input);
               li2.appendChild(document.createTextNode(" " + title2));
               ul2.appendChild(li2);
               
             }
-                        if (val[i].Category === "Add On Options") {
+                        if (val[i].Category === "Fajita Add Ons PDR") {
                           const Serves = val[i].Serves;
-                          const ul2 = document.getElementById("fajita-addOns-serves");
+                          const ul2 = document.getElementById("fajita-addOns-PDR-serves");
                           const li2 = document.createElement("li");
                           li2.appendChild(document.createTextNode(" " + Serves));
                           ul2.appendChild(li2);
                           
                         }
-                        if (val[i].Category === "Add On Options") {
+                        if (val[i].Category === "Fajita Add Ons PDR") {
                           const Price = val[i].Price;
-                          const ul2 = document.getElementById("fajita-addOns-price");
+                          const ul2 = document.getElementById("fajita-addOns-PDR-price");
                           const li2 = document.createElement("li");
                           li2.appendChild(document.createTextNode("$" + (Math.round(Price * 100) / 100).toFixed(2)));
                           ul2.appendChild(li2);
                           
                         }
-                        if (val[i].Category === "Add On Options") {
+                        if (val[i].Category === "Fajita Add Ons PDR") {
                           const Count = document.getElementById('total').value;
-                          const ul2 = document.getElementById("fajita-addOns-count");
+                          const ul2 = document.getElementById("fajita-addOns-PDR-count");
                           const li2 = document.createElement("li");
                           li2.appendChild(document.createTextNode(" " + Count));
                           ul2.appendChild(li2);
                           
                         }
-                        if (val[i].Category === "Add On Options") {
+                        if (val[i].Category === "Fajita Add Ons PDR") {
                           const Serves = parseFloat(val[i].Serves);
                           const Price = parseFloat(val[i].Price);
                           const Count = parseFloat(document.getElementById('total').value);
                           const Sum2 = (Count / Serves) * Price;
-                          const ul2 = document.getElementById("fajita-addOns-sum");
+                          const ul2 = document.getElementById("fajita-addOns-PDR-sum");
                           const li2 = document.createElement("li");
                           li2.appendChild(document.createTextNode("$" + (Math.round(Sum2 * 100) / 100).toFixed(2)));
                           ul2.appendChild(li2);
                           
-                          let checkboxes1 = document.querySelectorAll('input[name="fajita-addOns[]"]');
-                          let sumElements = document.querySelectorAll('#fajita-addOns-sum li');
-                          let totalElement = document.getElementById('g-fajita-addOns-total');
-                          let priceElements = document.querySelectorAll('#fajita-addOns-price li');
-                          let servesElements = document.querySelectorAll('#fajita-addOns-serves li');
+                          let checkboxes1 = document.querySelectorAll('input[name="fajita-addOns-PDR[]"]');
+                          let sumElements = document.querySelectorAll('#fajita-addOns-PDR-sum li');
+                          let totalElement = document.getElementById('g-fajita-addOns-PDR-total');
+                          let priceElements = document.querySelectorAll('#fajita-addOns-PDR-price li');
+                          let servesElements = document.querySelectorAll('#fajita-addOns-PDR-serves li');
 
                           let total = 0;
-                          let addOnsItems = [];
+                          let PDRaddOnsItems = [];
 
                           // Add event listener to each checkbox
                           checkboxes1.forEach((checkbox, index) => {
                             checkbox.addEventListener('change', function() {
-                              const addOnsData = {
+                              const PDRaddOnsData = {
                                 title: checkbox.value,
                                 serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
                                 price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
@@ -196,11 +286,11 @@ $(function() {
                                 sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
                               };
 
-                              addOnsItems.push(addOnsData);
+                              PDRaddOnsItems.push(PDRaddOnsData);
 
-                              localStorage.setItem('addOns-data', JSON.stringify(addOnsItems));
+                              localStorage.setItem('PDR-addOns-data', JSON.stringify(PDRaddOnsItems));
 
-                              total = addOnsItems.reduce((acc, item) => acc + item.sum, 0);
+                              total = PDRaddOnsItems.reduce((acc, item) => acc + item.sum, 0);
                               totalElement.textContent = "$" + total.toFixed(2);
 
                               if (this.checked) {
@@ -732,6 +822,11 @@ $(function() {
       let totalElement6 = document.getElementById('g-dessert-total');
       let total6 = 0;
 
+      let checkboxes7 = document.querySelectorAll('input[name="fajita-addOns-PDR[]"]');
+      let sumElements7 = document.querySelectorAll('#fajita-addOns-PDR-sum li');
+      let totalElement7 = document.getElementById('g-fajita-addOns-PDR-total');
+      let total7 = 0;
+
       
       let grandTotal = 0;
       let tax = 0;
@@ -756,10 +851,10 @@ $(function() {
             total -= sumValue;
           }
           totalElement.textContent = "$" + total.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
-          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
+          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + total7;
+          tax = (total + total1 + total2 + total3 + total4 + total5 + total6 + total7) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6 + total7) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + total7 + tax + gratuity
           document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
@@ -784,10 +879,10 @@ $(function() {
             total1 -= sumValue1;
           }
           totalElement1.textContent = "$" + total1.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
-          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
+          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + total7;
+          tax = (total + total1 + total2 + total3 + total4 + total5 + total6 + total7) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6 + total7) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + total7 + tax + gratuity
           document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
@@ -811,10 +906,10 @@ $(function() {
             total2 -= sumValue2;
           }
           totalElement2.textContent = "$" + total2.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
-          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
+          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + total7;
+          tax = (total + total1 + total2 + total3 + total4 + total5 + total6 + total7) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6 + total7) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + total7 + tax + gratuity
           document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
@@ -838,10 +933,10 @@ $(function() {
             total3 -= sumValue3;
           }
           totalElement3.textContent = "$" + total3.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
-          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
+          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + total7;
+          tax = (total + total1 + total2 + total3 + total4 + total5 + total6 + total7) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6 + total7) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + total7 + tax + gratuity
           document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
@@ -865,10 +960,10 @@ $(function() {
             total4 -= sumValue4;
           }
           totalElement4.textContent = "$" + total4.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
-          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
+          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + total7;
+          tax = (total + total1 + total2 + total3 + total4 + total5 + total6 + total7) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6 + total7) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + total7 + tax + gratuity
           document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
@@ -893,10 +988,10 @@ $(function() {
             total5 -= sumValue5;
           }
           totalElement5.textContent = "$" + total5.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
-          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
+          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + total7;
+          tax = (total + total1 + total2 + total3 + total4 + total5 + total6 + total7) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6 + total7) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + total7 + tax + gratuity
           document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
@@ -921,10 +1016,38 @@ $(function() {
             total6 -= sumValue6;
           }
           totalElement6.textContent = "$" + total6.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
-          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
+          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + total7;
+          tax = (total + total1 + total2 + total3 + total4 + total5 + total6 + total7) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6 + total7) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + total7 + tax + gratuity
+          document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
+          document.getElementById('tax').value = "$" + tax.toFixed(2);
+          document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
+          document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
+          localStorage.setItem('grandTotal', "$" + grandTotal.toFixed(2));
+          localStorage.setItem('tax', "$" + tax.toFixed(2));
+          localStorage.setItem('gratuity', "$" + gratuity.toFixed(2));
+          localStorage.setItem('ggrandTotal', "$" + ggrandTotal.toFixed(2));
+          
+
+        });
+      });
+      checkboxes7.forEach((checkbox, index) => {
+        checkbox.addEventListener('change', function() {
+          if (this.checked) {
+            const sumText7 = sumElements7[index].textContent;
+            const sumValue7 = parseFloat(sumText7.replace(/[^0-9.-]+/g,""));
+            total7 += sumValue7;
+          } else {
+            const sumText7= sumElements7[index].textContent;
+            const sumValue7 = parseFloat(sumText7.replace(/[^0-9.-]+/g,""));
+            total7 -= sumValue7;
+          }
+          totalElement7.textContent = "$" + total7.toFixed(2);
+          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + total7;
+          tax = (total + total1 + total2 + total3 + total4 + total5 + total6 + total7) * .0825;
+          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6 + total7) * .2;
+          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + total7 + tax + gratuity
           document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
           document.getElementById('tax').value = "$" + tax.toFixed(2);
           document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);

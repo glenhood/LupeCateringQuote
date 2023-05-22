@@ -9,6 +9,7 @@ var location = localStorage.getItem('location');
 var lservice = localStorage.getItem('lservice');
 var fajitaData = localStorage.getItem('fajita-data');
 var addOnData = localStorage.getItem('addOns-data');
+var PDRaddOnData = localStorage.getItem('PDR-addOns-data');
 var sidesTortillasData = localStorage.getItem('sidesAndTortillas-data');
 var EFTData = localStorage.getItem('ETF-data');
 var margData = localStorage.getItem('marg-data');
@@ -32,6 +33,17 @@ if (fajitaData) {
   });
 
   var ul = document.getElementById('fajita-list');
+  ul.innerHTML = html;
+}
+if (PDRaddOnData) {
+  var PDRaddOnItems = JSON.parse(PDRaddOnData);
+  var html = '';
+
+  PDRaddOnItems.forEach(function(item) {
+    html += '<li>' + item.title + ',  Serves: ' + item.serves + ',  Price: $' + item.price.toFixed(2) + ',  Total: $' + item.sum.toFixed(2) + '</li>';
+  });
+
+  var ul = document.getElementById('PDR-addOn-list');
   ul.innerHTML = html;
 }
 if (addOnData) {

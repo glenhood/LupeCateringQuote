@@ -109,7 +109,7 @@
 
 
         <table style="width:1300px;border-radius: 5px;" class="table;form-control" style="color:white;display: block;width: 100%">
-            <thead>
+            <thead class="sticky-header">
               <tr>
                 <th scope="col" style="width:300px;border-radius: 5px;" >
                   <!-- <div class="dropdown">
@@ -117,11 +117,11 @@
                     <button class="dropdown-menu" id="fajita-titles"></button>
                   </div> -->
                 </th>
-                <th scope="col" style="color:white; width: 100px;padding-left: 160px">Unit Serves</th>
-                <th scope="col" style="color:white; width: 100px">Unit Price</th>
-                <th scope="col" style="color:white; width: 100px">Party Size</th>
-                <th scope="col" style="color:white; width: 100px;padding-left: 10px">Total</th>
-                <th scope="col" style="color:white; width: 200px;padding-left: 40px">Sub Total</th>
+                <th scope="col" style=" width: 100px;padding-left: 160px">Unit Serves</th>
+                <th scope="col" style="width: 100px">Unit Price</th>
+                <th scope="col" style="width: 100px">Party Size</th>
+                <th scope="col" style="width: 100px;padding-left: 10px">Total</th>
+                <th scope="col" style="width: 200px;padding-left: 40px">Sub Total</th>
               </tr>
             </thead>
             <b><tbody style="color:rgb(0, 0, 0);background-color:white;opacity:.50;border-radius: 25px;padding:25px;">
@@ -165,6 +165,26 @@
                     <br><label style="list-style-type:none;padding-top: 23px;padding-left: 40px"  style="width:100px"></label>
                   </td>
                 
+              </tr>
+              <tr>
+                <td>
+                  <label type='text' style="list-style-type:none;padding-top: 20px;padding-left: 40px" id='fajita-addOns-PDR' ><h3><u>Fajita Buffet PDR Add On's</u></h3></label>
+                </td>
+                <td>
+                <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 200px" id='fajita-addOns-PDR-serves'></label>
+                </td>
+                <td>
+                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 15px;" id='fajita-addOns-PDR-price'></label>
+                </td>
+                <td>
+                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 28px" id='fajita-addOns-PDR-count'></label>
+                </td>
+                <td>
+                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-right: 30px" id='fajita-addOns-PDR-sum' style="width:100px"></label>
+                </td>
+                <td>
+                    <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 40px" id='g-fajita-addOns-PDR-total' style="width:100px"></label>
+                  </td>
               </tr>            
               <tr>
                 <td>
