@@ -53,3 +53,23 @@ content {
   z-index: 1000;
   opacity: 50%;
 }
+form  {
+  border: none;
+  background-color: transparent;
+  font-family: RistrettoSlabPro-Regular;
+  font-size: 30px;
+}
+label {
+  font-family: RistrettoSlabPro-Regular;
+}
+form input {
+  background-color: white;
+  font-family: RistrettoSlabPro-Regular;
+  font-size: 30px;
+  background-color: transparent;
+
+}
+#total {
+  background-color: white;
+  width:40px;
+}

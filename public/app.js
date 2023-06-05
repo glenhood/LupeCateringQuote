@@ -1,4 +1,6 @@
 $(function() {
+  
+  
   $.ajax({
     type: "GET",
     url: "CateringItemList.json",
@@ -26,7 +28,6 @@ $(function() {
             
           }
             
-            
                         if (val[i].Category === "Fajita Buffet") {
                           const Serves = val[i].Serves;
                           const ul2 = document.getElementById("fajita-serves");
@@ -43,14 +44,16 @@ $(function() {
                           ul2.appendChild(li2);
                           
                         }
+                        
                         if (val[i].Category === "Fajita Buffet") {
-                          const Count = document.getElementById('total').value;
+                          const Count = parseFloat(document.getElementById("total").value)
                           const ul2 = document.getElementById("fajita-count");
                           const li2 = document.createElement("li");
                           li2.appendChild(document.createTextNode(" " + Count));
                           ul2.appendChild(li2);
-                          
-                        }
+                        };
+                        
+                        
                         if (val[i].Category === "Fajita Buffet") {
                           const Serves = parseFloat(val[i].Serves);
                           const Price = parseFloat(val[i].Price);
@@ -692,11 +695,12 @@ $(function() {
                           });
             }
           }
+          
         });
       }
       
     });
-    
+  
     
       let checkboxes = document.querySelectorAll('input[name="fajita-titles[]"]');
       let sumElements = document.querySelectorAll('#fajita-sum li');
@@ -978,6 +982,11 @@ $(function() {
     localStorage.setItem('location', document.getElementById('location').value);
     localStorage.setItem('lservice', document.getElementById('lservice').value);
 
+    
+
+    
+    
+   
     
 
     
