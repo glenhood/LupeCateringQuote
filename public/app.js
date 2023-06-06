@@ -70,7 +70,10 @@ $(function() {
 
                         let total = 0;
                         let fajitaItems = [];
+						
+						//add event listener to guest count field that will trigger on change and update values.
 
+						
                         // Add event listener to each checkbox
                         checkboxes.forEach((checkbox, index) => {
                           checkbox.addEventListener('change', function() {
@@ -942,6 +945,35 @@ $(function() {
 
         });
       });
+	  
+	let guestCountElement = document.getElementById('total');
+	guestCountElement.addEventListener('change', function(){
+		let newCount = guestCountElement.value;
+		//get the count list entities
+		Array.from(document.getElementsByClassName('count')).forEach((el) => {
+			//li items with invidual guest count cells, set new value
+			Array.from(el.childNodes).forEach((child) => {
+				child.textContent = newCount;
+				})
+		})
+		//get all sum entries
+		let sumItems = $('[id*="-sum"]');
+		let priceItems = $('[id*="-price"]');
+		//iterate through sumItems
+		for (let i=0;i<sumItems.length;i++) {
+			//get corresponding price list for this sum list
+			let priceList = priceItems[i];
+			//iterate through sum list items
+			for (let j=0;j<sumItems[i].children.length;j++){
+				//get corresponding price list item's text content as float
+				let price = parseFloat(priceList.children[j].textContent.replace(/[^0-9.-]+/g,""));
+				sumItems[i].children[j].textContent = price * newCount;
+			}
+
+		}
+
+
+	})
       
     });
     
