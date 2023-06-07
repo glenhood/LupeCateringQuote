@@ -71,8 +71,6 @@ $(function() {
                         let total = 0;
                         let fajitaItems = [];
 						
-						//add event listener to guest count field that will trigger on change and update values.
-
 						
                         // Add event listener to each checkbox
                         checkboxes.forEach((checkbox, index) => {
@@ -703,6 +701,46 @@ $(function() {
       }
       
     });
+    let guestCountElement = document.getElementById('total');
+guestCountElement.addEventListener('change', function() {
+  let newCount = guestCountElement.value;
+
+  // Get the count list entities
+  Array.from(document.getElementsByClassName('count')).forEach((el) => {
+    // li items with individual guest count cells, set new value
+    Array.from(el.childNodes).forEach((child) => {
+      child.textContent = newCount;
+    });
+  });
+
+  // Get all sum entries
+  let sumItems = $('[id*="-sum"]');
+  let priceItems = $('[id*="-price"]');
+
+  // Iterate through sumItems
+  for (let i = 0; i < sumItems.length; i++) {
+    // Get corresponding price list for this sum list
+    let priceList = priceItems[i];
+
+    // Iterate through sum list items
+    for (let j = 0; j < sumItems[i].children.length; j++) {
+      // Get corresponding price list item's text content as float
+      let price = parseFloat(priceList.children[j].textContent.replace(/[^0-9.-]+/g, ""));
+      let totalPrice = (price * newCount).toFixed(2); // Calculate total price with two decimal places
+      sumItems[i].children[j].textContent = totalPrice;
+    }
+  }
+
+  // Update URL query parameter with the new value
+  let urlParams = new URLSearchParams(window.location.search);
+  urlParams.set('total', newCount);
+
+  // Reload the page with the updated URL
+  window.location.href = window.location.pathname + '?' + urlParams.toString();
+});
+
+
+
   
     
       let checkboxes = document.querySelectorAll('input[name="fajita-titles[]"]');
@@ -945,42 +983,13 @@ $(function() {
 
         });
       });
+
+     
 	  
-	let guestCountElement = document.getElementById('total');
-	guestCountElement.addEventListener('change', function(){
-		let newCount = guestCountElement.value;
-		//get the count list entities
-		Array.from(document.getElementsByClassName('count')).forEach((el) => {
-			//li items with invidual guest count cells, set new value
-			Array.from(el.childNodes).forEach((child) => {
-				child.textContent = newCount;
-				})
-		})
-		//get all sum entries
-		let sumItems = $('[id*="-sum"]');
-		let priceItems = $('[id*="-price"]');
-		//iterate through sumItems
-		for (let i=0;i<sumItems.length;i++) {
-			//get corresponding price list for this sum list
-			let priceList = priceItems[i];
-			//iterate through sum list items
-			for (let j=0;j<sumItems[i].children.length;j++){
-				//get corresponding price list item's text content as float
-				let price = parseFloat(priceList.children[j].textContent.replace(/[^0-9.-]+/g,""));
-				sumItems[i].children[j].textContent = price * newCount;
-			}
-
-		}
-
-
-	})
       
-    });
-    
+      
 
-    
-    
-    // }); 
+    }); 
     var queryString = window.location.search.substring(1);
     var params = {};
     queryString = queryString.replace(/\+/g, ' '); // replace all '+' with space
