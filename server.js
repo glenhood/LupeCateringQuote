@@ -8,7 +8,7 @@ let spr = sprequest.create({
 
 
 const app = express();
-const port = process.env.SERVER_PORT || 8600;
+const port = process.env.PORT || 8600;
 
 app.engine('html', require('ejs').renderFile);
 app.use(express.static('public'))

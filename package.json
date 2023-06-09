@@ -2,10 +2,11 @@
   "name": "lupecateringquote",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"start": "node --openssl-legacy-provider server.js"
   },
   "repository": {
     "type": "git",
@@ -20,12 +21,9 @@
   "dependencies": {
     "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "html2pdf": "0.0.11",
-    "jspdf": "^2.5.1",
     "mdb-ui-kit": "^6.2.0",
     "requirejs": "^2.3.6",
-    "sharepointplus": "^6.2.0",
-    "xmldom": "^0.6.0"
+    "sp-request": "^3.0.0"
   },
   "devDependencies": {
     "sp-request": "^3.0.0"
