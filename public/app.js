@@ -8,6 +8,8 @@ $(function() {
     beforeSend: function() { /*loading*/ },
     dataType: "json",
     success: function(result) {
+
+    
       
       $.each(result, function(index, val) {
         var items = "";
@@ -21,6 +23,7 @@ $(function() {
             input.name = "fajita-titles[]";
             input.value = title2;
             input.index = i;
+            input.style.fontWeight = "bold";
             li2.appendChild(input);
             li2.appendChild(document.createTextNode(" " + title2));
             ul2.appendChild(li2);
@@ -64,18 +67,16 @@ $(function() {
                           li2.appendChild(document.createTextNode("$" + (Math.round(Sum2 * 100) / 100).toFixed(2)));
                           ul2.appendChild(li2);
                           
+                      
+
                         let checkboxes = document.querySelectorAll('input[name="fajita-titles[]"]');
                         let sumElements = document.querySelectorAll('#fajita-sum li');
                         let totalElement = document.getElementById('g-fajita-total');
 
                         let total = 0;
                         let fajitaItems = [];
-						
-						
-                        // Add event listener to each checkbox
-                        checkboxes.forEach((checkbox, index) => {
+	                        checkboxes.forEach((checkbox, index) => {
                           checkbox.addEventListener('change', function() {
-                            // Disable all other checkboxes if this one is checked
                             if (this.checked) {
                               checkboxes.forEach((cb, i) => {
                                 if (i !== index) {
@@ -83,11 +84,11 @@ $(function() {
                                 }
                               });
                             } else {
-                              // Enable all checkboxes if this one is unchecked
                               checkboxes.forEach((cb) => {
                                 cb.disabled = false;
                               });
                             }
+                            
 
                             if (this.checked) {
                               var fajitaData = {
@@ -100,15 +101,12 @@ $(function() {
 
                               fajitaItems.push(fajitaData);
                             } else {
-                              // Remove the unchecked item from the fajitaItems array
                               var uncheckedTitle = checkbox.value;
                               fajitaItems = fajitaItems.filter(item => item.title !== uncheckedTitle);
                             }
 
-                            // Save the updated array to local storage
                             localStorage.setItem('fajita-data', JSON.stringify(fajitaItems));
 
-                            // Calculate the total sum
                             total = fajitaItems.reduce((acc, item) => acc + item.sum, 0);
                             totalElement.textContent = "$" + total.toFixed(2);
                           
@@ -126,11 +124,6 @@ $(function() {
                               
                             });
                           });
-                          
-
-                              
-                          
-
                         }
                         
             if (val[i].Category === "Add On Options") {
@@ -142,11 +135,15 @@ $(function() {
               input.type = "checkbox";
               input.name = "fajita-addOns[]";
               input.value = title2;
+              input.className = "boldCheckbox";
               li2.appendChild(input);
-              li2.appendChild(document.createTextNode(" " + title2));
+              const span = document.createElement("span");
+              span.className = "boldCheckbox"; // Add class here
+              span.appendChild(document.createTextNode(" " + title2));
+              li2.appendChild(span);
               ul2.appendChild(li2);
-              
             }
+              
                         if (val[i].Category === "Add On Options") {
                           const Serves = val[i].Serves;
                           const ul2 = document.getElementById("fajita-addOns-serves");
@@ -279,7 +276,6 @@ $(function() {
                           let total = 0;
                           let sidesAndTortillasItems = [];
 
-                          // Add event listener to each checkbox
                           checkboxes1.forEach((checkbox, index) => {
                             checkbox.addEventListener('change', function() {
                               const sidesAndTortillasData = {
@@ -367,7 +363,6 @@ $(function() {
                           let total = 0;
                           let ETFItems = [];
 
-                          // Add event listener to each checkbox
                           checkboxes1.forEach((checkbox, index) => {
                             checkbox.addEventListener('change', function() {
                               const ETFData = {
@@ -532,13 +527,11 @@ $(function() {
                           let total = 0;
                           let servItems = [];
 
-                          // Add event listener to each checkbox
                           checkboxes1.forEach((checkbox, index) => {
                             checkbox.addEventListener('change', function() {
                               const servData = {
                                 title: checkbox.value,
                                 description: descElements[index],
-                                // price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
                                 count: parseFloat(document.getElementById('total').value),
                                 sum: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, ""))
                               };
@@ -549,6 +542,9 @@ $(function() {
 
                               total = servItems.reduce((acc, item) => acc + item.sum, 0);
                               totalElement.textContent = "$" + total.toFixed(2);
+
+                              sumValue = parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")) * parseFloat(document.getElementById('total').value);
+
 
                               if (this.checked) {
                                 const sumText = sumElements[index].textContent;
@@ -562,187 +558,130 @@ $(function() {
                               totalElement.textContent = "$" + total.toFixed(2);
                             });
                           });
-
-
                         }
-                        if (val[i].Category === "Dessert") {
-                          const title2 = val[i].Title;
-                          const ul2 = document.getElementById("Dessert");
-                          const li2 = document.createElement("li");
-                          const input = document.createElement("input");
-                          input.type = "checkbox";
-                          input.name = "Dessert[]";
-                          input.value = title2;
-                          li2.appendChild(input);
-                          li2.appendChild(document.createTextNode(" " + title2));
-                          ul2.appendChild(li2);
-                        }
-                                    if (val[i].Category === "Dessert") {
-                                      const Serves = val[i].Serves;
-                                      const ul2 = document.getElementById("dessert-serves");
-                                      const li2 = document.createElement("li");
-                                      li2.appendChild(document.createTextNode(" " + Serves));
-                                      ul2.appendChild(li2);
-                                      
-                                    }
-                                    if (val[i].Category === "Dessert") {
-                                      const Price = val[i].Price;
-                                      const ul2 = document.getElementById("dessert-price");
-                                      const li2 = document.createElement("li");
-                                      li2.appendChild(document.createTextNode("$" + (Math.round(Price * 100) / 100).toFixed(2)));
-                                      ul2.appendChild(li2);
-                                      
-                                    }
-                                    if (val[i].Category === "Dessert") {
-                                      const Count = document.getElementById('total').value;
-                                      const ul2 = document.getElementById("dessert-count");
-                                      const li2 = document.createElement("li");
-                                      li2.appendChild(document.createTextNode(" " + Count));
-                                      ul2.appendChild(li2);
-                                      
-                                    }
-                                    if (val[i].Category === "Dessert") {
-                                      const Serves = parseFloat(val[i].Serves);
-                                      const Price = parseFloat(val[i].Price);
-                                      const Count = parseFloat(document.getElementById('total').value);
-                                      const Sum6 = (Count / Serves) * Price;
-                                      const ul2 = document.getElementById("dessert-sum");
-                                      const li2 = document.createElement("li");
-                                      li2.appendChild(document.createTextNode("$" + (Math.round(Sum6 * 100) / 100).toFixed(2)));
-                                      ul2.appendChild(li2);
-            
-                                      let checkboxes1 = document.querySelectorAll('input[name="Dessert[]"]');
-                                      let sumElements = document.querySelectorAll('#dessert-sum li');
-                                      let totalElement = document.getElementById('g-dessert-total');
-                                      let priceElements = document.querySelectorAll('#dessert-price li');
-                                      let servesElements = document.querySelectorAll('#dessert-serves li');
-
-                                      let total = 0;
-                                      let dessertItems = [];
-
-                                      // Add event listener to each checkbox
-                                      checkboxes1.forEach((checkbox, index) => {
-                                        checkbox.addEventListener('change', function() {
-                                          const dessertData = {
-                                            title: checkbox.value,
-                                            serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
-                                            price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
-                                            count: parseFloat(document.getElementById('total').value),
-                                            sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
-                                          };
-
-                                          dessertItems.push(dessertData);
-
-                                          localStorage.setItem('dessert-data', JSON.stringify(dessertItems));
-
-                                          total = dessertItems.reduce((acc, item) => acc + item.sum, 0);
-                                          totalElement.textContent = "$" + total.toFixed(2);
-
-                                          if (this.checked) {
-                                            const sumText = sumElements[index].textContent;
-                                            const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g, ""));
-                                            total += sumValue;
-                                          } else {
-                                            const sumText = sumElements[index].textContent;
-                                            const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g, ""));
-                                            total -= sumValue;
-                                          }
-                                          totalElement.textContent = "$" + total.toFixed(2);
-                                        });
-                                      });
 
 
-                                    }
-            if (val[i].Category === "Rentals") {
-              const title2 = val[i].Title;
-              const ul2 = document.getElementById("Rentals");
-              const li2 = document.createElement("li");
-              const input = document.createElement("input");
-              input.type = "checkbox";
-              input.name = "Rentals[]";
-              input.value = title2;
-              li2.appendChild(input);
-              li2.appendChild(document.createTextNode(" " + title2));
-              ul2.appendChild(li2);
+            if (val[i].Category === "Dessert") {
+            const title2 = val[i].Title;
+            const ul2 = document.getElementById("Dessert");
+            const li2 = document.createElement("li");
+            const input = document.createElement("input");
+            input.type = "checkbox";
+            input.name = "Dessert[]";
+            input.value = title2;
+            li2.appendChild(input);
+            li2.appendChild(document.createTextNode(" " + title2));
+            ul2.appendChild(li2);
             }
-            if (val[i].Category === "Rentals") {
-              const Description = val[i].Description;
-              const ul2 = document.getElementById("rental-description");
-              const li2 = document.createElement("li");
-              li2.appendChild(document.createTextNode(" " + Description));
-              ul2.appendChild(li2);
-
-                          let checkboxes1 = document.querySelectorAll('input[name="Rentals[]"]');
-
-                          let rentalItems = [];
-
-                          // Add event listener to each checkbox
-                          checkboxes1.forEach((checkbox, index) => {
-                            checkbox.addEventListener('change', function() {
-                              const rentalData = {
-                                title: checkbox.value,
-                                // description: descElements[index],
-                                // price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
-                                
-                              };
-
-                              rentalItems.push(rentalData);
-
-                              localStorage.setItem('rental-data', JSON.stringify(rentalItems));
-
+                            if (val[i].Category === "Dessert") {
+                            const Serves = val[i].Serves;
+                            const ul2 = document.getElementById("dessert-serves");
+                            const li2 = document.createElement("li");
+                            li2.appendChild(document.createTextNode(" " + Serves));
+                            ul2.appendChild(li2);   
+                            }
+                            if (val[i].Category === "Dessert") {
+                            const Price = val[i].Price;
+                            const ul2 = document.getElementById("dessert-price");
+                            const li2 = document.createElement("li");
+                            li2.appendChild(document.createTextNode("$" + (Math.round(Price * 100) / 100).toFixed(2)));
+                            ul2.appendChild(li2);
+                            }
+                            if (val[i].Category === "Dessert") {
+                            const Count = document.getElementById('total').value;
+                            const ul2 = document.getElementById("dessert-count");
+                            const li2 = document.createElement("li");
+                            li2.appendChild(document.createTextNode(" " + Count));
+                            ul2.appendChild(li2);
+                            }
+                            if (val[i].Category === "Dessert") {
+                              const Serves = parseFloat(val[i].Serves);
+                              const Price = parseFloat(val[i].Price);
+                              const Count = parseFloat(document.getElementById('total').value);
+                              const Sum6 = (Count / Serves) * Price;
+                              const ul2 = document.getElementById("dessert-sum");
+                              const li2 = document.createElement("li");
+                              li2.appendChild(document.createTextNode("$" + (Math.round(Sum6 * 100) / 100).toFixed(2)));
+                              ul2.appendChild(li2);
+    
+                              let checkboxes1 = document.querySelectorAll('input[name="Dessert[]"]');
+                              let sumElements = document.querySelectorAll('#dessert-sum li');
+                              let totalElement = document.getElementById('g-dessert-total');
+                              let priceElements = document.querySelectorAll('#dessert-price li');
+                              let servesElements = document.querySelectorAll('#dessert-serves li');
                               
-              
-                            });
-                          });
+
+                              let total = 0;
+                              let dessertItems = [];
+                              
+                              checkboxes1.forEach((checkbox, index) => {
+                                checkbox.addEventListener('change', function() {
+                                  const dessertData = {
+                                    title: checkbox.value,
+                                    serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+                                    price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+                                    count: parseFloat(document.getElementById('total').value),
+                                    sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
+                                  };
+
+                                  dessertItems.push(dessertData);
+
+                                  localStorage.setItem('dessert-data', JSON.stringify(dessertItems));
+
+                                  total = dessertItems.reduce((acc, item) => acc + item.sum, 0);
+                                  totalElement.textContent = "$" + total.toFixed(2);
+                                  
+x
+
+                                  if (this.checked) {
+                                    const sumText = sumElements[index].textContent;
+                                    const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g, ""));
+                                    total += sumValue;
+                                  } else {
+                                    const sumText = sumElements[index].textContent;
+                                    const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g, ""));
+                                    total -= sumValue;
+                                  }
+                                  totalElement.textContent = "$" + total.toFixed(2);
+                                });
+                              });
             }
           }
-          
         });
       }
-      
     });
-    let guestCountElement = document.getElementById('total');
-guestCountElement.addEventListener('change', function() {
-  let newCount = guestCountElement.value;
+          let guestCountElement = document.getElementById('total');
+          guestCountElement.addEventListener('change', function() {
+          let newCount = parseInt(guestCountElement.value);
+          Array.from(document.getElementsByClassName('count')).forEach((el) => {
+            Array.from(el.childNodes).forEach((child) => {
+              child.textContent = newCount;
+            });
+          });
 
-  // Get the count list entities
-  Array.from(document.getElementsByClassName('count')).forEach((el) => {
-    // li items with individual guest count cells, set new value
-    Array.from(el.childNodes).forEach((child) => {
-      child.textContent = newCount;
-    });
-  });
+          let sumItems = document.querySelectorAll('[id*="-sum"]');
+          let priceItems = document.querySelectorAll('[id*="-price"]');
 
-  // Get all sum entries
-  let sumItems = $('[id*="-sum"]');
-  let priceItems = $('[id*="-price"]');
+          for (let i = 0; i < sumItems.length; i++) {
+          let priceList = priceItems[i];
 
-  // Iterate through sumItems
-  for (let i = 0; i < sumItems.length; i++) {
-    // Get corresponding price list for this sum list
-    let priceList = priceItems[i];
+          for (let j = 0; j < sumItems[i].children.length; j++) {
+            let price = parseFloat(priceList.children[j].textContent.replace(/[^0-9.-]+/g, ""));
+            let totalPrice = (price * newCount).toFixed(2);
+            sumItems[i].children[j].textContent = "$" + totalPrice;
+            }
+          }
 
-    // Iterate through sum list items
-    for (let j = 0; j < sumItems[i].children.length; j++) {
-      // Get corresponding price list item's text content as float
-      let price = parseFloat(priceList.children[j].textContent.replace(/[^0-9.-]+/g, ""));
-      let totalPrice = (price * newCount).toFixed(2); // Calculate total price with two decimal places
-      sumItems[i].children[j].textContent = totalPrice;
-    }
-  }
+          let urlParams = new URLSearchParams(window.location.search);
+          urlParams.set('total', newCount);
 
-  // Update URL query parameter with the new value
-  let urlParams = new URLSearchParams(window.location.search);
-  urlParams.set('total', newCount);
-
-  // Reload the page with the updated URL
-  window.location.href = window.location.pathname + '?' + urlParams.toString();
-});
+          // Update the URL without reloading the page
+          history.replaceState(null, null, '?' + urlParams.toString());
+          });
+          
 
 
 
-  
-    
       let checkboxes = document.querySelectorAll('input[name="fajita-titles[]"]');
       let sumElements = document.querySelectorAll('#fajita-sum li');
       let totalElement = document.getElementById('g-fajita-total');
@@ -983,20 +922,53 @@ guestCountElement.addEventListener('change', function() {
 
         });
       });
-
-     
-	  
+    });
+    
+    
+    let guestCountElement = document.getElementById('total');
+    guestCountElement.addEventListener('change', function() {
+      let newCount = parseInt(guestCountElement.value);
+    
+      // Update all count elements
+      Array.from(document.getElementsByClassName('count')).forEach((el) => {
+        Array.from(el.childNodes).forEach((child) => {
+          child.textContent = newCount;
+        });
+      });
+    
+      // Update sum and total elements
+      let sumItems = document.querySelectorAll('[id*="-sum"]');
+      let priceItems = document.querySelectorAll('[id*="-price"]');
+    
+      for (let i = 0; i < sumItems.length; i++) {
+        let priceList = priceItems[i];
+    
+        for (let j = 0; j < sumItems[i].children.length; j++) {
+          let price = parseFloat(priceList.children[j].textContent.replace(/[^0-9.-]+/g, ""));
+          let totalPrice = (price * newCount).toFixed(2);
+          sumItems[i].children[j].textContent = "$" + totalPrice;
+        }
+      }
+    
+      // Update the URL without reloading the page
+      let urlParams = new URLSearchParams(window.location.search);
+      urlParams.set('total', newCount);
+      history.replaceState(null, null, '?' + urlParams.toString());
+    
       
-      
-
-    }); 
+    });
+    
+    
     var queryString = window.location.search.substring(1);
     var params = {};
     queryString = queryString.replace(/\+/g, ' '); // replace all '+' with space
     queryString.split('&').forEach(function(pair) {
         pair = pair.split('=');
         params[pair[0]] = decodeURIComponent(pair[1] || '');
-    });
+  });
+
+  
+    
     document.getElementById('name').value = params['name'];
     document.getElementById('edate').value = params['edate'];
     document.getElementById('phone').value = params['phone'];

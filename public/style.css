@@ -73,3 +73,7 @@ form input {
   background-color: white;
   width:40px;
 }
+.boldCheckbox {
+  font-weight: bold;
+}
+
