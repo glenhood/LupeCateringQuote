@@ -7,10 +7,7 @@ $(function() {
     async: false,
     beforeSend: function() { /*loading*/ },
     dataType: "json",
-    success: function(result) {
-
-    
-      
+    success: function(result) {      
       $.each(result, function(index, val) {
         var items = "";
         for (var i = 0; i < val.length; i++) {
@@ -98,7 +95,7 @@ $(function() {
                                 count: parseFloat(document.getElementById('total').value),
                                 sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
                               };
-
+							  fajitaItems = fajitaItems.filter(item => item.title != checkbox.value)
                               fajitaItems.push(fajitaData);
                             } else {
                               var uncheckedTitle = checkbox.value;
@@ -108,10 +105,11 @@ $(function() {
                             localStorage.setItem('fajita-data', JSON.stringify(fajitaItems));
 
                             total = fajitaItems.reduce((acc, item) => acc + item.sum, 0);
+							
                             totalElement.textContent = "$" + total.toFixed(2);
-                          
+							updateGrandTotals();
 
-                              if (this.checked) {
+                              /*if (this.checked) {
                                 const sumText = sumElements[index].textContent;
                                 const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g,""));
                                 total += sumValue;
@@ -120,7 +118,7 @@ $(function() {
                                 const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g,""));
                                 total -= sumValue;
                               }
-                              totalElement.textContent = "$" + total.toFixed(2);
+                              totalElement.textContent = "$" + total.toFixed(2);*/
                               
                             });
                           });
@@ -190,22 +188,27 @@ $(function() {
                           // Add event listener to each checkbox
                           checkboxes1.forEach((checkbox, index) => {
                             checkbox.addEventListener('change', function() {
-                              const addOnsData = {
-                                title: checkbox.value,
-                                serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
-                                price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
-                                count: parseFloat(document.getElementById('total').value),
-                                sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
-                              };
-
-                              addOnsItems.push(addOnsData);
-
+							  if (this.checked){
+								  const addOnsData = {
+									title: checkbox.value,
+									serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+									price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+									count: parseFloat(document.getElementById('total').value),
+									sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
+								  };
+								  addOnsItems = addOnsItems.filter(item => item.title != checkbox.value)
+								  addOnsItems.push(addOnsData);
+							  }
+							  else {
+								  addOnsItems = addOnsItems.filter(item => item.title != checkbox.value)
+							  }
+							  
                               localStorage.setItem('addOns-data', JSON.stringify(addOnsItems));
 
                               total = addOnsItems.reduce((acc, item) => acc + item.sum, 0);
                               totalElement.textContent = "$" + total.toFixed(2);
-
-                              if (this.checked) {
+							  updateGrandTotals();
+                              /*if (this.checked) {
                                 const sumText = sumElements[index].textContent;
                                 const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g, ""));
                                 total += sumValue;
@@ -214,7 +217,7 @@ $(function() {
                                 const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g, ""));
                                 total -= sumValue;
                               }
-                              totalElement.textContent = "$" + total.toFixed(2);
+                              totalElement.textContent = "$" + total.toFixed(2);*/
                             });
                           });
 
@@ -278,22 +281,28 @@ $(function() {
 
                           checkboxes1.forEach((checkbox, index) => {
                             checkbox.addEventListener('change', function() {
-                              const sidesAndTortillasData = {
-                                title: checkbox.value,
-                                serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
-                                price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
-                                count: parseFloat(document.getElementById('total').value),
-                                sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
-                              };
-
-                              sidesAndTortillasItems.push(sidesAndTortillasData);
+                              if (this.checked) {
+								  const sidesAndTortillasData = {
+									title: checkbox.value,
+									serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+									price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+									count: parseFloat(document.getElementById('total').value),
+									sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
+								  };
+								  sidesAndTortillasItems = sidesAndTortillasItems.filter(item => item.title != checkbox.value)
+								  sidesAndTortillasItems.push(sidesAndTortillasData);
+							  }
+							  else{
+								  sidesAndTortillasItems = sidesAndTortillasItems.filter(item => item.title != checkbox.value)
+							  }
+                              
 
                               localStorage.setItem('sidesAndTortillas-data', JSON.stringify(sidesAndTortillasItems));
 
                               total = sidesAndTortillasItems.reduce((acc, item) => acc + item.sum, 0);
                               totalElement.textContent = "$" + total.toFixed(2);
-
-                              if (this.checked) {
+							  updateGrandTotals();
+                              /*if (this.checked) {
                                 const sumText = sumElements[index].textContent;
                                 const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g, ""));
                                 total += sumValue;
@@ -302,7 +311,7 @@ $(function() {
                                 const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g, ""));
                                 total -= sumValue;
                               }
-                              totalElement.textContent = "$" + total.toFixed(2);
+                              totalElement.textContent = "$" + total.toFixed(2);*/
                             });
                           });
 
@@ -365,22 +374,26 @@ $(function() {
 
                           checkboxes1.forEach((checkbox, index) => {
                             checkbox.addEventListener('change', function() {
-                              const ETFData = {
-                                title: checkbox.value,
-                                serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
-                                price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
-                                count: parseFloat(document.getElementById('total').value),
-                                sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
-                              };
-
-                              ETFItems.push(ETFData);
-
+							  if (this.checked) {
+								  const ETFData = {
+									title: checkbox.value,
+									serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+									price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+									count: parseFloat(document.getElementById('total').value),
+									sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
+								  };
+								  ETFItems = ETFItems.filter(item => item.title != checkbox.value)
+								  ETFItems.push(ETFData);
+							  }
+							  else {
+								  ETFItems = ETFItems.filter(item => item.title != checkbox.value)
+							  }
                               localStorage.setItem('ETF-data', JSON.stringify(ETFItems));
 
                               total = ETFItems.reduce((acc, item) => acc + item.sum, 0);
                               totalElement.textContent = "$" + total.toFixed(2);
-
-                              if (this.checked) {
+						      updateGrandTotals();
+                              /*if (this.checked) {
                                 const sumText = sumElements[index].textContent;
                                 const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g, ""));
                                 total += sumValue;
@@ -389,7 +402,7 @@ $(function() {
                                 const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g, ""));
                                 total -= sumValue;
                               }
-                              totalElement.textContent = "$" + total.toFixed(2);
+                              totalElement.textContent = "$" + total.toFixed(2);*/
                             });
                           });
 
@@ -453,22 +466,23 @@ $(function() {
                           // Add event listener to each checkbox
                           checkboxes1.forEach((checkbox, index) => {
                             checkbox.addEventListener('change', function() {
-                              const margData = {
-                                title: checkbox.value,
-                                serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
-                                price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
-                                count: parseFloat(document.getElementById('total').value),
-                                sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
-                              };
-
-                              margItems.push(margData);
-
+							  if (this.checked){
+								  const margData = {
+									title: checkbox.value,
+									serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+									price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+									count: parseFloat(document.getElementById('total').value),
+									sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
+								  };
+								  margItems = margItems.filter(item => item.title != checkbox.value)
+								  margItems.push(margData);
+							  }
                               localStorage.setItem('marg-data', JSON.stringify(margItems));
 
                               total = margItems.reduce((acc, item) => acc + item.sum, 0);
                               totalElement.textContent = "$" + total.toFixed(2);
-
-                              if (this.checked) {
+							  updateGrandTotals();
+                              /*if (this.checked) {
                                 const sumText = sumElements[index].textContent;
                                 const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g, ""));
                                 total += sumValue;
@@ -477,7 +491,7 @@ $(function() {
                                 const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g, ""));
                                 total -= sumValue;
                               }
-                              totalElement.textContent = "$" + total.toFixed(2);
+                              totalElement.textContent = "$" + total.toFixed(2);*/
                             });
                           });
 
@@ -529,24 +543,29 @@ $(function() {
 
                           checkboxes1.forEach((checkbox, index) => {
                             checkbox.addEventListener('change', function() {
-                              const servData = {
-                                title: checkbox.value,
-                                description: descElements[index],
-                                count: parseFloat(document.getElementById('total').value),
-                                sum: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, ""))
-                              };
-
-                              servItems.push(servData);
+							  if (this.checked) {
+								  const servData = {
+									title: checkbox.value,
+									description: descElements[index],
+									count: parseFloat(document.getElementById('total').value),
+									sum: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, ""))
+								  };
+								servItems = servItems.filter(item => item.title != checkbox.value)
+								servItems.push(servData);
+							}
+							else{
+								servItems = servItems.filter(item => item.title != checkbox.value)
+							}
+							
+                              
 
                               localStorage.setItem('serv-data', JSON.stringify(servItems));
 
                               total = servItems.reduce((acc, item) => acc + item.sum, 0);
                               totalElement.textContent = "$" + total.toFixed(2);
+							  updateGrandTotals();
 
-                              sumValue = parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")) * parseFloat(document.getElementById('total').value);
-
-
-                              if (this.checked) {
+                              /*if (this.checked) {
                                 const sumText = sumElements[index].textContent;
                                 const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g, ""));
                                 total += sumValue;
@@ -556,6 +575,7 @@ $(function() {
                                 total -= sumValue;
                               }
                               totalElement.textContent = "$" + total.toFixed(2);
+							  */
                             });
                           });
                         }
@@ -616,24 +636,29 @@ $(function() {
                               
                               checkboxes1.forEach((checkbox, index) => {
                                 checkbox.addEventListener('change', function() {
-                                  const dessertData = {
-                                    title: checkbox.value,
-                                    serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
-                                    price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
-                                    count: parseFloat(document.getElementById('total').value),
-                                    sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
-                                  };
-
-                                  dessertItems.push(dessertData);
-
+									if (this.checked){
+									  const dessertData = {
+										title: checkbox.value,
+										serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+										price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+										count: parseFloat(document.getElementById('total').value),
+										sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
+									  };
+									  dessertItems = dessertItems.filter(item => item.title != checkbox.value)
+									  dessertItems.push(dessertData);
+									}
+									else {
+										dessertItems = dessertItems.filter(item => item.title != checkbox.value)
+									}
+									
                                   localStorage.setItem('dessert-data', JSON.stringify(dessertItems));
 
                                   total = dessertItems.reduce((acc, item) => acc + item.sum, 0);
                                   totalElement.textContent = "$" + total.toFixed(2);
-                                  
-x
+                                  updateGrandTotals();
 
-                                  if (this.checked) {
+
+                                  /*if (this.checked) {
                                     const sumText = sumElements[index].textContent;
                                     const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g, ""));
                                     total += sumValue;
@@ -643,6 +668,7 @@ x
                                     total -= sumValue;
                                   }
                                   totalElement.textContent = "$" + total.toFixed(2);
+								  */
                                 });
                               });
             }
@@ -652,313 +678,42 @@ x
     });
           let guestCountElement = document.getElementById('total');
           guestCountElement.addEventListener('change', function() {
-          let newCount = parseInt(guestCountElement.value);
-          Array.from(document.getElementsByClassName('count')).forEach((el) => {
-            Array.from(el.childNodes).forEach((child) => {
-              child.textContent = newCount;
-            });
+			  let newCount = parseInt(guestCountElement.value);
+			  // Update all count elements
+			  Array.from(document.getElementsByClassName('count')).forEach((el) => {
+				Array.from(el.childNodes).forEach((child) => {
+				  child.textContent = newCount;
+				});
+			  });
+			  // Update sum and total elements
+			  let sumItems = document.querySelectorAll('[id*="-sum"]');
+			  let priceItems = document.querySelectorAll('[id*="-price"]');
+			  let servesItems = document.querySelectorAll('[id*="-serves"]');
+
+			  for (let i = 0; i < sumItems.length; i++) {
+				  let priceList = priceItems[i];
+				  let servesList =  servesItems[i];
+				  for (let j = 0; j < sumItems[i].children.length; j++) {
+					let price = parseFloat(priceList.children[j].textContent.replace(/[^0-9.-]+/g, ""));
+					let serves = parseFloat(servesList.children[j].textContent.replace(/[^0-9.-]+/g, ""));
+					let totalPrice = ((price / serves) * newCount).toFixed(2);
+					sumItems[i].children[j].textContent = "$" + totalPrice;
+					}
+			  }
+			  //fire existing change event on checkboxes when count is updated, in order to reprocess sums
+			  document.querySelectorAll('input[type=checkbox]').forEach(function(cb) {
+						cb.dispatchEvent(new Event('change'))	
+			  });
+			  
+			  let urlParams = new URLSearchParams(window.location.search);
+			  urlParams.set('total', newCount);
+
+			  // Update the URL without reloading the page
+			  history.replaceState(null, null, '?' + urlParams.toString());
           });
-
-          let sumItems = document.querySelectorAll('[id*="-sum"]');
-          let priceItems = document.querySelectorAll('[id*="-price"]');
-
-          for (let i = 0; i < sumItems.length; i++) {
-          let priceList = priceItems[i];
-
-          for (let j = 0; j < sumItems[i].children.length; j++) {
-            let price = parseFloat(priceList.children[j].textContent.replace(/[^0-9.-]+/g, ""));
-            let totalPrice = (price * newCount).toFixed(2);
-            sumItems[i].children[j].textContent = "$" + totalPrice;
-            }
-          }
-
-          let urlParams = new URLSearchParams(window.location.search);
-          urlParams.set('total', newCount);
-
-          // Update the URL without reloading the page
-          history.replaceState(null, null, '?' + urlParams.toString());
-          });
-          
+}); 
 
 
-
-      let checkboxes = document.querySelectorAll('input[name="fajita-titles[]"]');
-      let sumElements = document.querySelectorAll('#fajita-sum li');
-      let totalElement = document.getElementById('g-fajita-total');
-      let total = 0;  
-      
-      let checkboxes1 = document.querySelectorAll('input[name="fajita-addOns[]"]');
-      let sumElements1 = document.querySelectorAll('#fajita-addOns-sum li');
-      let totalElement1 = document.getElementById('g-fajita-addOns-total');
-      let total1 = 0;
-      
-      let checkboxes2 = document.querySelectorAll('input[name="Sides&Tortillas[]"]');
-      let sumElements2 = document.querySelectorAll('#sides-addOns-sum li');
-      let totalElement2 = document.getElementById('g-sides-addOns-total');
-      let total2 = 0;
-
-      let checkboxes3 = document.querySelectorAll('input[name="ETF[]"]');
-      let sumElements3 = document.querySelectorAll('#ench-addOns-sum li');
-      let totalElement3 = document.getElementById('g-ench-addOns-total');
-      let total3 = 0;
-
-      let checkboxes4 = document.querySelectorAll('input[name="Margaritas & Drinks[]"]');
-      let sumElements4 = document.querySelectorAll('#marg-addOns-sum li');
-      let totalElement4 = document.getElementById('g-marg-addOns-total');
-      let total4 = 0;
-
-      let checkboxes5 = document.querySelectorAll('input[name="Service Add Ons[]"]');
-      let sumElements5 = document.querySelectorAll('#serv-addOns-price2 li');
-      let totalElement5 = document.getElementById('g-serv-addOns-total');
-      let total5 = 0;
-
-      let checkboxes6 = document.querySelectorAll('input[name="Dessert[]"]');
-      let sumElements6 = document.querySelectorAll('#dessert-sum li');
-      let totalElement6 = document.getElementById('g-dessert-total');
-      let total6 = 0;
-
-      
-      let grandTotal = 0;
-      let tax = 0;
-      let gratuity = 0;
-      let ggrandTotal = 0;
-
-      
-
-    
-
-
-      // Update total for fajita add-ons
-      checkboxes.forEach((checkbox, index) => {
-        checkbox.addEventListener('change', function() {
-          if (this.checked) {
-            const sumText = sumElements[index].textContent;
-            const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g,""));
-            total += sumValue;
-          } else {
-            const sumText = sumElements[index].textContent;
-            const sumValue = parseFloat(sumText.replace(/[^0-9.-]+/g,""));
-            total -= sumValue;
-          }
-          totalElement.textContent = "$" + total.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
-          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
-          document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
-          document.getElementById('tax').value = "$" + tax.toFixed(2);
-          document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
-          document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
-          localStorage.setItem('grandTotal', "$" + grandTotal.toFixed(2));
-          localStorage.setItem('tax', "$" + tax.toFixed(2));
-          localStorage.setItem('gratuity', "$" + gratuity.toFixed(2));
-          localStorage.setItem('ggrandTotal', "$" + ggrandTotal.toFixed(2));
-        });
-      });
-      
-      // Update total for sides add-ons
-      checkboxes1.forEach((checkbox, index) => {
-        checkbox.addEventListener('change', function() {
-          if (this.checked) {
-            const sumText1 = sumElements1[index].textContent;
-            const sumValue1 = parseFloat(sumText1.replace(/[^0-9.-]+/g,""));
-            total1 += sumValue1;
-          } else {
-            const sumText1 = sumElements1[index].textContent;
-            const sumValue1 = parseFloat(sumText1.replace(/[^0-9.-]+/g,""));
-            total1 -= sumValue1;
-          }
-          totalElement1.textContent = "$" + total1.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
-          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
-          document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
-          document.getElementById('tax').value = "$" + tax.toFixed(2);
-          document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
-          document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
-          localStorage.setItem('grandTotal', "$" + grandTotal.toFixed(2));
-          localStorage.setItem('tax', "$" + tax.toFixed(2));
-          localStorage.setItem('gratuity', "$" + gratuity.toFixed(2));
-          localStorage.setItem('ggrandTotal', "$" + ggrandTotal.toFixed(2));
-        });
-      });
-    
-      checkboxes2.forEach((checkbox, index) => {
-        checkbox.addEventListener('change', function() {
-          if (this.checked) {
-            const sumText2 = sumElements2[index].textContent;
-            const sumValue2 = parseFloat(sumText2.replace(/[^0-9.-]+/g,""));
-            total2 += sumValue2;
-          } else {
-            const sumText2 = sumElements2[index].textContent;
-            const sumValue2 = parseFloat(sumText2.replace(/[^0-9.-]+/g,""));
-            total2 -= sumValue2;
-          }
-          totalElement2.textContent = "$" + total2.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
-          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
-          document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
-          document.getElementById('tax').value = "$" + tax.toFixed(2);
-          document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
-          document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
-          localStorage.setItem('grandTotal', "$" + grandTotal.toFixed(2));
-          localStorage.setItem('tax', "$" + tax.toFixed(2));
-          localStorage.setItem('gratuity', "$" + gratuity.toFixed(2));
-          localStorage.setItem('ggrandTotal', "$" + ggrandTotal.toFixed(2));
-        });
-      });
-
-      checkboxes3.forEach((checkbox, index) => {
-        checkbox.addEventListener('change', function() {
-          if (this.checked) {
-            const sumText3 = sumElements3[index].textContent;
-            const sumValue3 = parseFloat(sumText3.replace(/[^0-9.-]+/g,""));
-            total3 += sumValue3;
-          } else {
-            const sumText3= sumElements3[index].textContent;
-            const sumValue3 = parseFloat(sumText3.replace(/[^0-9.-]+/g,""));
-            total3 -= sumValue3;
-          }
-          totalElement3.textContent = "$" + total3.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
-          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
-          document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
-          document.getElementById('tax').value = "$" + tax.toFixed(2);
-          document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
-          document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
-          localStorage.setItem('grandTotal', "$" + grandTotal.toFixed(2));
-          localStorage.setItem('tax', "$" + tax.toFixed(2));
-          localStorage.setItem('gratuity', "$" + gratuity.toFixed(2));
-          localStorage.setItem('ggrandTotal', "$" + ggrandTotal.toFixed(2));
-        });
-      });
-
-      checkboxes4.forEach((checkbox, index) => {
-        checkbox.addEventListener('change', function() {
-          if (this.checked) {
-            const sumText4 = sumElements4[index].textContent;
-            const sumValue4 = parseFloat(sumText4.replace(/[^0-9.-]+/g,""));
-            total4 += sumValue4;
-          } else {
-            const sumText4= sumElements4[index].textContent;
-            const sumValue4 = parseFloat(sumText4.replace(/[^0-9.-]+/g,""));
-            total4 -= sumValue4;
-          }
-          totalElement4.textContent = "$" + total4.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
-          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
-          document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
-          document.getElementById('tax').value = "$" + tax.toFixed(2);
-          document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
-          document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
-          localStorage.setItem('grandTotal', "$" + grandTotal.toFixed(2));
-          localStorage.setItem('tax', "$" + tax.toFixed(2));
-          localStorage.setItem('gratuity', "$" + gratuity.toFixed(2));
-          localStorage.setItem('ggrandTotal', "$" + ggrandTotal.toFixed(2));
-          
-        });
-      });
-
-      checkboxes5.forEach((checkbox, index) => {
-        checkbox.addEventListener('change', function() {
-          if (this.checked) {
-            const sumText5 = sumElements5[index].textContent;
-            const sumValue5 = parseFloat(sumText5.replace(/[^0-9.-]+/g,""));
-            total5 += sumValue5;
-          } else {
-            const sumText5= sumElements5[index].textContent;
-            const sumValue5 = parseFloat(sumText5.replace(/[^0-9.-]+/g,""));
-            total5 -= sumValue5;
-          }
-          totalElement5.textContent = "$" + total5.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
-          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
-          document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
-          document.getElementById('tax').value = "$" + tax.toFixed(2);
-          document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
-          document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
-          localStorage.setItem('grandTotal', "$" + grandTotal.toFixed(2));
-          localStorage.setItem('tax', "$" + tax.toFixed(2));
-          localStorage.setItem('gratuity', "$" + gratuity.toFixed(2));
-          localStorage.setItem('ggrandTotal', "$" + ggrandTotal.toFixed(2));
-          
-        });
-      });
-
-      checkboxes6.forEach((checkbox, index) => {
-        checkbox.addEventListener('change', function() {
-          if (this.checked) {
-            const sumText6 = sumElements6[index].textContent;
-            const sumValue6 = parseFloat(sumText6.replace(/[^0-9.-]+/g,""));
-            total6 += sumValue6;
-          } else {
-            const sumText6= sumElements6[index].textContent;
-            const sumValue6 = parseFloat(sumText6.replace(/[^0-9.-]+/g,""));
-            total6 -= sumValue6;
-          }
-          totalElement6.textContent = "$" + total6.toFixed(2);
-          grandTotal = total + total1 + total2 + total3 + total4 + total5 + total6;
-          tax = (total + total1 + total2 + total3 + total4 + total5 + total6) * .0825;
-          gratuity = (total + total1 + total2 + total3 + total4 + total5 + total6) * .2;
-          ggrandTotal = total + total1 + total2 + total3 + total4 + total5 + total6 + tax + gratuity
-          document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
-          document.getElementById('tax').value = "$" + tax.toFixed(2);
-          document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
-          document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
-          localStorage.setItem('grandTotal', "$" + grandTotal.toFixed(2));
-          localStorage.setItem('tax', "$" + tax.toFixed(2));
-          localStorage.setItem('gratuity', "$" + gratuity.toFixed(2));
-          localStorage.setItem('ggrandTotal', "$" + ggrandTotal.toFixed(2));
-          
-
-        });
-      });
-    });
-    
-    
-    let guestCountElement = document.getElementById('total');
-    guestCountElement.addEventListener('change', function() {
-      let newCount = parseInt(guestCountElement.value);
-    
-      // Update all count elements
-      Array.from(document.getElementsByClassName('count')).forEach((el) => {
-        Array.from(el.childNodes).forEach((child) => {
-          child.textContent = newCount;
-        });
-      });
-    
-      // Update sum and total elements
-      let sumItems = document.querySelectorAll('[id*="-sum"]');
-      let priceItems = document.querySelectorAll('[id*="-price"]');
-    
-      for (let i = 0; i < sumItems.length; i++) {
-        let priceList = priceItems[i];
-    
-        for (let j = 0; j < sumItems[i].children.length; j++) {
-          let price = parseFloat(priceList.children[j].textContent.replace(/[^0-9.-]+/g, ""));
-          let totalPrice = (price * newCount).toFixed(2);
-          sumItems[i].children[j].textContent = "$" + totalPrice;
-        }
-      }
-    
-      // Update the URL without reloading the page
-      let urlParams = new URLSearchParams(window.location.search);
-      urlParams.set('total', newCount);
-      history.replaceState(null, null, '?' + urlParams.toString());
-    
-      
-    });
-    
-    
     var queryString = window.location.search.substring(1);
     var params = {};
     queryString = queryString.replace(/\+/g, ' '); // replace all '+' with space
@@ -966,50 +721,48 @@ x
         pair = pair.split('=');
         params[pair[0]] = decodeURIComponent(pair[1] || '');
   });
-
   
-    
-    document.getElementById('name').value = params['name'];
-    document.getElementById('edate').value = params['edate'];
-    document.getElementById('phone').value = params['phone'];
-    document.getElementById('email').value = params['email'];
-    document.getElementById('time').value = params['time'];
-    document.getElementById('address').value = params['address'];
-    document.getElementById('zcode').value = params['zcode'];
-    document.getElementById('city').value = params['city'];
-    document.getElementById('total').value = params['total'];
-    document.getElementById('theme').value = params['theme'];
-    document.getElementById('location').value = params['location'];
-    document.getElementById('lservice').value = params['lservice'];
+function updateGrandTotals() {
+  let totalItems = Array.from(document.querySelectorAll('[id*="-total"]')).filter(e => e.textContent !== '')
+  let grandTotal = totalItems.reduce((acc,item) => acc + parseFloat(item.textContent.replace(/[^0-9.-]+/g,"")),0)
+  let tax = grandTotal * .0825;
+  let gratuity = grandTotal * .2;
+  let ggrandTotal = grandTotal + tax + gratuity;
+  document.getElementById('grandTotal').value = "$" + grandTotal.toFixed(2);
+  document.getElementById('tax').value = "$" + tax.toFixed(2);
+  document.getElementById('gratuity').value = "$" + gratuity.toFixed(2);
+  document.getElementById('ggrandTotal').value = "$" + ggrandTotal.toFixed(2);
+  localStorage.setItem('grandTotal', "$" + grandTotal.toFixed(2));
+  localStorage.setItem('tax', "$" + tax.toFixed(2));
+  localStorage.setItem('gratuity', "$" + gratuity.toFixed(2));
+  localStorage.setItem('ggrandTotal', "$" + ggrandTotal.toFixed(2));
+}
+ 
 
-    localStorage.setItem('name', document.getElementById('name').value);
-    localStorage.setItem('edate', document.getElementById('edate').value);
-    localStorage.setItem('phone', document.getElementById('phone').value);
-    localStorage.setItem('email', document.getElementById('email').value);
-    localStorage.setItem('time', document.getElementById('time').value);
-    localStorage.setItem('address', document.getElementById('address').value);
-    localStorage.setItem('zcode', document.getElementById('zcode').value);
-    localStorage.setItem('city', document.getElementById('city').value);
-    localStorage.setItem('total', document.getElementById('total').value);
-    localStorage.setItem('theme', document.getElementById('theme').value);
-    localStorage.setItem('location', document.getElementById('location').value);
-    localStorage.setItem('lservice', document.getElementById('lservice').value);
 
-    
+ 
+document.getElementById('name').value = params['name'];
+document.getElementById('edate').value = params['edate'];
+document.getElementById('phone').value = params['phone'];
+document.getElementById('email').value = params['email'];
+document.getElementById('time').value = params['time'];
+document.getElementById('address').value = params['address'];
+document.getElementById('zcode').value = params['zcode'];
+document.getElementById('city').value = params['city'];
+document.getElementById('total').value = params['total'];
+document.getElementById('theme').value = params['theme'];
+document.getElementById('location').value = params['location'];
+document.getElementById('lservice').value = params['lservice'];
 
-    
-    
-   
-    
-
-    
-
-    
-    
-   
-    
-      
-      
-      
-      
-      
+localStorage.setItem('name', document.getElementById('name').value);
+localStorage.setItem('edate', document.getElementById('edate').value);
+localStorage.setItem('phone', document.getElementById('phone').value);
+localStorage.setItem('email', document.getElementById('email').value);
+localStorage.setItem('time', document.getElementById('time').value);
+localStorage.setItem('address', document.getElementById('address').value);
+localStorage.setItem('zcode', document.getElementById('zcode').value);
+localStorage.setItem('city', document.getElementById('city').value);
+localStorage.setItem('total', document.getElementById('total').value);
+localStorage.setItem('theme', document.getElementById('theme').value);
+localStorage.setItem('location', document.getElementById('location').value);
+localStorage.setItem('lservice', document.getElementById('lservice').value);
