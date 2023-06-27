@@ -20,12 +20,10 @@ $(function() {
             input.name = "fajita-titles[]";
             input.value = title2;
             input.index = i;
-            input.style.fontWeight = "bold";
+            input.style.setProperty("font-weight", "bold");
             li2.appendChild(input);
             li2.appendChild(document.createTextNode(" " + title2));
             ul2.appendChild(li2);
-
-            
           }
             
                         if (val[i].Category === "Fajita Buffet") {
