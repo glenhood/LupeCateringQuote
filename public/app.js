@@ -764,3 +764,26 @@ localStorage.setItem('total', document.getElementById('total').value);
 localStorage.setItem('theme', document.getElementById('theme').value);
 localStorage.setItem('location', document.getElementById('location').value);
 localStorage.setItem('lservice', document.getElementById('lservice').value);
+
+const sendEmail = () => {
+  let mailData = {
+	"sender": 'Catering@lupetortilla.com',
+	"email": email,
+	"subject": 'Quote for ' + name + ' for event on ' + edate + ' at ' + time,
+	"emailBody": document.body.innerHTML,
+  };
+  fetch("/send", {
+    method: "post",
+    body: JSON.stringify(mailData),
+	headers: {
+		"Content-Type": "application/json",
+	},
+  }).then((response) => {
+    console.log(response.json());
+  });
+}
+document.getElementById('submit').addEventListener('click', sendEmail)
+
+console.log(rentalData)
+
+localStorage.clear();

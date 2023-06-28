@@ -133,25 +133,3 @@ document.getElementById('tax').value = savedTax;
 document.getElementById('gratuity').value = savedGratuity;
 document.getElementById('ggrandTotal').value = savedGrandtotal;
 
-const sendEmail = () => {
-  let mailData = {
-	"sender": 'Catering@lupetortilla.com',
-	"email": email,
-	"subject": 'Quote for ' + name + ' for event on ' + edate + ' at ' + time,
-	"emailBody": document.body.innerHTML,
-  };
-  fetch("/send", {
-    method: "post",
-    body: JSON.stringify(mailData),
-	headers: {
-		"Content-Type": "application/json",
-	},
-  }).then((response) => {
-    console.log(response.json());
-  });
-}
-document.getElementById('emailButton').addEventListener('click', sendEmail)
-
-console.log(rentalData)
-
-localStorage.clear();
