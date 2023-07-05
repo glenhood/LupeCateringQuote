@@ -1,13 +1,18 @@
 $(function() {
-  
-  
+  let CateringItems;
+  //todo - get all these lists up to this level so we can maintain state accurately. 
+  //add cateringIndex to all list items, checkboxes, and inputs
+  //add handling for checking event creation to work around creating events in a loop within a loop. 
+  let fajitaItems = [];
+  let addOnsItems = [];
   $.ajax({
     type: "GET",
     url: "CateringItemList.json",
     async: false,
     beforeSend: function() { /*loading*/ },
     dataType: "json",
-    success: function(result) {      
+    success: function(result) {
+		CateringItems = result;
       $.each(result, function(index, val) {
         var items = "";
         for (var i = 0; i < val.length; i++) {
@@ -15,6 +20,7 @@ $(function() {
             const title2 = val[i].Title;
             const ul2 = document.getElementById("fajita-titles");
             const li2 = document.createElement("li");
+			li2.cateringIndex = i;
             const input = document.createElement("input");
             input.type = "checkbox";
             input.name = "fajita-titles[]";
@@ -69,44 +75,47 @@ $(function() {
                         let totalElement = document.getElementById('g-fajita-total');
 
                         let total = 0;
-                        let fajitaItems = [];
-	                        checkboxes.forEach((checkbox, index) => {
-                          checkbox.addEventListener('change', function() {
-                            if (this.checked) {
-                              checkboxes.forEach((cb, i) => {
-                                if (i !== index) {
-                                  cb.disabled = true;
-                                }
-                              });
-                            } else {
-                              checkboxes.forEach((cb) => {
-                                cb.disabled = false;
-                              });
-                            }
-                            
 
-                            if (this.checked) {
-                              var fajitaData = {
-                                title: checkbox.value,
-                                serves: val[index].Serves,
-                                price: val[index].Price,
-                                count: parseFloat(document.getElementById('total').value),
-                                sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
-                              };
-							  fajitaItems = fajitaItems.filter(item => item.title != checkbox.value)
-                              fajitaItems.push(fajitaData);
-                            } else {
-                              var uncheckedTitle = checkbox.value;
-                              fajitaItems = fajitaItems.filter(item => item.title !== uncheckedTitle);
-                            }
+	                    checkboxes.forEach((checkbox, index) => {
+							if (!checkbox.hasAttribute('listener')) {
+							  checkbox.addEventListener('change', function() {
+								if (this.checked) {
+								  checkboxes.forEach((cb, i) => {
+									if (i !== index) {
+									  cb.disabled = true;
+									}
+								  });
+								} else {
+								  checkboxes.forEach((cb) => {
+									cb.disabled = false;
+								  });
+								}
+								
 
-                            localStorage.setItem('fajita-data', JSON.stringify(fajitaItems));
+								if (this.checked) {
+								  var fajitaData = {
+									title: checkbox.value,
+									serves: val[index].Serves,
+									price: val[index].Price,
+									count: parseFloat(document.getElementById('total').value),
+									sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
+								  };
+								  fajitaItems = fajitaItems.filter(item => item.title != checkbox.value)
+								  fajitaItems.push(fajitaData);
+								} else {
+								  var uncheckedTitle = checkbox.value;
+								  fajitaItems = fajitaItems.filter(item => item.title !== uncheckedTitle);
+								}
 
-                            total = fajitaItems.reduce((acc, item) => acc + item.sum, 0);
-							
-                            totalElement.textContent = "$" + total.toFixed(2);
-							updateGrandTotals();
-                            });
+								localStorage.setItem('fajita-data', JSON.stringify(fajitaItems));
+
+								total = fajitaItems.reduce((acc, item) => acc + item.sum, 0);
+								
+								totalElement.textContent = "$" + total.toFixed(2);
+								updateGrandTotals();
+								});
+							checkbox.setAttribute('listener',true);
+							};
                           });
                         }
                         
@@ -116,10 +125,12 @@ $(function() {
               const ul2 = document.getElementById("fajita-addOns");
               const li2 = document.createElement("li");
               const input = document.createElement("input");
+			  li2.cateringIndex = i;
               input.type = "checkbox";
               input.name = "fajita-addOns[]";
               input.value = title2;
               input.className = "boldCheckbox";
+			  input.cateringIndex = i;
               li2.appendChild(input);
               const span = document.createElement("span");
               span.className = "boldCheckbox"; // Add class here
@@ -132,6 +143,7 @@ $(function() {
                           const Serves = val[i].Serves;
                           const ul2 = document.getElementById("fajita-addOns-serves");
                           const li2 = document.createElement("li");
+						  li2.cateringIndex = i;
                           li2.appendChild(document.createTextNode(" " + Serves));
                           ul2.appendChild(li2);
                           
@@ -140,6 +152,7 @@ $(function() {
                           const Price = val[i].Price;
                           const ul2 = document.getElementById("fajita-addOns-price");
                           const li2 = document.createElement("li");
+						  li2.cateringIndex = i;
                           li2.appendChild(document.createTextNode("$" + (Math.round(Price * 100) / 100).toFixed(2)));
                           ul2.appendChild(li2);
                           
@@ -148,10 +161,23 @@ $(function() {
                           const inputField = document.createElement("input");
                           inputField.type = "number";
                           inputField.name = "fajita-addOns-count-input";
-                          inputField.className = "count-input";
-                          inputField.addEventListener("input", updateGrandTotals);
-                          const ul2 = document.getElementById("fajita-addOns-count-input");
+						  inputField.value = parseFloat(document.getElementById('total').value);
+						  inputField.cateringIndex = i;
+						  inputField.addEventListener('change', function() {
+							  let index = this.cateringIndex;
+							  let sumElements = document.querySelectorAll('#fajita-addOns-sum li');
+							  //find the sum list item that has the same cateringIndex value as this input.
+							  let thisSum = Array.from(sumElements).filter(e => e.cateringIndex == index)[0];
+							  let sumValue = (this.value / val[index].Serves) * val[index].Price;
+							  thisSum.textContent = "$" + (Math.round(sumValue * 100) / 100).toFixed(2);
+							  //find this row's checkbox and refire change event to update total
+							  let checkboxes = document.querySelectorAll('input[name="fajita-addOns[]"]');
+							  let thisCheckBox = Array.from(checkboxes).filter(e => e.cateringIndex == index)[0];
+							  thisCheckBox.dispatchEvent(new Event('change'));
+						  });
+                          const ul2 = document.getElementById("fajita-addOns-count");
                           const li2 = document.createElement("li");
+						  li2.cateringIndex = i;
                           li2.appendChild(inputField);
                           ul2.appendChild(li2);
                         }
@@ -159,10 +185,11 @@ $(function() {
                           const Serves = parseFloat(val[i].Serves);
                           const Price = parseFloat(val[i].Price);
                           const countInput = document.getElementById("fajita-addOns-count-input");
-                          const Count = parseFloat(countInput.value) || 0; // Use 0 if the value is NaN
+                          const Count = parseFloat(document.getElementById('total').value) || 0; // Use 0 if the value is NaN
                           const Sum2 = isNaN(Count) ? 0 : (Count / Serves) * Price; // Use 0 if Count is NaN
                           const ul2 = document.getElementById("fajita-addOns-sum");
                           const li2 = document.createElement("li");
+						  li2.cateringIndex = i;
                           li2.appendChild(document.createTextNode("$" + (Math.round(Sum2 * 100) / 100).toFixed(2)));
                           ul2.appendChild(li2);
                           
@@ -171,43 +198,48 @@ $(function() {
                           let totalElement = document.getElementById('g-fajita-addOns-total');
                           let priceElements = document.querySelectorAll('#fajita-addOns-price li');
                           let servesElements = document.querySelectorAll('#fajita-addOns-serves li');
-                         
+                          let countElements = document.querySelectorAll('#fajita-addOns-count li input')
 
-                          let addOnsItems = [];
+                          
                           let total = 0;
+
+
 
                           // Add event listener to each checkbox
                           checkboxes1.forEach((checkbox, index) => {
-                          checkbox.addEventListener('change', function() {
-                          if (this.checked){
-                            const addOnsData = {
-                            title: checkbox.value,
-                            serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
-                            price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
-                            count: parseFloat(document.getElementById("fajita-addOns-count-input")),
-                            sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
-                            };
-                            addOnsItems = addOnsItems.filter(item => item.title != checkbox.value)
-                            addOnsItems.push(addOnsData);
-                          }
-                          else {
-                            addOnsItems = addOnsItems.filter(item => item.title != checkbox.value)
-                          }
-                          
-                                        localStorage.setItem('addOns-data', JSON.stringify(addOnsItems));
+							  //only create listener if it doesn't exist
+							  if (!checkbox.hasAttribute('listener')) {
+								checkbox.addEventListener('change', function() {
+								  if (this.checked){
+									const addOnsData = {
+									title: checkbox.value,
+									serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+									price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+									count: parseFloat(countElements[index].value.replace(/[^0-9.-]+/g, "")),
+									sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
+									};
+									addOnsItems = addOnsItems.filter(item => item.title != checkbox.value)
+									addOnsItems.push(addOnsData);
+								  }
+								  else {
+									addOnsItems = addOnsItems.filter(item => item.title != checkbox.value)
+								  }
+								  
+												localStorage.setItem('addOns-data', JSON.stringify(addOnsItems));
 
-                                        total = addOnsItems.reduce((acc, item) => acc + item.sum, 0);
-                                        totalElement.textContent = "$" + total.toFixed(2);
+												total = addOnsItems.reduce((acc, item) => acc + item.sum, 0);
+												totalElement.textContent = "$" + total.toFixed(2);
 
-                                        // Add event listener to each checkbox
-                                        checkboxes1.forEach((checkbox) => {
-                                        checkbox.addEventListener("change", updateGrandTotals);
-                                      });
-                          
-                          updateGrandTotals();
-                                        
-                                      });
-                                    });
+												// Add event listener to each checkbox
+												//checkboxes1.forEach((checkbox) => {
+												//checkbox.addEventListener("change", updateGrandTotals);
+											  //});
+								  
+								  updateGrandTotals();
+							  });
+							  checkbox.setAttribute('listener',true);
+							};
+						});
 
 
                                   }
@@ -621,69 +653,47 @@ $(function() {
       }
     });
 
-
-    function updateInputTotals() {
-      let guestCountElement = document.getElementById('count-input');
-      guestCountElement.addEventListener('change', function() {
-      let newCount = parseInt(guestCountElement.value);
-      // Update all count elements
-      Array.from(document.getElementsByClassName('[id*="count-input"]')).forEach((el) => {
-      Array.from(el.childNodes).forEach((child) => {
-        child.textContent = newCount;
-      });
-      });
-      // Update sum and total elements
-      let sumItems = document.querySelectorAll('[id*="-sum"]');
-      let priceItems = document.querySelectorAll('[id*="-price"]');
-      let servesItems = document.querySelectorAll('[id*="-serves"]');
-
-      for (let i = 0; i < sumItems.length; i++) {
-        let priceList = priceItems[i];
-        let servesList =  servesItems[i];
-        for (let j = 0; j < sumItems[i].children.length; j++) {
-        let price = parseFloat(priceList.children[j].textContent.replace(/[^0-9.-]+/g, ""));
-        let serves = parseFloat(servesList.children[j].textContent.replace(/[^0-9.-]+/g, ""));
-        let totalPrice = ((price / serves) * newCount).toFixed(2);
-        sumItems[i].children[j].textContent = "$" + totalPrice;
-        }
-      }
-      //fire existing change event on checkboxes when count is updated, in order to reprocess sums
-      document.querySelectorAll('input[type=checkbox]').forEach(function(cb) {
-          cb.dispatchEvent(new Event('change'))	
-      });
-      
-      let urlParams = new URLSearchParams(window.location.search);
-      urlParams.set('count-input', newCount);
-
-      // Update the URL without reloading the page
-      history.replaceState(null, null, '?' + urlParams.toString());
-    
-        });
-}; 
-
-      
+   
         let guestCountElement = document.getElementById('total');
         guestCountElement.addEventListener('change', function() {
 			  let newCount = parseInt(guestCountElement.value);
+			  let urlParams = new URLSearchParams(window.location.search);
 			  // Update all count elements
 			  Array.from(document.getElementsByClassName('count')).forEach((el) => {
 				Array.from(el.childNodes).forEach((child) => {
 				  child.textContent = newCount;
 				});
 			  });
+		
+			// Update count inputs IF value is not already changed
+			  Array.from(document.getElementsByClassName('count-input')).forEach((el) => {
+				Array.from(el.childNodes).forEach((child) => { 
+				  //this child is the li element, the actual input is a child of this, so will use child.childNodes[0] to get input field, and use value instead of textContent
+				  if (child.childNodes[0].value == urlParams.get('total')) {
+					child.childNodes[0].value = newCount;  
+				  }
+				});
+			  });
 			  // Update sum and total elements
 			  let sumItems = document.querySelectorAll('[id*="-sum"]');
 			  let priceItems = document.querySelectorAll('[id*="-price"]');
 			  let servesItems = document.querySelectorAll('[id*="-serves"]');
-
+			  let countItems = document.querySelectorAll('[id*="-count"]');
 			  for (let i = 0; i < sumItems.length; i++) {
 				  let priceList = priceItems[i];
 				  let servesList =  servesItems[i];
+				  let countList = countItems[i];
 				  for (let j = 0; j < sumItems[i].children.length; j++) {
 					let price = parseFloat(priceList.children[j].textContent.replace(/[^0-9.-]+/g, ""));
 					let serves = parseFloat(servesList.children[j].textContent.replace(/[^0-9.-]+/g, ""));
-					let totalPrice = ((price / serves) * newCount).toFixed(2);
-					sumItems[i].children[j].textContent = "$" + totalPrice;
+					let count = countList.children[j];
+						//check to see if this row uses independent inputs, and only update if value was not overriden. 
+						//Use node name - #text to check if LI textContent and INPUT for input, always update textContent, conditionally update input if value wasn't overriden.
+						if (count.childNodes[0].nodeName == '#text' || (count.childNodes[0].nodeName == 'INPUT' && count.childNodes[0].value == newCount)) {
+							let totalPrice = ((price / serves) * newCount).toFixed(2);
+							sumItems[i].children[j].textContent = "$" + totalPrice;
+						}
+					
 					}
 			  }
 			  //fire existing change event on checkboxes when count is updated, in order to reprocess sums
@@ -691,13 +701,14 @@ $(function() {
 						cb.dispatchEvent(new Event('change'))	
 			  });
 			  
-			  let urlParams = new URLSearchParams(window.location.search);
+			  //Update url parameter
 			  urlParams.set('total', newCount);
 
 			  // Update the URL without reloading the page
 			  history.replaceState(null, null, '?' + urlParams.toString());
       
           });
+		  console.log(CateringItems);
         });
 
 
@@ -724,10 +735,9 @@ function updateGrandTotals() {
   localStorage.setItem('gratuity', "$" + gratuity.toFixed(2));
   localStorage.setItem('ggrandTotal', "$" + ggrandTotal.toFixed(2));
 }
- 
 
 
- 
+  
 document.getElementById('name').value = params['name'];
 document.getElementById('edate').value = params['edate'];
 document.getElementById('phone').value = params['phone'];
