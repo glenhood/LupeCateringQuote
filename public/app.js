@@ -5,6 +5,8 @@ $(function() {
   //add handling for checking event creation to work around creating events in a loop within a loop. 
   let fajitaItems = [];
   let addOnsItems = [];
+  let sidesItems = [];
+  let margItems = [];
   $.ajax({
     type: "GET",
     url: "CateringItemList.json",
@@ -161,6 +163,9 @@ $(function() {
                           const inputField = document.createElement("input");
                           inputField.type = "number";
                           inputField.name = "fajita-addOns-count-input";
+                          inputField.style.width = "50px";
+                          inputField.style.height = "35px";
+                          inputField.style.textAlign = "center";
 						  inputField.value = parseFloat(document.getElementById('total').value);
 						  inputField.cateringIndex = i;
 						  inputField.addEventListener('change', function() {
@@ -243,91 +248,126 @@ $(function() {
 
 
                                   }
-            if (val[i].Category === "Sides & Tortillas") {
-              const title2 = val[i].Title;
-              const ul2 = document.getElementById("Sides&Tortillas");
-              const li2 = document.createElement("li");
-              const input = document.createElement("input");
-              input.type = "checkbox";
-              input.name = "Sides&Tortillas[]";
-              input.value = title2;
-              li2.appendChild(input);
-              li2.appendChild(document.createTextNode(" " + title2));
-              ul2.appendChild(li2);
+                                  if (val[i].Category === "Sides & Tortillas") {
               
-            }
-                        if (val[i].Category === "Sides & Tortillas") {
-                          const Serves = val[i].Serves;
-                          const ul2 = document.getElementById("sides-addOns-serves");
-                          const li2 = document.createElement("li");
-                          li2.appendChild(document.createTextNode(" " + Serves));
-                          ul2.appendChild(li2);
-                          
-                        }
-                        if (val[i].Category === "Sides & Tortillas") {
-                          const Price = val[i].Price;
-                          const ul2 = document.getElementById("sides-addOns-price");
-                          const li2 = document.createElement("li");
-                          li2.appendChild(document.createTextNode("$" + (Math.round(Price * 100) / 100).toFixed(2)));
-                          ul2.appendChild(li2);
-                          
-                        }
-                        if (val[i].Category === "Sides & Tortillas") {
-                          const Count = document.getElementById('total').value;
-                          const ul2 = document.getElementById("sides-addOns-count");
-                          const li2 = document.createElement("li");
-                          li2.appendChild(document.createTextNode(" " + Count));
-                          ul2.appendChild(li2);
-                          
-                        }
-                        if (val[i].Category === "Sides & Tortillas") {
-                          const Serves = parseFloat(val[i].Serves);
-                          const Price = parseFloat(val[i].Price);
-                          const Count = parseFloat(document.getElementById('total').value);
-                          const Sum3 = (Count / Serves) * Price;
-                          const ul2 = document.getElementById("sides-addOns-sum");
-                          const li2 = document.createElement("li");
-                          li2.appendChild(document.createTextNode("$" + (Math.round(Sum3 * 100) / 100).toFixed(2)));
-                          ul2.appendChild(li2);
-                          
-                          let checkboxes1 = document.querySelectorAll('input[name="Sides&Tortillas[]"]');
-                          let sumElements = document.querySelectorAll('#sides-addOns-sum li');
-                          let totalElement = document.getElementById('g-sides-addOns-total');
-                          let priceElements = document.querySelectorAll('#sides-addOns-price li');
-                          let servesElements = document.querySelectorAll('#sides-addOns-serves li');
-
-                          let total = 0;
-                          let sidesAndTortillasItems = [];
-
-                          checkboxes1.forEach((checkbox, index) => {
-                            checkbox.addEventListener('change', function() {
-                              if (this.checked) {
-								  const sidesAndTortillasData = {
-									title: checkbox.value,
-									serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
-									price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
-									count: parseFloat(document.getElementById('total').value),
-									sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
-								  };
-								  sidesAndTortillasItems = sidesAndTortillasItems.filter(item => item.title != checkbox.value)
-								  sidesAndTortillasItems.push(sidesAndTortillasData);
-							  }
-							  else{
-								  sidesAndTortillasItems = sidesAndTortillasItems.filter(item => item.title != checkbox.value)
-							  }
-                              
-
-                              localStorage.setItem('sidesAndTortillas-data', JSON.stringify(sidesAndTortillasItems));
-
-                              total = sidesAndTortillasItems.reduce((acc, item) => acc + item.sum, 0);
-                              totalElement.textContent = "$" + total.toFixed(2);
-							  updateGrandTotals();
-                              
-                            });
-                          });
-
-
-                        }
+                                    const title2 = val[i].Title;
+                                    const ul2 = document.getElementById("sides-addOns");
+                                    const li2 = document.createElement("li");
+                                    const input = document.createElement("input");
+                              li2.cateringIndex = i;
+                                    input.type = "checkbox";
+                                    input.name = "sides-addOns[]";
+                                    input.value = title2;
+                                    input.className = "boldCheckbox";
+                              input.cateringIndex = i;
+                                    li2.appendChild(input);
+                                    const span = document.createElement("span");
+                                    span.className = "boldCheckbox"; // Add class here
+                                    span.appendChild(document.createTextNode(" " + title2));
+                                    li2.appendChild(span);
+                                    ul2.appendChild(li2);
+                                  }
+                                    
+                                              if (val[i].Category === "Sides & Tortillas") {
+                                                const Serves = val[i].Serves;
+                                                const ul2 = document.getElementById("sides-addOns-serves");
+                                                const li2 = document.createElement("li");
+                                    li2.cateringIndex = i;
+                                                li2.appendChild(document.createTextNode(" " + Serves));
+                                                ul2.appendChild(li2);
+                                                
+                                              }
+                                              if (val[i].Category === "Sides & Tortillas") {
+                                                const Price = val[i].Price;
+                                                const ul2 = document.getElementById("sides-addOns-price");
+                                                const li2 = document.createElement("li");
+                                    li2.cateringIndex = i;
+                                                li2.appendChild(document.createTextNode("$" + (Math.round(Price * 100) / 100).toFixed(2)));
+                                                ul2.appendChild(li2);
+                                                
+                                              }
+                                              if (val[i].Category === "Sides & Tortillas") {
+                                                const inputField = document.createElement("input");
+                                                inputField.type = "number";
+                                                inputField.name = "sides-addOns-count-input";
+                                                inputField.style.width = "50px";
+                                                inputField.style.height = "35px";
+                                                inputField.style.textAlign = "center";
+                                    inputField.value = parseFloat(document.getElementById('total').value);
+                                    inputField.cateringIndex = i;
+                                    inputField.addEventListener('change', function() {
+                                      let index = this.cateringIndex;
+                                      let sumElements = document.querySelectorAll('#sides-addOns-sum li');
+                                      //find the sum list item that has the same cateringIndex value as this input.
+                                      let thisSum = Array.from(sumElements).filter(e => e.cateringIndex == index)[0];
+                                      let sumValue = (this.value / val[index].Serves) * val[index].Price;
+                                      thisSum.textContent = "$" + (Math.round(sumValue * 100) / 100).toFixed(2);
+                                      //find this row's checkbox and refire change event to update total
+                                      let checkboxes = document.querySelectorAll('input[name="sides-addOns[]"]');
+                                      let thisCheckBox = Array.from(checkboxes).filter(e => e.cateringIndex == index)[0];
+                                      thisCheckBox.dispatchEvent(new Event('change'));
+                                    });
+                                                const ul2 = document.getElementById("sides-addOns-count");
+                                                const li2 = document.createElement("li");
+                                    li2.cateringIndex = i;
+                                                li2.appendChild(inputField);
+                                                ul2.appendChild(li2);
+                                              }
+                                              if (val[i].Category === "Sides & Tortillas") {
+                                                const Serves = parseFloat(val[i].Serves);
+                                                const Price = parseFloat(val[i].Price);
+                                                const countInput = document.getElementById("sides-addOns-count-input");
+                                                const Count = parseFloat(document.getElementById('total').value) || 0; // Use 0 if the value is NaN
+                                                const Sum2 = isNaN(Count) ? 0 : (Count / Serves) * Price; // Use 0 if Count is NaN
+                                                const ul2 = document.getElementById("sides-addOns-sum");
+                                                const li2 = document.createElement("li");
+                                    li2.cateringIndex = i;
+                                                li2.appendChild(document.createTextNode("$" + (Math.round(Sum2 * 100) / 100).toFixed(2)));
+                                                ul2.appendChild(li2);
+                                                
+                                                let checkboxes1 = document.querySelectorAll('input[name="sides-addOns[]"]');
+                                                let sumElements = document.querySelectorAll('#sides-addOns-sum li');
+                                                let totalElement = document.getElementById('g-sides-addOns-total');
+                                                let priceElements = document.querySelectorAll('#sides-addOns-price li');
+                                                let servesElements = document.querySelectorAll('#sides-addOns-serves li');
+                                                let countElements = document.querySelectorAll('#sides-addOns-count li input')
+                      
+                                                
+                                                let total = 0;
+                      
+                      
+                      
+                                                // Add event listener to each checkbox
+                                                checkboxes1.forEach((checkbox, index) => {
+                                      //only create listener if it doesn't exist
+                                      if (!checkbox.hasAttribute('listener')) {
+                                      checkbox.addEventListener('change', function() {
+                                        if (this.checked){
+                                        const sidesData = {
+                                        title: checkbox.value,
+                                        serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+                                        price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+                                        count: parseFloat(countElements[index].value.replace(/[^0-9.-]+/g, "")),
+                                        sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
+                                        };
+                                        sidesItems = sidesItems.filter(item => item.title != checkbox.value)
+                                        sidesItems.push(sidesData);
+                                        }
+                                        else {
+                                        sidesItems = sidesItems.filter(item => item.title != checkbox.value)
+                                        }
+                                        
+                                              localStorage.setItem('sides-data', JSON.stringify(sidesItems));
+                      
+                                              total = sidesItems.reduce((acc, item) => acc + item.sum, 0);
+                                              totalElement.textContent = "$" + total.toFixed(2);
+                                        
+                                        updateGrandTotals();
+                                      });
+                                      checkbox.setAttribute('listener',true);
+                                    };
+                                  });
+                                              }
             if (val[i].Category === "ETF") {
               const title2 = val[i].Title;
               const ul2 = document.getElementById("ETF");
@@ -411,86 +451,126 @@ $(function() {
 
 
                         }
-            if (val[i].Category === "Margaritas & Drinks") {
-              const title2 = val[i].Title;
-              const ul2 = document.getElementById("Margaritas & Drinks");
-              const li2 = document.createElement("li");
-              const input = document.createElement("input");
-              input.type = "checkbox";
-              input.name = "Margaritas & Drinks[]";
-              input.value = title2;
-              li2.appendChild(input);
-              li2.appendChild(document.createTextNode(" " + title2));
-              ul2.appendChild(li2);
-            }
                         if (val[i].Category === "Margaritas & Drinks") {
-                          const Serves = val[i].Serves;
-                          const ul2 = document.getElementById("marg-addOns-serves");
+              
+                          const title2 = val[i].Title;
+                          const ul2 = document.getElementById("marg-addOns");
                           const li2 = document.createElement("li");
-                          li2.appendChild(document.createTextNode(" " + Serves));
+                          const input = document.createElement("input");
+                    li2.cateringIndex = i;
+                          input.type = "checkbox";
+                          input.name = "marg-addOns[]";
+                          input.value = title2;
+                          input.className = "boldCheckbox";
+                    input.cateringIndex = i;
+                          li2.appendChild(input);
+                          const span = document.createElement("span");
+                          span.className = "boldCheckbox"; // Add class here
+                          span.appendChild(document.createTextNode(" " + title2));
+                          li2.appendChild(span);
                           ul2.appendChild(li2);
-                          
                         }
-                        if (val[i].Category === "Margaritas & Drinks") {
-                          const Price = val[i].Price;
-                          const ul2 = document.getElementById("marg-addOns-price");
-                          const li2 = document.createElement("li");
-                          li2.appendChild(document.createTextNode("$" + (Math.round(Price * 100) / 100).toFixed(2)));
-                          ul2.appendChild(li2);
                           
-                        }
-                        if (val[i].Category === "Margaritas & Drinks") {
-                          const Count = document.getElementById('total').value;
-                          const ul2 = document.getElementById("marg-addOns-count");
-                          const li2 = document.createElement("li");
-                          li2.appendChild(document.createTextNode(" " + Count));
-                          ul2.appendChild(li2);
-                          
-                        }
-                        if (val[i].Category === "Margaritas & Drinks") {
-                          const Serves = parseFloat(val[i].Serves);
-                          const Price = parseFloat(val[i].Price);
-                          const Count = parseFloat(document.getElementById('total').value);
-                          const Sum5 = (Count / Serves) * Price;
-                          const ul2 = document.getElementById("marg-addOns-sum");
-                          const li2 = document.createElement("li");
-                          li2.appendChild(document.createTextNode("$" + (Math.round(Sum5 * 100) / 100).toFixed(2)));
-                          ul2.appendChild(li2);
-
-                          let checkboxes1 = document.querySelectorAll('input[name="Margaritas & Drinks[]"]');
-                          let sumElements = document.querySelectorAll('#marg-addOns-sum li');
-                          let totalElement = document.getElementById('g-marg-addOns-total');
-                          let priceElements = document.querySelectorAll('#marg-addOns-price li');
-                          let servesElements = document.querySelectorAll('#marg-addOns-serves li');
-
-                          let total = 0;
-                          let margItems = [];
-
-                          // Add event listener to each checkbox
-                          checkboxes1.forEach((checkbox, index) => {
-                            checkbox.addEventListener('change', function() {
-							  if (this.checked){
-								  const margData = {
-									title: checkbox.value,
-									serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
-									price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
-									count: parseFloat(document.getElementById('total').value),
-									sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
-								  };
-								  margItems = margItems.filter(item => item.title != checkbox.value)
-								  margItems.push(margData);
-							  }
-                              localStorage.setItem('marg-data', JSON.stringify(margItems));
-
-                              total = margItems.reduce((acc, item) => acc + item.sum, 0);
-                              totalElement.textContent = "$" + total.toFixed(2);
-							  updateGrandTotals();
-                              
-                            });
+                                    if (val[i].Category === "Margaritas & Drinks") {
+                                      const Serves = val[i].Serves;
+                                      const ul2 = document.getElementById("marg-addOns-serves");
+                                      const li2 = document.createElement("li");
+                          li2.cateringIndex = i;
+                                      li2.appendChild(document.createTextNode(" " + Serves));
+                                      ul2.appendChild(li2);
+                                      
+                                    }
+                                    if (val[i].Category === "Margaritas & Drinks") {
+                                      const Price = val[i].Price;
+                                      const ul2 = document.getElementById("marg-addOns-price");
+                                      const li2 = document.createElement("li");
+                          li2.cateringIndex = i;
+                                      li2.appendChild(document.createTextNode("$" + (Math.round(Price * 100) / 100).toFixed(2)));
+                                      ul2.appendChild(li2);
+                                      
+                                    }
+                                    if (val[i].Category === "Margaritas & Drinks") {
+                                      const inputField = document.createElement("input");
+                                      inputField.type = "number";
+                                      inputField.name = "marg-addOns-count-input";
+                                      inputField.style.width = "50px";
+                                      inputField.style.height = "35px";
+                                      inputField.style.textAlign = "center";
+                          inputField.value = parseFloat(document.getElementById('total').value);
+                          inputField.cateringIndex = i;
+                          inputField.addEventListener('change', function() {
+                            let index = this.cateringIndex;
+                            let sumElements = document.querySelectorAll('#marg-addOns-sum li');
+                            //find the sum list item that has the same cateringIndex value as this input.
+                            let thisSum = Array.from(sumElements).filter(e => e.cateringIndex == index)[0];
+                            let sumValue = (this.value / val[index].Serves) * val[index].Price;
+                            thisSum.textContent = "$" + (Math.round(sumValue * 100) / 100).toFixed(2);
+                            //find this row's checkbox and refire change event to update total
+                            let checkboxes = document.querySelectorAll('input[name="marg-addOns[]"]');
+                            let thisCheckBox = Array.from(checkboxes).filter(e => e.cateringIndex == index)[0];
+                            thisCheckBox.dispatchEvent(new Event('change'));
                           });
-
-
-                        }
+                                      const ul2 = document.getElementById("marg-addOns-count");
+                                      const li2 = document.createElement("li");
+                          li2.cateringIndex = i;
+                                      li2.appendChild(inputField);
+                                      ul2.appendChild(li2);
+                                    }
+                                    if (val[i].Category === "Margaritas & Drinks") {
+                                      const Serves = parseFloat(val[i].Serves);
+                                      const Price = parseFloat(val[i].Price);
+                                      const countInput = document.getElementById("marg-addOns-count-input");
+                                      const Count = parseFloat(document.getElementById('total').value) || 0; // Use 0 if the value is NaN
+                                      const Sum2 = isNaN(Count) ? 0 : (Count / Serves) * Price; // Use 0 if Count is NaN
+                                      const ul2 = document.getElementById("marg-addOns-sum");
+                                      const li2 = document.createElement("li");
+                          li2.cateringIndex = i;
+                                      li2.appendChild(document.createTextNode("$" + (Math.round(Sum2 * 100) / 100).toFixed(2)));
+                                      ul2.appendChild(li2);
+                                      
+                                      let checkboxes1 = document.querySelectorAll('input[name="marg-addOns[]"]');
+                                      let sumElements = document.querySelectorAll('#marg-addOns-sum li');
+                                      let totalElement = document.getElementById('g-marg-addOns-total');
+                                      let priceElements = document.querySelectorAll('#marg-addOns-price li');
+                                      let servesElements = document.querySelectorAll('#marg-addOns-serves li');
+                                      let countElements = document.querySelectorAll('#marg-addOns-count li input')
+            
+                                      
+                                      let total = 0;
+            
+            
+            
+                                      // Add event listener to each checkbox
+                                      checkboxes1.forEach((checkbox, index) => {
+                            //only create listener if it doesn't exist
+                            if (!checkbox.hasAttribute('listener')) {
+                            checkbox.addEventListener('change', function() {
+                              if (this.checked){
+                              const margData = {
+                              title: checkbox.value,
+                              serves: parseFloat(servesElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+                              price: parseFloat(priceElements[index].textContent.replace(/[^0-9.-]+/g, "")),
+                              count: parseFloat(countElements[index].value.replace(/[^0-9.-]+/g, "")),
+                              sum: parseFloat(sumElements[index].textContent.replace(/[^0-9.-]+/g, ""))
+                              };
+                              margItems = margItems.filter(item => item.title != checkbox.value)
+                              margItems.push(margData);
+                              }
+                              else {
+                              margItems = margItems.filter(item => item.title != checkbox.value)
+                              }
+                              
+                                    localStorage.setItem('marg-data', JSON.stringify(margItems));
+            
+                                    total = sidesItems.reduce((acc, item) => acc + item.sum, 0);
+                                    totalElement.textContent = "$" + total.toFixed(2);
+                              
+                              updateGrandTotals();
+                            });
+                            checkbox.setAttribute('listener',true);
+                          };
+                        });
+                                    }
             if (val[i].Category === "Service Add Ons") {
               const title2 = val[i].Title;
               const ul2 = document.getElementById("Service Add Ons");
@@ -511,14 +591,14 @@ $(function() {
                           ul2.appendChild(li2);
                           
                         }
-                        if (val[i].Category === "Service Add Ons") {
-                          const Count = document.getElementById('total').value;
-                          const ul2 = document.getElementById("serv-addOns-count");
-                          const li2 = document.createElement("li");
-                          li2.appendChild(document.createTextNode(" " + Count));
-                          ul2.appendChild(li2);
+                        // if (val[i].Category === "Service Add Ons") {
+                        //   const Count = document.getElementById('total').value;
+                        //   const ul2 = document.getElementById("serv-addOns-count");
+                        //   const li2 = document.createElement("li");
+                        //   li2.appendChild(document.createTextNode(" " + Count));
+                        //   ul2.appendChild(li2);
                           
-                        }
+                        // }
                         if (val[i].Category === "Service Add Ons") {
                           const Price1 = val[i].Price;
                           const ul2 = document.getElementById("serv-addOns-price2");
@@ -649,10 +729,10 @@ $(function() {
                               });
             }
           }
-        });
-      }
-    });
-
+        
+      })
+    }
+  });
    
         let guestCountElement = document.getElementById('total');
         guestCountElement.addEventListener('change', function() {
@@ -782,6 +862,7 @@ const sendEmail = () => {
   });
 }
 document.getElementById('submit').addEventListener('click', sendEmail)
+
 
 
 localStorage.clear();

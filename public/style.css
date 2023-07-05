@@ -76,4 +76,8 @@ form input {
 .boldCheckbox {
   font-weight: bold;
 }
+table {
+  table-layout: fixed;
+}
+
 

@@ -59,35 +59,33 @@
         <table style="width:1300px;border-radius: 5px;" class="table;form-control" style="color:white;display: block;width: 100%">
             <thead class="sticky-header">
               <tr>
-                <th scope="col" style="width:300px;border-radius: 5px;" >
-                 
-                </th>
-                <th scope="col" style=" width: 100px;padding-left: 155px">Unit Serves</th>
-                <th scope="col" style="width: 100px;margin-left:10px">Unit Price</th>
-                <th scope="col" style="width: 100px">Party Size</th>
-                <th scope="col" style="width: 100px;padding-left: 30px">Total</th>
-                <th scope="col" style="width: 200px;padding-left: 45px">Sub Total</th>
+                <th scope="col" style="width: 500px"></th>
+                <th scope="col">Unit Serves</th>
+                <th scope="col" >Unit Price</th>
+                <th scope="col" >Orders</th>
+                <th scope="col" >Total</th>
+                <th scope="col" >Sub Total</th>
               </tr>
             </thead>
             <b><tbody style="color:rgb(0, 0, 0);background-color:white;opacity:.50;border-radius: 25px;padding:25px;">
               <tr style="border-radius: 5px;">
                 <td>
-                  <label type='text' style="list-style-type:none;padding-top: 20px;padding-left: 40px" id='fajita-titles' disabled="disabled" ><h3><u class="boldCheckbox">Start with choosing your Fajita Buffet Option</u></h3></label>
+                  <label type='text' style="list-style-type:none;padding-left: 40px;width: 1000px" id='fajita-titles' disabled="disabled" ><h3><u class="boldCheckbox">Start with choosing your Fajita Buffet Option</u></h3></label>
                 </td>
                 <td>
-                <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 200px" id='fajita-serves'></label>
+                <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 40px" id='fajita-serves'></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 15px" id='fajita-price'></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 15px" id='fajita-price'></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 28px" id='fajita-count' class="count"></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 17px" id='fajita-count' class="count"></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 30px" id='fajita-sum' style="width:100px"></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 10px;" id='fajita-sum' style="width:100px"></label>
                 </td>
                 <td>
-                    <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 40px" id='g-fajita-total' style="width:100px"></label>
+                    <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 5px" id='g-fajita-total' style="width:100px"></label>
                   </td>
               </tr>
               <tr>
@@ -113,62 +111,63 @@
               </tr>            
               <tr>
                 <td>
-                  <label type='text' style="list-style-type:none;padding-top: 20px;padding-left: 40px" id='fajita-addOns' ><h3><u class="boldCheckbox">Fajita Buffet Add On's</u></h3></label>
+                  <label type='text' style="list-style-type:none;padding-left: 40px;width: 1000px" id='fajita-addOns' ><h3><u class="boldCheckbox">Fajita Buffet Add On's</u></h3></label>
                 </td>
                 <td>
-                <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 200px" id='fajita-addOns-serves'></label>
+                <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 40px" id='fajita-addOns-serves'></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 15px;" id='fajita-addOns-price'></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 10px;" id='fajita-addOns-price'></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 28px" id='fajita-addOns-count' class="count-input"></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 15px;padding-left: 5px;" id='fajita-addOns-count' class="count-input"></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 30px" id='fajita-addOns-sum' style="width:100px"></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 23px;" id='fajita-addOns-sum' style="width:100px"></label>
                 </td>
                 <td>
-                    <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 40px" id='g-fajita-addOns-total' style="width:100px"></label>
+                    <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 5px" id='g-fajita-addOns-total' style="width:100px"></label>
                   </td>
               </tr>
               <tr>
                 <td>
-                  <label type='text' style="list-style-type:none;padding-top: 20px;padding-left: 40px" id='Sides&Tortillas' ><h3><u class="boldCheckbox">Additional Sides & Tortillas</u></h3></label>
+                  <label type='text' style="list-style-type:none;padding-left: 40px;width: 1000px" id='sides-addOns' ><h3><u class="boldCheckbox">Additional Sides & Tortillas</u></h3></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 200px" id='sides-addOns-serves'></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 40px" id='sides-addOns-serves'></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 15px;" id='sides-addOns-price'></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 10px;"  id='sides-addOns-price'></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 28px" id='sides-addOns-count' class="count"></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 5px;" id='sides-addOns-count' class="count-input"></label>
                 </td>
                 <td>
-                  <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 30px" id='sides-addOns-sum' style="width:100px"></label>
+                  <br><label type='text' style="list-style-type:none;padding-top: 2px;" id='sides-addOns-sum' style="width:100px"></label>
                 </td>
                 <td>
-                    <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 40px" id='g-sides-addOns-total' style="width:100px"></label>
+                    <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 5px" id='g-sides-addOns-total' style="width:100px"></label>
                   </td>
               </tr>
+              <br>
                 <tr>
                     <td>
-                      <label type='text' style="list-style-type:none;padding-top: 20px;padding-left: 40px" id='ETF' ><h3><u class="boldCheckbox">Enchiladas, Tamales, Flautas</u></h3></label>
+                      <label type='text' style="list-style-type:none;padding-left: 40px;width: 1000px" id='ETF' ><h3><u class="boldCheckbox">Enchiladas, Tamales, Flautas</u></h3></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 200px" id='ench-addOns-serves'></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 45px" id='ench-addOns-serves'></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 15px;" id='ench-addOns-price'></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 10px"id='ench-addOns-price'></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 28px" id='ench-addOns-count' class="count"></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 17px" id='ench-addOns-count' class="count"></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 30px" id='ench-addOns-sum' style="width:100px"></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 10px;" id='ench-addOns-sum' style="width:100px"></label>
                     </td>
                     <td>
-                        <br><label style="list-style-type:none;padding-top: 23px;padding-left: 40px" id='g-ench-addOns-total' style="width:100px"></label>
+                        <br><label style="list-style-type:none;padding-top: 10px;padding-left: 5px" id='g-ench-addOns-total' style="width:100px"></label>
                       </td>
                     
                   </tr>
@@ -216,22 +215,22 @@
                   </tr>
                   <tr>
                     <td>
-                      <label type='text' style="list-style-type:none;padding-top: 20px;padding-left: 40px" id='Dessert' ><h3><u class="boldCheckbox">Dessert</u></h3></label>
+                      <label type='text' style="list-style-type:none;padding-left: 40px;width: 1000px" id='Dessert' ><h3><u class="boldCheckbox">Dessert</u></h3></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 200px" id='dessert-serves'></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 45px" id='dessert-serves'></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 15px;" id='dessert-price'></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 10px" id='dessert-price'></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 28px" id='dessert-count' class="count"></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 17px" id='dessert-count' class="count"></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 30px" id='dessert-sum' style="width:100px"></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 10px;" id='dessert-sum' style="width:100px"></label>
                     </td>
                     <td>
-                        <br><label style="list-style-type:none;padding-top: 23px;padding-left: 40px" id='g-dessert-total' style="width:100px"></label>
+                        <br><label style="list-style-type:none;padding-top: 10px;padding-left: 5px" id='g-dessert-total' style="width:100px"></label>
                       </td>
                       <tr>
                         <td>
@@ -257,22 +256,22 @@
                   </tr>                                             
                   <tr>
                     <td>
-                      <label type='text' style="list-style-type:none;padding-top: 20px;padding-left: 40px" id='Margaritas & Drinks' ><h3><u class="boldCheckbox">Margaritas & Drinks</u></h3></label>
+                      <label type='text' style="list-style-type:none;padding-left: 40px;width: 1000px" id='marg-addOns' ><h3><u class="boldCheckbox">Margaritas & Drinks</u></h3></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 200px" id='marg-addOns-serves'></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 45px" id='marg-addOns-serves'></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 15px;" id='marg-addOns-price'></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 10px" id='marg-addOns-price'></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 28px" id='marg-addOns-count' class="count"></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 17px" id='marg-addOns-count' class="count-input"></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 30px" id='marg-addOns-sum' style="width:100px"></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 10px;" id='marg-addOns-sum' style="width:100px"></label>
                     </td>
                     <td>
-                        <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 40px" id='g-marg-addOns-total' style="width:100px"></label>
+                        <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 5px" id='g-marg-addOns-total' style="width:100px"></label>
                       </td>
                   </tr>
                   <tr>
@@ -298,22 +297,22 @@
                   </tr>            
                     <tr>
                       <td>
-                        <label type='text' style="list-style-type:none;padding-top: 20px;padding-left: 40px" id='Service Add Ons' class="boldCheckbox"><h3><u>Additional Services</u></h3></label>
+                        <label type='text' style="list-style-type:none;padding-top: 20px;padding-left: 40px;margin-right: 100px;" id='Service Add Ons' class="boldCheckbox"><h3><u>Additional Services</u></h3></label>
                       </td>
                       <td>
-                        <label type='text' style="list-style-type:none;float:left;padding-top: 65px;width:400px" id='serv-addOns-price'></label>
+                        <label type='text' style="list-style-type:none;padding-top: 65px;width:8000px;padding-right: 1000px;" id='serv-addOns-price'></label>
                       </td>
                       <td>
                         <label type='text' style="list-style-type:none;padding-top: 23px"></label>
                       </td>
                       <td>
-                        <label type='text' style="list-style-type:none;padding-top: 65px;padding-left: 28px" id='serv-addOns-count' class="count"></label>
+                        <label type='text' style="list-style-type:none;padding-top: 23px"></label>
                       </td>
                       <td>
-                        <label type='text' style="list-style-type:none;padding-top: 65px;padding-left: 30px" id='serv-addOns-price2' style="width:100px"></label>
+                        <label type='text' style="list-style-type:none;padding-top: 75px;" id='serv-addOns-price2' style="width:100px"></label>
                       </td>
                       <td>
-                        <label type='text' style="list-style-type:none;padding-top: 65px;padding-left: 40px" id='g-serv-addOns-total' style="width:100px"></label>
+                        <label type='text' style="list-style-type:none;padding-top: 65px;padding-left: 0px" id='g-serv-addOns-total' style="width:100px"></label>
                       </td>
                     </tr>
                     
@@ -332,10 +331,10 @@
                       <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;"  style="width:100px"><h3><u>Estimated Total</u></h3></label>
+                      <br><label type='text' style="list-style-type:none;"  style="width:10px"><h3><u>Estimated Total</u></h3></label>
                     </td>
                     <td>
-                      <br><input type='text' style="list-style-type:none;"  id='grandTotal' style="width:75px" readonly></input>
+                      <br><input type='text' style="list-style-type:none;width:130px"  id='grandTotal' readonly></input>
                     </td>
                   </tr>
                   <tr>
@@ -355,7 +354,7 @@
                       <br><label type='text' style="list-style-type:none;"  style="width:50px"><h3><u>Estimated Tax</u></h3></label>
                     </td>
                     <td>
-                      <br><input type='text' style="list-style-type:none;"  id='tax' style="width:75px" readonly></input>
+                      <br><input type='text' style="list-style-type:none;width:130px"  id='tax'  readonly></input>
                     </td>
                   </tr>
                   <tr>
@@ -375,7 +374,7 @@
                       <br><label type='text' style="list-style-type:none;"  style="width:100px"><h3><u>Estimated Gratuity</u></h3></label>
                     </td>
                     <td>
-                      <br><input type='text' style="list-style-type:none;"  id='gratuity' style="width:75px" readonly></input>
+                      <br><input type='text' style="list-style-type:none;width:130px"  id='gratuity'  readonly></input>
                     </td>
                   </tr>
                   <tr>
@@ -392,10 +391,10 @@
                       <br><label type='text' style="list-style-type:none;" ></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;"  style="width:100px"><h3><u>Estimated Grand Total</u></h3></label>
+                      <br><label type='text' style="list-style-type:none;"  ><h3><u>Estimated Grand Total</u></h3></label>
                     </td>
                     <td>
-                      <br><input type='text' style="list-style-type:none;"  id='ggrandTotal' style="width:75px" readonly></input>
+                      <br><input type='text' style="list-style-type:none;width:130px"  id='ggrandTotal' readonly></input>
                     </td>
                   </tr>
                   <tr>
@@ -425,7 +424,6 @@
                     window.location.href = "Thankyou.html";
                     
                   }
-                  
                   
                                 
               </script>             
