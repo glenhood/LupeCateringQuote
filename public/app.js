@@ -562,7 +562,7 @@ $(function() {
                               
                                     localStorage.setItem('marg-data', JSON.stringify(margItems));
             
-                                    total = sidesItems.reduce((acc, item) => acc + item.sum, 0);
+                                    total = margItems.reduce((acc, item) => acc + item.sum, 0);
                                     totalElement.textContent = "$" + total.toFixed(2);
                               
                               updateGrandTotals();
@@ -591,14 +591,7 @@ $(function() {
                           ul2.appendChild(li2);
                           
                         }
-                        // if (val[i].Category === "Service Add Ons") {
-                        //   const Count = document.getElementById('total').value;
-                        //   const ul2 = document.getElementById("serv-addOns-count");
-                        //   const li2 = document.createElement("li");
-                        //   li2.appendChild(document.createTextNode(" " + Count));
-                        //   ul2.appendChild(li2);
-                          
-                        // }
+                       
                         if (val[i].Category === "Service Add Ons") {
                           const Price1 = val[i].Price;
                           const ul2 = document.getElementById("serv-addOns-price2");
