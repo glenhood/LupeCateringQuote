@@ -1,7 +1,13 @@
+@media screen and (max-width: 768px) {
+  /* CSS styles for screens smaller than 768px */
+  /* Adjust styles to make content fit on smaller screens */
+}
+
+
 body {
   background-image: url("images/redwood.jpeg");
-  background-repeat: repeat;
-  background-size: contain;
+  /* background-repeat: repeat; */
+  /* background-size: contain; */
   
 }
 @font-face {
@@ -10,6 +16,7 @@ body {
 }
 
 body {
+
   font-family: RistrettoSlabPro-Regular;
   font-size: 100px;
 }
@@ -46,6 +53,7 @@ content {
   height:50px;
 }
 .sticky-header {
+  
   position: sticky;
   top: 0;
   background-color: white;  
@@ -54,6 +62,8 @@ content {
   opacity: 50%;
 }
 form  {
+  
+  position: relative;
   border: none;
   background-color: transparent;
   font-family: RistrettoSlabPro-Regular;
@@ -77,7 +87,13 @@ form input {
   font-weight: bold;
 }
 table {
+  overflow:hidden;
+
   table-layout: fixed;
+}
+.form-control {
+  overflow:hidden;
+
 }
 
 

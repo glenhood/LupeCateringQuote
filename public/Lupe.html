@@ -8,8 +8,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"  ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="module" src="app.js" defer></script>
-    <meta charset="utf-8" />
-      
+    <!-- <meta charset="utf-8" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <title>Lupe Catering Estimator</title>   
 </head>
 <div id="content">
@@ -17,7 +17,7 @@
     
    
     <div class="container">
-        <header ><center><img class="img-center"  height= "200px"width="auto" src="images/LupeLogo.png"></img></center></header>
+        <header ><center><img class="img-center"  height= "200px" src="images/LupeLogo.png"></img></center></header>
         <div class="row">
             <div class="col">
                 <h1 class="text-center">Catering Estimator</h1>
@@ -27,36 +27,36 @@
               
           </div>
         </div>
-        <form>
+        <form style="overflow:hidden;">
         <h2 style="font-weight: bold;">Contact Info</h2>
-        <h8 style="font-weight: bold;text-decoration: underline;">Name: </h8><input id="name" style="border: 0;width: 3000px;" readonly>
-        <h8 style="font-weight: bold;text-decoration: underline;">Phone: </h8><input id="phone" style="border: 0;width: 3000px;" readonly>
-        <h8 style="font-weight: bold;text-decoration: underline;">Email: </h8><input id="email" style="border: 0;width: 3000px;" readonly>
-        <h8 style="font-weight: bold;text-decoration: underline;">Street Address: </h8><input id="address" style="border: 0;width: 3000px;" readonly>
-        <h8 style="font-weight: bold;text-decoration: underline;">City: </h8><input id="city" style="border: 0;width: 3000px;" readonly>
-        <h8 style="font-weight: bold;text-decoration: underline;">Zip Code: </h8><input id="zcode" style="border: 0;width: 3000px;" readonly>
+        <div style="display: flex; align-items: center;"><h8 style="font-weight: bold;text-decoration: underline;margin-right: 10px;">Name:</h8><input id="name" style="border: 0;width: 100%;" readonly></div>
+        <div style="display: flex; align-items: center;"><h8 style="font-weight: bold;text-decoration: underline;margin-right: 10px;">Phone: </h8><input id="phone" style="border: 0;width: 3000px;" readonly></div>
+        <div style="display: flex; align-items: center;"><h8 style="font-weight: bold;text-decoration: underline;margin-right: 10px;">Email: </h8><input id="email" style="border: 0;width: 3000px;" readonly></div>
+        <div style="display: flex; align-items: center;"><h8 style="font-weight: bold;text-decoration: underline;width: 350px;">Street Address: </h8><input id="address" style="border: 0;width: 3000px;" readonly></div>
+        <div style="display: flex; align-items: center;"><h8 style="font-weight: bold;text-decoration: underline;margin-right: 10px;">City: </h8><input id="city" style="border: 0;width: 3000px;" readonly></div>
+        <div style="display: flex; align-items: center;"><h8 style="font-weight: bold;text-decoration: underline;width: 200px;">Zip Code: </h8><input id="zcode" style="border: 0;width: 3000px;" readonly></div>
         <br>
-        <br>
-        <br>
+        
         <h2 style="font-weight: bold;">Event Information</h2>
-        <h8 style="font-weight: bold;text-decoration: underline;">Date: </h8><input id="edate" style="border: 0;width: 3000px;" readonly>
-        <h8 style="font-weight: bold;text-decoration: underline;">Time: </h8><input id="time" style="border: 0;width: 3000px;" readonly>
-        <h8 style="font-weight: bold;text-decoration: underline;">Theme: </h8><input id="theme" style="border: 0;width: 3000px;" readonly>
-        <h8 style="font-weight: bold;text-decoration: underline;">Perferred Location: </h8><input id="location" style="border: 0;width: 3000px;" readonly>
-        <h8 style="font-weight: bold;text-decoration: underline;">Beer or Margarita Service?: </h8><input id="lservice" style="border: 0;width: 3000px;" readonly>
-        <h2 style="font-weight: bold;text-decoration: underline;">How many guests will be joining us? </h2><input id="total" style="border: 0;width: 40px;" >
-        </form>
+        <div style="display: flex; align-items: center;"><h8 style="font-weight: bold;text-decoration: underline;margin-right: 10px;">Date: </h8><input id="edate" style="border: 0;width: 3000px;" readonly></div>
+        <div style="display: flex; align-items: center;"><h8 style="font-weight: bold;text-decoration: underline;margin-right: 10px;">Time: </h8><input id="time" style="border: 0;width: 3000px;" readonly></div>
+        <div style="display: flex; align-items: center;"><h8 style="font-weight: bold;text-decoration: underline;margin-right: 10px;">Theme: </h8><input id="theme" style="border: 0;width: 3000px;" readonly></div>
+        <div style="display: flex; align-items: center;"><h8 style="font-weight: bold;text-decoration: underline;width: 450px;">Perferred Location: </h8><input id="location" style="border: 0;width: 3000px;" readonly></div>
+        <div style="display: flex; align-items: center;"><h8 style="font-weight: bold;text-decoration: underline;width: 675px;">Beer or Margarita Service?: </h8><input id="lservice" style="border: 0;width: 3000px;" readonly></div>
+        <div style="display: flex; align-items: center;"><h2 style="font-weight: bold;text-decoration: underline;margin-right: 10px;">Number of Guests </h2><input id="total" style="border: 0;width: 40px;" ></div>
+        </form>'
+        <br>
         <div class="mb-6" >
-          <legend style="color:rgb(255, 255, 255);border-radius: 5px;"><b>Fajita buffet includes the following: Mixed Chicken and Beef Fajita meat, (All Beef or Chicken options will effect pricing) Mexican rice, Charro Beans, Guacamole, Pico de Gallo, Shredded cheddar cheese, Flour and/or Corn tortillas, Chips, Salsa and Queso, *Other sides and extra items are available for an additional charge. Drink options are not included in the fajita buffet pricing. </b></legend>
-          <legend style="color:white;border-radius: 5px;">Fajita buffet service includes: Buffet tables, Table clothes, Chafing dishes, Heavy plastic plates, Rolled "silver" like plastic flatware. 90 minutes of serving time.  </legend>
-          <legend style="color:white;border-radius: 5px;"><u>The quantities of items listed below are minimums and are based on the average consumption. Additional charges will apply for additional items prepared at the event. By clicking submit, you agree to pay additional charges for items prepared at the event that exceed the below listed minimums.</u></legend>
+          <legend style="color:black;border-radius: 5px;">Fajita buffet includes the following: Beef and Chicken Fajitas, Mexican rice, Charro beans, Guacamole, Pico de Gallo, Shredded cheddar cheese, Flour and Corn tortillas, Chips, Salsa and Queso. Service includes: Buffet tables, Table cloth, Serving dishes, disposable plate ware and flatware and 90 minutes of serv time.</legend>
+          <legend style="color:black;border-radius: 5px;"></legend>
 
       </div>
+      <br>
 
       
 
 
-        <table style="width:1300px;border-radius: 5px;" class="table;form-control" style="color:white;display: block;width: 100%">
+        <table style="width:1300px;border-radius: 5px;" class="table;form-control" >
             <thead class="sticky-header">
               <tr>
                 <th scope="col" style="width: 500px"></th>
@@ -148,26 +148,27 @@
                 <td>
                     <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 5px" id='g-sides-addOns-total' style="width:100px"></label>
                   </td>
+                
               </tr>
-              <br>
+              
                 <tr>
                     <td>
-                      <label type='text' style="list-style-type:none;padding-left: 40px;width: 1000px" id='ETF' ><h3><u class="boldCheckbox">Enchiladas, Tamales, Flautas</u></h3></label>
+                      <label type='text' style="list-style-type:none;padding-top: 30px;padding-left: 40px;width: 1000px" id='ETF' ><h3><u class="boldCheckbox">Enchiladas, Tamales, Flautas</u></h3></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 45px" id='ench-addOns-serves'></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 30px;padding-left: 45px" id='ench-addOns-serves'></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 10px"id='ench-addOns-price'></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 30px;padding-left: 10px"id='ench-addOns-price'></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 17px" id='ench-addOns-count' class="count"></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 30px;padding-left: 17px" id='ench-addOns-count' class="count"></label>
                     </td>
                     <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 10px;" id='ench-addOns-sum' style="width:100px"></label>
+                      <br><label type='text' style="list-style-type:none;padding-top: 30px;" id='ench-addOns-sum' style="width:100px"></label>
                     </td>
                     <td>
-                        <br><label style="list-style-type:none;padding-top: 10px;padding-left: 5px" id='g-ench-addOns-total' style="width:100px"></label>
+                        <br><label style="list-style-type:none;padding-top: 30px;padding-left: 5px" id='g-ench-addOns-total' style="width:100px"></label>
                       </td>
                     
                   </tr>
@@ -274,27 +275,7 @@
                         <br><label type='text' style="list-style-type:none;padding-top: 10px;padding-left: 5px" id='g-marg-addOns-total' style="width:100px"></label>
                       </td>
                   </tr>
-                  <tr>
-                    <td>
-                      <label type='text' style="list-style-type:none;padding-left: 40px;padding-top: -10px" ><h5><i>"Our catering sales team will go over all options"</h5></i></label>
-                    </td>
-                    <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 200px" ></label>
-                    </td>
-                    <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 15px;" ></label>
-                    </td>
-                    <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-left: 28px" ></label>
-                    </td>
-                    <td>
-                      <br><label type='text' style="list-style-type:none;padding-top: 23px;padding-right: 30px"  style="width:100px"></label>
-                    </td>
-                    <td>
-                        <br><label style="list-style-type:none;padding-top: 23px;padding-left: 40px"  style="width:100px"></label>
-                      </td>
-                    
-                  </tr>            
+                  
                     <tr>
                       <td>
                         <label type='text' style="list-style-type:none;padding-top: 20px;padding-left: 40px;margin-right: 100px;" id='Service Add Ons' class="boldCheckbox"><h3><u>Additional Services</u></h3></label>
@@ -414,7 +395,7 @@
                       <br><label type='text' style="list-style-type:none;"  style="width:100px"></h3></label>
                     </td>
                     <td>
-                      <br><button type="button" style="width:96%;" class="btn btn-xl  btn-success" id="submit" onclick = "thankyou()" >Submit</button>
+                      <br><button type="button" style="width:84%;" class="btn btn-xl  btn-success" id="submit" onclick = "thankyou()" >Submit</button>
                     </td>
                   </tr>
 
