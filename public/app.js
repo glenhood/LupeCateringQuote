@@ -807,7 +807,20 @@ function updateGrandTotals() {
   localStorage.setItem('tax', "$" + tax.toFixed(2));
   localStorage.setItem('gratuity', "$" + gratuity.toFixed(2));
   localStorage.setItem('ggrandTotal', "$" + ggrandTotal.toFixed(2));
+  localStorage.setItem('name', document.getElementById('name').value);
+  localStorage.setItem('edate', document.getElementById('edate').value);
+  localStorage.setItem('phone', document.getElementById('phone').value);
+  localStorage.setItem('email', document.getElementById('email').value);
+  localStorage.setItem('time', document.getElementById('time').value);
+  localStorage.setItem('address', document.getElementById('address').value);
+  localStorage.setItem('zcode', document.getElementById('zcode').value);
+  localStorage.setItem('city', document.getElementById('city').value);
+  localStorage.setItem('total', document.getElementById('total').value);
+  localStorage.setItem('theme', document.getElementById('theme').value);
+  localStorage.setItem('location', document.getElementById('location').value);
+  localStorage.setItem('lservice', document.getElementById('lservice').value);
 }
+
 
 
   
@@ -824,18 +837,7 @@ document.getElementById('theme').value = params['theme'];
 document.getElementById('location').value = params['location'];
 document.getElementById('lservice').value = params['lservice'];
 
-localStorage.setItem('name', document.getElementById('name').value);
-localStorage.setItem('edate', document.getElementById('edate').value);
-localStorage.setItem('phone', document.getElementById('phone').value);
-localStorage.setItem('email', document.getElementById('email').value);
-localStorage.setItem('time', document.getElementById('time').value);
-localStorage.setItem('address', document.getElementById('address').value);
-localStorage.setItem('zcode', document.getElementById('zcode').value);
-localStorage.setItem('city', document.getElementById('city').value);
-localStorage.setItem('total', document.getElementById('total').value);
-localStorage.setItem('theme', document.getElementById('theme').value);
-localStorage.setItem('location', document.getElementById('location').value);
-localStorage.setItem('lservice', document.getElementById('lservice').value);
+
 
 const sendEmail = () => {
   let mailData = {

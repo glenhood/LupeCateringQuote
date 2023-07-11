@@ -1,15 +1,4 @@
-var name = localStorage.getItem('name');
-var edate = localStorage.getItem('edate');
-var phone = localStorage.getItem('phone');
-var email = localStorage.getItem('email');
-var time = localStorage.getItem('time');
-var address = localStorage.getItem('address');
-var zcode = localStorage.getItem('zcode');
-var city = localStorage.getItem('city');
-var total = localStorage.getItem('total');
-var theme = localStorage.getItem('theme');
-var location = localStorage.getItem('location');
-var lservice = localStorage.getItem('lservice');
+
 var fajitaData = localStorage.getItem('fajita-data');
 var addOnData = localStorage.getItem('addOns-data');
 var sidesTortillasData = localStorage.getItem('sidesAndTortillas-data');
@@ -115,6 +104,19 @@ if (rentalData) {
   ul.innerHTML = html;
 }
 
+var name = localStorage.getItem('name');
+var edate = localStorage.getItem('edate');
+var phone = localStorage.getItem('phone');
+var email = localStorage.getItem('email');
+var time = localStorage.getItem('time');
+var address = localStorage.getItem('address');
+var zcode = localStorage.getItem('zcode');
+var city = localStorage.getItem('city');
+var total = localStorage.getItem('total');
+var theme = localStorage.getItem('theme');
+var location = localStorage.getItem('location');
+var lservice = localStorage.getItem('lservice');
+
 
 document.getElementById('name').value = name;
 document.getElementById('edate').value = edate;
@@ -132,4 +134,6 @@ document.getElementById('grandtotal').value = savedTotal;
 document.getElementById('tax').value = savedTax;
 document.getElementById('gratuity').value = savedGratuity;
 document.getElementById('ggrandTotal').value = savedGrandtotal;
+
+console.log(edate)
 
